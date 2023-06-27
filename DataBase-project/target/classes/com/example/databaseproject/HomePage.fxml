@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane onMouseClicked="#searchTransition" prefHeight="630.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.HomeController">
+   <children>
+      <Pane id="topLayer" prefHeight="84.0" prefWidth="1100.0" stylesheets="@HomePageStyle.css" AnchorPane.bottomAnchor="546.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label id="nameLabel" layoutX="935.0" layoutY="22.0" prefHeight="28.0" prefWidth="100.0" text="Osama Ammar" />
+            <Button id="slideB" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="49.0">
+               <graphic>
+                  <ImageView id="slideIcon" fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                     <image>
+                        <Image url="@../../../../../../../../../Downloads/main-menu.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button id="photoB" fx:id="profileb" layoutX="1037.0" layoutY="18.0" minWidth="38.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="49.0" />
+            <Label id="kindLabel" layoutX="961.0" layoutY="48.0" prefHeight="16.0" prefWidth="49.0" text="(Reader)" />
+            <TextField id="searchFeild" fx:id="searchf" layoutX="329.0" layoutY="28.0" prefHeight="28.0" prefWidth="221.0" />
+            <Pane id="pane" fx:id="transpane" layoutX="318.0" layoutY="28.0" prefHeight="28.0" prefWidth="232.0" stylesheets="@HomePageStyle.css" />
+            <Button id="searchB" fx:id="searcht" layoutX="530.0" layoutY="22.0" mnemonicParsing="false" onAction="#searchTransition" onMouseClicked="#searchTransition">
+               <graphic>
+                  <ImageView id="searchIcon" fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                     <image>
+                        <Image url="@../../../../../../../../../Downloads/icons8-search-100.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children></Pane>
+      <Circle fx:id="profilec" fill="DODGERBLUE" layoutX="214.0" layoutY="225.0" radius="24.0" stroke="BLACK" strokeType="INSIDE" />
+   </children>
+</AnchorPane>

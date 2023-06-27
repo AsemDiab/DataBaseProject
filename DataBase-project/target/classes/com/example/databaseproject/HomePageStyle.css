@@ -1,0 +1,77 @@
+#topLayer {
+    -fx-background-color: #3d322c;
+
+}
+#pane{
+
+    -fx-background-color: #3d322c;
+}
+#nameLabel{
+    -fx-font-size: 15px;
+    -fx-font-family: "Lucida Console", "Courier New", monospace;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, #d9b26e, 2, 0, 0, 0);
+}
+#kindLabel{
+    -fx-font-size: 10px;
+    -fx-font-family: "Lucida Console", "Courier New", monospace;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, #d9b26e, 2, 0, 0, 0);
+}
+#topLayer {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 0);
+}
+
+#searchB {
+    -fx-background-radius: 80%;
+    -fx-min-height: 40px;
+    -fx-min-width: 40px;
+    -fx-background-color: #d9b26e;
+}
+
+#searchB:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 10, 0, 0, 0);
+}
+
+
+#slideB {
+    -fx-background-radius: 80%;
+    -fx-min-height: 40px;
+    -fx-min-width: 40px;
+    -fx-background-color: #d9b26e;
+}
+
+#slideB:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 10, 0, 0, 0);
+}
+
+#searchIcon{
+
+    -fx-min-width: 50px;
+    -fx-min-height: 40px;
+}
+#photoB{
+    -fx-background-radius: 50%;
+    -fx-min-height: 40px;
+    -fx-min-width: 40px;
+    -fx-background-color: #d9b26e;
+}
+#photoB:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 10, 0, 0, 0);
+}
+#photoIcon{
+
+    -fx-background-radius: 50%;
+    -fx-clip: circle(50%);
+}
+#searchFeild {
+    -fx-background-color: white;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-background-radius: 0;
+    -fx-font-family: serif;
+
+}
+
+#searchFeild:focused {
+    -fx-background-color: #d9b26e, -fx-background ;
+}
