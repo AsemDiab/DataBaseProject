@@ -103,8 +103,8 @@
                </graphic>
             </Button>
          </children></Pane>
-      <Button layoutX="344.0" layoutY="120.0" mnemonicParsing="false" onAction="#swetchToProfile" text="Switch to profile" />
       <Button layoutX="248.0" layoutY="145.0" mnemonicParsing="false" onAction="#swetchLibrarianPage" text="to LibreanPage" />
       <Button layoutX="531.0" layoutY="120.0" mnemonicParsing="false" onAction="#swetchAdminPage" text="to admin Page" />
+      <Circle fx:id="uuuu" fill="DODGERBLUE" layoutX="450.0" layoutY="345.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </AnchorPane>

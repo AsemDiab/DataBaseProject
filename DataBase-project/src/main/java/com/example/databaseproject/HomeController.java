@@ -41,7 +41,7 @@ public class HomeController implements Initializable {
     private Boolean inoutSlide=false;
     //photo
     @FXML
-    public Circle profilec;//هاي للبورفايل
+    public Circle uuuu;//هاي للبورفايل
     @FXML
     public Circle slidephoto;//هاي للسلايدر
     @FXML
@@ -205,6 +205,13 @@ else{
 //          osama inisialize                //
 //////////////////////////////////////////////
 public void ini(){
+if(new LogInPageController().gettype().equals(TypeOfUseers.Admin)){uuuu.setVisible(false);}
+    else System.out.println("wroong");
+        if(new LogInPageController().gettype().equals(TypeOfUseers.Admin)){
+        uuuu.setVisible(false);
+    }
+
+
    // profilec.setFill(new ImagePattern(new Image(getClass().getResource("anime4.png").toExternalForm())));
 }
 
@@ -229,6 +236,7 @@ public void ini(){
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ini();//inisilaiz
+
 // i will hix my error(convert following line to methods)
         backarrow1.setFill(new ImagePattern(new Image(getClass().getResource("arrowback.png").toExternalForm())));
         backarrow2.setFill(new ImagePattern(new Image(getClass().getResource("arrowback.png").toExternalForm())));
