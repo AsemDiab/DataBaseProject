@@ -1,0 +1,8 @@
+#upPane{
+    -fx-background-color: #3d322c;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 1), 10, 0, 0, 0);
+}
+#infopane {
+    -fx-background-color: #d9b26e;
+    -fx-border-color: non;
+}

@@ -47,8 +47,7 @@ public Button libreanB;
     public Button authorB;
     @FXML
     public Circle uuuu;//هاي للبورفايل
-    @FXML
-    public Circle slidephoto;//هاي للسلايدر
+
     @FXML
     private TextField searchf;
     @FXML
@@ -109,7 +108,7 @@ public Button libreanB;
     //               methods                   //
     /////////////////////////////////////////////
 
-    public void closesearch(ActionEvent e){//هذا الفنكشن مسؤل عن اغلاق البحث يجب استخدامه عند الضغط علي اي زر اخر
+    public void closesearch(){//هذا الفنكشن مسؤل عن اغلاق البحث يجب استخدامه عند الضغط علي اي زر اخر
         TranslateTransition searchTtrans=new TranslateTransition();
         TranslateTransition searchBtrans=new TranslateTransition();
         TranslateTransition searchPtrans=new TranslateTransition();
@@ -186,7 +185,7 @@ public Button libreanB;
 
     public void searchTransition(ActionEvent e){
         if(inout)
-            closesearch(e);
+            closesearch();
         else
             opensearch(e);
         if(!searchf.getText().isEmpty()){
@@ -197,7 +196,7 @@ public Button libreanB;
     /////////////////////////////////////////
     public void profileEvent(ActionEvent e) throws IOException {//زر البروفايل
         if(inout)
-            closesearch(e);
+            closesearch();
         swetchToProfile(e);
         System.out.println("اههههه");
     }
@@ -205,7 +204,7 @@ public Button libreanB;
     public void slideEvent(ActionEvent e){//زر البروفايل
         System.out.println("ااااا");
         if(inout)
-            closesearch(e);
+            closesearch();
 
         Boolean inoutSlide = false;
         if(inoutSlide)
@@ -299,7 +298,7 @@ else if(LogInPageController.type.equals(TypeOfUseers.Author)){
         OpenSideManu.setOnAction(Event->{
             if(isSideManuOpened){
                 if(inout)
-                    closesearch(Event);
+                    closesearch();
                 TranslateTransition translateTransition2=new TranslateTransition();
                 translateTransition2.setNode(side);
                 translateTransition2.setToX(-250);
@@ -314,7 +313,7 @@ else if(LogInPageController.type.equals(TypeOfUseers.Author)){
             }
             else {
                 if(inout)
-                    closesearch(Event);
+                    closesearch();
             TranslateTransition translateTransition=new TranslateTransition();
             translateTransition.setNode(side);
             translateTransition.setToX(0);

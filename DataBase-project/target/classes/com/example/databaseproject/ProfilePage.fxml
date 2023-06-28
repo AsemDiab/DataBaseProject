@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.profileController">
+   <children>
+      <Pane id="infopane" layoutX="6.0" layoutY="147.0" prefHeight="393.0" prefWidth="532.0" stylesheets="@profile.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="147.0" />
+      <Pane id="upPane" prefHeight="149.0" prefWidth="532.0" stylesheets="@profile.css">
+         <children>
+            <Button layoutX="7.0" layoutY="2.0" mnemonicParsing="false" onAction="#swetchToHome" text="scene2" />
+         </children>
+      </Pane>
+      <Circle id="profile" fx:id="cp" fill="DODGERBLUE" layoutX="102.0" layoutY="166.0" radius="85.0" stroke="BLACK" strokeType="INSIDE" />
+   </children>
+</AnchorPane>
