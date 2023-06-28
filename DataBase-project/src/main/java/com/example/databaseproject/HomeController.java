@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
@@ -26,6 +27,7 @@ public class HomeController implements Initializable {
     private Parent root;
     private Stage stage;
     private Scene scene;
+
     private TextField searchFeild;
     @FXML
     public Circle profilec;
@@ -39,8 +41,18 @@ private TextField searchf;
     private Pane transpane;
     @FXML
     private ImageView searchIcon;
+    @FXML
+    private Button OpenSideManu;
+    @FXML
+    private Circle backarrow1;
+    @FXML
+    private Circle backarrow2;
+    @FXML
+    AnchorPane side;
+    @FXML
+    AnchorPane side1;
 
-    private Image S=new Image("icons8-search-100.png");
+    private Image S=new Image(getClass().getResource("icons8-search-100.png").toExternalForm());
 
   public void searchTransition(ActionEvent e){
       TranslateTransition searchTtrans=new TranslateTransition();
@@ -91,10 +103,64 @@ private TextField searchf;
       }
   }
 
+
+    public void openSub(ActionEvent e){
+        side.setVisible(false);
+        side1.setVisible(true);
+    }
+    public void closeSub(ActionEvent e){
+        side1.setVisible(false);
+        side.setVisible(true);
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-profilec.setFill(new ImagePattern(new Image("icons8-search-100.png")));
+profilec.setFill(new ImagePattern(new Image(getClass().getResource("icons8-search-100.png").toExternalForm())));
+
+        backarrow1.setFill(new ImagePattern(new Image(getClass().getResource("arrowback.png").toExternalForm())));
+        backarrow2.setFill(new ImagePattern(new Image(getClass().getResource("arrowback.png").toExternalForm())));
+        side.setTranslateX(-250);
+        side.setVisible(true);
+        side1.setTranslateX(-250);
+        side1.setVisible(false);
+        OpenSideManu.setOnAction(Event->{
+            TranslateTransition translateTransition=new TranslateTransition();
+            translateTransition.setNode(side);
+            translateTransition.setToX(0);
+            translateTransition.setDuration(Duration.millis(500));
+            translateTransition.play();
+            TranslateTransition translateTransition1=new TranslateTransition();
+            translateTransition1.setNode(side1);
+            translateTransition1.setToX(0);
+            translateTransition1.setDuration(Duration.millis(500));
+            translateTransition1.play();
+        });
+        //button that close side Manu
+        backarrow2.setOnMouseClicked(MouseEvent->{
+            TranslateTransition translateTransition2=new TranslateTransition();
+            translateTransition2.setNode(side);
+            translateTransition2.setToX(-250);
+            translateTransition2.setDuration(Duration.millis(500));
+            translateTransition2.play();
+            TranslateTransition translateTransition3=new TranslateTransition();
+            translateTransition3.setNode(side1);
+            translateTransition3.setToX(-250);
+            translateTransition3.setDuration(Duration.millis(500));
+            translateTransition3.play();
+        });
+        backarrow1.setOnMouseClicked(MouseEvent->{
+            TranslateTransition translateTransition2=new TranslateTransition();
+            translateTransition2.setNode(side);
+            translateTransition2.setToX(-250);
+            translateTransition2.setDuration(Duration.millis(500));
+            translateTransition2.play();
+            TranslateTransition translateTransition3=new TranslateTransition();
+            translateTransition3.setNode(side1);
+            translateTransition3.setToX(-250);
+            translateTransition3.setDuration(Duration.millis(500));
+            translateTransition3.play();
+        });
     }
+
     //
 
     //methods

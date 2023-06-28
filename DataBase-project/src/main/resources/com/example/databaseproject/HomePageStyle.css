@@ -59,19 +59,31 @@
 #photoB:hover {
     -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 10, 0, 0, 0);
 }
-#photoIcon{
 
-    -fx-background-radius: 50%;
-    -fx-clip: circle(50%);
-}
 #searchFeild {
     -fx-background-color: white;
     -fx-background-insets: 0, 0 0 1 0;
-    -fx-background-radius: 0;
+    -fx-background-radius: 20;
     -fx-font-family: serif;
 
 }
 
 #searchFeild:focused {
     -fx-background-color: #d9b26e, -fx-background ;
+}
+.Button{
+-fx-background-color: #ffff00;
+-fx-text-fill:#ffffff;
+-fx-background-raduis:500;
+}
+.Button:hover{
+-fx- font-weight: blod;
+-fx-background-color:#000000 ;
+-fx-background-radius:500 500 500 500 ;
+-fx-font-size: 16;
+-fx-text-fill: linear-gradient(to bottom right,#FF7F50,#6A5ACD);
+-fx- border-color:#2196f3
+-fx-border-raduis: 200 200 200 200 ;
+-fx-border-width: 10;
+
 }
