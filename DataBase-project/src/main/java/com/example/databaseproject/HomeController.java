@@ -200,17 +200,41 @@ else{
 }
 
     }
-
+//////////////////////////////////////////////
+//          acess types                     //
+//////////////////////////////////////////////
+    public void isAdmin(){
+        uuuu.setVisible(false);
+    }
+    public void isAuthor(){
+        uuuu.setVisible(false);
+    }
+    public void isLibrarian(){
+        uuuu.setVisible(false);
+    }
+    public void isReader(){
+        uuuu.setVisible(true);
+    }
 //////////////////////////////////////////////
 //          osama inisialize                //
 //////////////////////////////////////////////
 public void ini(){
-if(new LogInPageController().gettype().equals(TypeOfUseers.Admin)){uuuu.setVisible(false);}
-    else System.out.println("wroong");
-        if(new LogInPageController().gettype().equals(TypeOfUseers.Admin)){
-        uuuu.setVisible(false);
+if(LogInPageController.type.equals(TypeOfUseers.Admin)){
+    isAdmin();
+}
+   else if(LogInPageController.type.equals(TypeOfUseers.Librarian)){
+        isLibrarian();
     }
-
+else if(LogInPageController.type.equals(TypeOfUseers.Author)){
+    isAuthor();
+}
+ else if(LogInPageController.type.equals(TypeOfUseers.Reader)){
+        isReader();
+    }
+ else{
+    System.out.println("shit");
+ }
+   // uuuu.setVisible(false);
 
    // profilec.setFill(new ImagePattern(new Image(getClass().getResource("anime4.png").toExternalForm())));
 }

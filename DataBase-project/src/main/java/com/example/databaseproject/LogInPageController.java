@@ -20,7 +20,7 @@ public class LogInPageController implements Initializable {
 @FXML
         private TextField text;
 private Boolean isIn;
-    private TypeOfUseers type ;
+    static TypeOfUseers type ;
     private Parent root;
     private Stage stage;
     private Scene scene;
@@ -49,7 +49,7 @@ type=Admin;
 type=Librarian;
             isIn=true;
         }
-        else if(text.getText().equals("111")){
+        else if(text.getText().equals("222")){
             type= Reader;
             isIn=true;
         }
