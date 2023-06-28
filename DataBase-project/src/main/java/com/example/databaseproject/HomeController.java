@@ -72,6 +72,23 @@ public class HomeController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    public void swetchAdminPage(ActionEvent e) throws IOException {
+        root= FXMLLoader.load(getClass().getResource("AdminPage.fxml"));
+        stage=(Stage)((Node)e.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void swetchLibrarianPage(ActionEvent e) throws IOException {
+        root= FXMLLoader.load(getClass().getResource("LibrianPage.fxml"));
+        stage=(Stage)((Node)e.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
     /////////////////////////////////////////////
     //               methods                   //
     /////////////////////////////////////////////
@@ -181,7 +198,7 @@ else{
 //          osama inisialize                //
 //////////////////////////////////////////////
 public void ini(){
-
+   // profilec.setFill(new ImagePattern(new Image(getClass().getResource("anime4.png").toExternalForm())));
 }
 
 
@@ -205,7 +222,6 @@ public void ini(){
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ini();//inisilaiz
-//profilec.setFill(new ImagePattern(new Image(getClass().getResource("icons8-search-100.png").toExternalForm())));
 // i will hix my error(convert following line to methods)
         backarrow1.setFill(new ImagePattern(new Image(getClass().getResource("arrowback.png").toExternalForm())));
         backarrow2.setFill(new ImagePattern(new Image(getClass().getResource("arrowback.png").toExternalForm())));
@@ -216,6 +232,8 @@ public void ini(){
 
         OpenSideManu.setOnAction(Event->{
             if(isSideManuOpened){
+                if(inout)
+                    closesearch(Event);
                 TranslateTransition translateTransition2=new TranslateTransition();
                 translateTransition2.setNode(side);
                 translateTransition2.setToX(-250);
@@ -229,6 +247,8 @@ public void ini(){
                 isSideManuOpened=false;
             }
             else {
+                if(inout)
+                    closesearch(Event);
             TranslateTransition translateTransition=new TranslateTransition();
             translateTransition.setNode(side);
             translateTransition.setToX(0);
@@ -244,8 +264,10 @@ public void ini(){
         //button that close side Manu
         backarrow2.setOnMouseClicked(MouseEvent->{
 
+
         });
         backarrow1.setOnMouseClicked(MouseEvent->{
+
             TranslateTransition translateTransition2=new TranslateTransition();
             translateTransition2.setNode(side);
             translateTransition2.setToX(-250);
