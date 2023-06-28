@@ -53,6 +53,10 @@ type=Librarian;
             type= Reader;
             isIn=true;
         }
+        else if(text.getText().equals("333")){
+            type= Author;
+            isIn=true;
+        }
         else{
             isIn=false;
             System.out.println("غللط");

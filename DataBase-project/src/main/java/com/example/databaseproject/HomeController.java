@@ -41,6 +41,12 @@ public class HomeController implements Initializable {
     private Boolean inoutSlide=false;
     //photo
     @FXML
+public Button adminB;
+    @FXML
+public Button libreanB;
+    @FXML
+    public Button authorB;
+    @FXML
     public Circle uuuu;//هاي للبورفايل
     @FXML
     public Circle slidephoto;//هاي للسلايدر
@@ -89,7 +95,13 @@ public class HomeController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
+    public void swetchAuthorPage(ActionEvent e) throws IOException {
+        root= FXMLLoader.load(getClass().getResource("AdminPage.fxml"));
+        stage=(Stage)((Node)e.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
     /////////////////////////////////////////////
     //               methods                   //
@@ -205,15 +217,27 @@ else{
 //////////////////////////////////////////////
     public void isAdmin(){
         uuuu.setVisible(false);
+        libreanB.setVisible(true);
+        adminB.setVisible(true);
+        authorB.setVisible(true);
     }
     public void isAuthor(){
         uuuu.setVisible(false);
+        libreanB.setVisible(false);
+        adminB.setVisible(false);
+        authorB.setVisible(true);
     }
     public void isLibrarian(){
         uuuu.setVisible(false);
+        libreanB.setVisible(true);
+        adminB.setVisible(false);
+        authorB.setVisible(false);
     }
     public void isReader(){
         uuuu.setVisible(true);
+        libreanB.setVisible(false);
+        adminB.setVisible(false);
+        authorB.setVisible(false);
     }
 //////////////////////////////////////////////
 //          osama inisialize                //
