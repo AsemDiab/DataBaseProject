@@ -1,0 +1,17 @@
+#upPane{
+    -fx-background-color: black;
+}
+#profilepicboutton{
+    -fx-background-radius: 50%;
+    -fx-min-height: 40px;
+    -fx-min-width: 40px;
+    -fx-background-color: #d9b26e;
+}
+#profilepicboutton:hover {
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 50, 0, 0, 0);
+}
+#profile:hover{
+
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 10, 0, 0, 0);
+
+}
