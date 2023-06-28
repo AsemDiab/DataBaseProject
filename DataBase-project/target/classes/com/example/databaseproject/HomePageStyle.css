@@ -27,6 +27,7 @@
     -fx-min-height: 40px;
     -fx-min-width: 40px;
     -fx-background-color: #d9b26e;
+
 }
 
 #searchB:hover {
@@ -44,12 +45,6 @@
 #slideB:hover {
     -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 10, 0, 0, 0);
 }
-
-#searchIcon{
-
-    -fx-min-width: 50px;
-    -fx-min-height: 40px;
-}
 #photoB{
     -fx-background-radius: 50%;
     -fx-min-height: 40px;
@@ -61,15 +56,22 @@
 }
 
 #searchFeild {
-    -fx-background-color: white;
-    -fx-background-insets: 0, 0 0 1 0;
-    -fx-background-radius: 20;
-    -fx-font-family: serif;
 
+    -fx-background-color: white;
+    -fx-background-insets: 0, 0 0 3 0;
+    -fx-background-radius: 10;
+    -fx-font-family: serif;
+    -fx-font-size: 16px;
 }
 
 #searchFeild:focused {
     -fx-background-color: #d9b26e, -fx-background ;
+}
+#slidephoto {
+    -fx-border-color: transparent; /* Set the border color to transparent */
+}
+#profilec {
+    -fx-border-color: transparent; /* Set the border color to transparent */
 }
 .Button{
 -fx-background-color: #ffff00;

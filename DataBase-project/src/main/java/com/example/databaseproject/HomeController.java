@@ -3,7 +3,9 @@ package com.example.databaseproject;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,30 +19,38 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
 
     //important
-    private Boolean inout=false;
+
     private Parent root;
     private Stage stage;
     private Scene scene;
+    //////////////////////////
+
+
+
+    ///////////////////////////
 
     private TextField searchFeild;
+    private Boolean inout=false;//هاي مشان اعرف اذا انو السيرش مفتوح ولا مسكر
+    private Boolean inoutSlide=false;
+    //photo
     @FXML
-    public Circle profilec;
-@FXML
-private Circle myc;
-@FXML
-private TextField searchf;
+    public Circle profilec;//هاي للبورفايل
+    @FXML
+    public Circle slidephoto;//هاي للسلايدر
+    @FXML
+    private TextField searchf;
     @FXML
     private Button searcht;
     @FXML
     private Pane transpane;
-    @FXML
-    private ImageView searchIcon;
+
     @FXML
     private Button OpenSideManu;
     @FXML
@@ -52,69 +62,149 @@ private TextField searchf;
     @FXML
     AnchorPane side1;
 
-    private Image S=new Image(getClass().getResource("icons8-search-100.png").toExternalForm());
+    /////////////////////////////////////////////
+    //            switch scenes                //
+    /////////////////////////////////////////////
+    public void swetchToProfile(ActionEvent e) throws IOException {
+        root= FXMLLoader.load(getClass().getResource("ProfilePage.fxml"));
+        stage=(Stage)((Node)e.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+    /////////////////////////////////////////////
+    //               methods                   //
+    /////////////////////////////////////////////
 
-  public void searchTransition(ActionEvent e){
-      TranslateTransition searchTtrans=new TranslateTransition();
-      TranslateTransition searchBtrans=new TranslateTransition();
-      TranslateTransition searchPtrans=new TranslateTransition();
-      searchTtrans.setNode(searchf);
-      searchBtrans.setNode(searcht);
-      searchPtrans.setNode(transpane);
-      if(!inout) {
-          System.out.println("اههههه");
+    public void closesearch(ActionEvent e){//هذا الفنكشن مسؤل عن اغلاق البحث يجب استخدامه عند الضغط علي اي زر اخر
+        TranslateTransition searchTtrans=new TranslateTransition();
+        TranslateTransition searchBtrans=new TranslateTransition();
+        TranslateTransition searchPtrans=new TranslateTransition();
 
-          searchTtrans.setDuration(Duration.millis(600));
-          searchTtrans.setByX(172);
-          searchTtrans.play();
-          //
-
-          searchBtrans.setDuration(Duration.millis(600));
-          searchBtrans.setByX(-65);
-          searchBtrans.play();
-          ///
-
-          searchPtrans.setCycleCount(1);
-          searchPtrans.setDuration(Duration.millis(600));
-          searchPtrans.setByX(-70);
-          searchPtrans.play();
-          inout=true;
-      }
-      else{
-          if(searchf.getText().isEmpty()) {
-              searchTtrans.setDuration(Duration.millis(600));
-              searchTtrans.setByX(-172);
-              searchTtrans.play();
-              //
-
-              searchBtrans.setDuration(Duration.millis(600));
-              searchBtrans.setByX(65);
-              searchBtrans.play();
-              ///
-
-              searchPtrans.setCycleCount(1);
-              searchPtrans.setDuration(Duration.millis(600));
-              searchPtrans.setByX(70);
-              searchPtrans.play();
-              inout=false;
-          }
+        searchTtrans.setNode(searchf);
+        searchBtrans.setNode(searcht);
+        searchPtrans.setNode(transpane);
+        if(inout) {
+            //  if (searchf.getText().isEmpty()) {
+            searchTtrans.setDuration(Duration.millis(200));
+            searchTtrans.setByX(-170);
+            searchTtrans.play();
 
 
-      }
+            //
+
+            searchBtrans.setDuration(Duration.millis(200));
+            searchBtrans.setByX(65);
+            searchBtrans.play();
+            ///
+
+            searchPtrans.setCycleCount(1);
+            searchPtrans.setDuration(Duration.millis(200));
+            searchPtrans.setByX(70);
+            searchPtrans.play();
+            inout = false;
+            // }
+        }
+    }
+    /////////////////////////////
+    /////////////////////////////
+
+    public void opensearch(ActionEvent e){//هذا الزر مسؤل عن فتح البحث يستخدم فقط عند الضغط على زر البحث
+        TranslateTransition searchTtrans=new TranslateTransition();
+        TranslateTransition searchBtrans=new TranslateTransition();
+        TranslateTransition searchPtrans=new TranslateTransition();
+
+        searchTtrans.setNode(searchf);
+        searchBtrans.setNode(searcht);
+        searchPtrans.setNode(transpane);
+
+        if(!inout) {
+            System.out.println("اههههه");
+
+            searchTtrans.setDuration(Duration.millis(600));
+            searchTtrans.setByX(170);
+            searchTtrans.play();
+
+
+            //
+
+            searchBtrans.setDuration(Duration.millis(600));
+            searchBtrans.setByX(-65);
+            searchBtrans.play();
+            ///
+
+            searchPtrans.setCycleCount(1);
+            searchPtrans.setDuration(Duration.millis(600));
+            searchPtrans.setByX(-70);
+            searchPtrans.play();
+            inout=true;
+        }
+
+    }
+//////////////////////////////////////////
+    //////////////////////////////////////
+
+
+
+
+
+
+    public void searchTransition(ActionEvent e){
+        if(inout)
+            closesearch(e);
+        else
+            opensearch(e);
   }
+    ///////////////////////////////////////
+    /////////////////////////////////////////
+    public void profileEvent(ActionEvent e){//زر البروفايل
+        if(inout)
+            closesearch(e);
+
+        System.out.println("اههههه");
+    }
+
+    public void slideEvent(ActionEvent e){//زر البروفايل
+        System.out.println("ااااا");
+        if(inout)
+            closesearch(e);
+
+if(inoutSlide)
+        closeSub(e);
+else{
+    openSub(e);
+}
+
+    }
+
+//////////////////////////////////////////////
+//          osama inisialize                //
+//////////////////////////////////////////////
+public void ini(){
+
+}
+
+
+
+
+
+
 
 
     public void openSub(ActionEvent e){
+
         side.setVisible(false);
         side1.setVisible(true);
     }
     public void closeSub(ActionEvent e){
+
         side1.setVisible(false);
         side.setVisible(true);
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-profilec.setFill(new ImagePattern(new Image(getClass().getResource("icons8-search-100.png").toExternalForm())));
+        ini();//inisilaiz
+//profilec.setFill(new ImagePattern(new Image(getClass().getResource("icons8-search-100.png").toExternalForm())));
 // i will hix my error(convert following line to methods)
         backarrow1.setFill(new ImagePattern(new Image(getClass().getResource("arrowback.png").toExternalForm())));
         backarrow2.setFill(new ImagePattern(new Image(getClass().getResource("arrowback.png").toExternalForm())));
