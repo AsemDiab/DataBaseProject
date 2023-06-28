@@ -201,6 +201,7 @@ public void ini(){
         side1.setVisible(false);
         side.setVisible(true);
     }
+    Boolean isSideManuOpened=false;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ini();//inisilaiz
@@ -212,7 +213,22 @@ public void ini(){
         side.setVisible(true);
         side1.setTranslateX(-250);
         side1.setVisible(false);
+
         OpenSideManu.setOnAction(Event->{
+            if(isSideManuOpened){
+                TranslateTransition translateTransition2=new TranslateTransition();
+                translateTransition2.setNode(side);
+                translateTransition2.setToX(-250);
+                translateTransition2.setDuration(Duration.millis(500));
+                translateTransition2.play();
+                TranslateTransition translateTransition3=new TranslateTransition();
+                translateTransition3.setNode(side1);
+                translateTransition3.setToX(-250);
+                translateTransition3.setDuration(Duration.millis(500));
+                translateTransition3.play();
+                isSideManuOpened=false;
+            }
+            else {
             TranslateTransition translateTransition=new TranslateTransition();
             translateTransition.setNode(side);
             translateTransition.setToX(0);
@@ -223,19 +239,11 @@ public void ini(){
             translateTransition1.setToX(0);
             translateTransition1.setDuration(Duration.millis(500));
             translateTransition1.play();
+            isSideManuOpened=true;}
         });
         //button that close side Manu
         backarrow2.setOnMouseClicked(MouseEvent->{
-            TranslateTransition translateTransition2=new TranslateTransition();
-            translateTransition2.setNode(side);
-            translateTransition2.setToX(-250);
-            translateTransition2.setDuration(Duration.millis(500));
-            translateTransition2.play();
-            TranslateTransition translateTransition3=new TranslateTransition();
-            translateTransition3.setNode(side1);
-            translateTransition3.setToX(-250);
-            translateTransition3.setDuration(Duration.millis(500));
-            translateTransition3.play();
+
         });
         backarrow1.setOnMouseClicked(MouseEvent->{
             TranslateTransition translateTransition2=new TranslateTransition();

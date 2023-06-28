@@ -103,6 +103,5 @@
                </graphic>
             </Button>
          </children></Pane>
-      <Circle fx:id="profilec" fill="DODGERBLUE" layoutX="450.0" layoutY="296.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </AnchorPane>
