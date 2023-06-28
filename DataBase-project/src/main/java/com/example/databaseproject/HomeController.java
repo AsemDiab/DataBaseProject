@@ -115,7 +115,7 @@ private TextField searchf;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 profilec.setFill(new ImagePattern(new Image(getClass().getResource("icons8-search-100.png").toExternalForm())));
-
+// i will hix my error(convert following line to methods)
         backarrow1.setFill(new ImagePattern(new Image(getClass().getResource("arrowback.png").toExternalForm())));
         backarrow2.setFill(new ImagePattern(new Image(getClass().getResource("arrowback.png").toExternalForm())));
         side.setTranslateX(-250);
