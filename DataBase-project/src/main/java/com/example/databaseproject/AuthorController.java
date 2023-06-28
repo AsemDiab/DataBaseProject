@@ -13,14 +13,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class AuthorController implements Initializable {
-    private Parent root;
-    private Stage stage;
-    private Scene scene;
 
     public void swetchToHome(ActionEvent e) throws IOException {
-        root= FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-        stage=(Stage)((Node)e.getSource()).getScene().getWindow();
-        scene=new Scene(root);
+        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.setResizable(false);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }

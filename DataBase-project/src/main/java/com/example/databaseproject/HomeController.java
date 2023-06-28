@@ -11,7 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
@@ -36,9 +36,8 @@ public class HomeController implements Initializable {
 
     ///////////////////////////
 
-    private TextField searchFeild;
+
     private Boolean inout=false;//هاي مشان اعرف اذا انو السيرش مفتوح ولا مسكر
-    private Boolean inoutSlide=false;
     //photo
     @FXML
 public Button adminB;
@@ -75,6 +74,7 @@ public Button libreanB;
         root= FXMLLoader.load(getClass().getResource("ProfilePage.fxml"));
         stage=(Stage)((Node)e.getSource()).getScene().getWindow();
         scene=new Scene(root);
+        stage.setResizable(false);
         stage.setX(350);
         stage.setY(50);
         stage.setScene(scene);
@@ -83,6 +83,7 @@ public Button libreanB;
     public void swetchAdminPage(ActionEvent e) throws IOException {
         root= FXMLLoader.load(getClass().getResource("AdminPage.fxml"));
         stage=(Stage)((Node)e.getSource()).getScene().getWindow();
+        stage.setResizable(false);
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -91,6 +92,7 @@ public Button libreanB;
     public void swetchLibrarianPage(ActionEvent e) throws IOException {
         root= FXMLLoader.load(getClass().getResource("LibrianPage.fxml"));
         stage=(Stage)((Node)e.getSource()).getScene().getWindow();
+        stage.setResizable(false);
         scene=new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -205,7 +207,8 @@ public Button libreanB;
         if(inout)
             closesearch(e);
 
-if(inoutSlide)
+        Boolean inoutSlide = false;
+        if(inoutSlide)
         closeSub(e);
 else{
     openSub(e);
