@@ -7,10 +7,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.profileController">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#swetchToHome" text="scene2" />
-      <Pane id="upPane" layoutX="166.0" prefHeight="149.0" prefWidth="532.0" stylesheets="@profile.css" AnchorPane.bottomAnchor="391.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Pane layoutX="6.0" layoutY="149.0" prefHeight="391.0" prefWidth="532.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="149.0" />
-      <Button id="profilepicboutton" layoutX="17.0" layoutY="81.0" mnemonicParsing="false" prefHeight="170.0" prefWidth="170.0" stylesheets="@profile.css" text="Button" />
-      <Circle id="profile" fill="DODGERBLUE" layoutX="102.0" layoutY="166.0" radius="75.0" stroke="BLACK" strokeType="INSIDE" />
+      <Pane id="infopane" layoutX="6.0" layoutY="147.0" prefHeight="393.0" prefWidth="532.0" stylesheets="@profile.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="147.0" />
+      <Pane id="upPane" prefHeight="149.0" prefWidth="532.0" stylesheets="@profile.css">
+         <children>
+            <Button layoutX="7.0" layoutY="2.0" mnemonicParsing="false" onAction="#swetchToHome" text="scene2" />
+         </children>
+      </Pane>
+      <Circle id="profile" fx:id="cp" fill="DODGERBLUE" layoutX="102.0" layoutY="166.0" radius="85.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </AnchorPane>

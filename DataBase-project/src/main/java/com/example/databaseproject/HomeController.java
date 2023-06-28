@@ -69,6 +69,8 @@ public class HomeController implements Initializable {
         root= FXMLLoader.load(getClass().getResource("ProfilePage.fxml"));
         stage=(Stage)((Node)e.getSource()).getScene().getWindow();
         scene=new Scene(root);
+        stage.setX(350);
+        stage.setY(50);
         stage.setScene(scene);
         stage.show();
     }
@@ -101,26 +103,28 @@ public class HomeController implements Initializable {
         searchTtrans.setNode(searchf);
         searchBtrans.setNode(searcht);
         searchPtrans.setNode(transpane);
-        if(inout) {
-            //  if (searchf.getText().isEmpty()) {
-            searchTtrans.setDuration(Duration.millis(200));
-            searchTtrans.setByX(-170);
-            searchTtrans.play();
+        if(searchf.getText().isEmpty()) {
+            if (inout) {
+                //  if (searchf.getText().isEmpty()) {
+                searchTtrans.setDuration(Duration.millis(200));
+                searchTtrans.setByX(-170);
+                searchTtrans.play();
 
 
-            //
+                //
 
-            searchBtrans.setDuration(Duration.millis(200));
-            searchBtrans.setByX(65);
-            searchBtrans.play();
-            ///
+                searchBtrans.setDuration(Duration.millis(200));
+                searchBtrans.setByX(65);
+                searchBtrans.play();
+                ///
 
-            searchPtrans.setCycleCount(1);
-            searchPtrans.setDuration(Duration.millis(200));
-            searchPtrans.setByX(70);
-            searchPtrans.play();
-            inout = false;
-            // }
+                searchPtrans.setCycleCount(1);
+                searchPtrans.setDuration(Duration.millis(200));
+                searchPtrans.setByX(70);
+                searchPtrans.play();
+                inout = false;
+                // }
+            }
         }
     }
     /////////////////////////////
@@ -171,13 +175,16 @@ public class HomeController implements Initializable {
             closesearch(e);
         else
             opensearch(e);
+        if(!searchf.getText().isEmpty()){
+            System.out.println("hola");
+        }
   }
     ///////////////////////////////////////
     /////////////////////////////////////////
-    public void profileEvent(ActionEvent e){//زر البروفايل
+    public void profileEvent(ActionEvent e) throws IOException {//زر البروفايل
         if(inout)
             closesearch(e);
-
+        swetchToProfile(e);
         System.out.println("اههههه");
     }
 

@@ -103,7 +103,6 @@
                </graphic>
             </Button>
          </children></Pane>
-      <Button layoutX="344.0" layoutY="120.0" mnemonicParsing="false" onAction="#swetchToProfile" text="Switch to profile" />
       <Button layoutX="248.0" layoutY="145.0" mnemonicParsing="false" onAction="#swetchLibrarianPage" text="to LibreanPage" />
       <Button layoutX="531.0" layoutY="120.0" mnemonicParsing="false" onAction="#swetchAdminPage" text="to admin Page" />
    </children>
