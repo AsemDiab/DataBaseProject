@@ -142,7 +142,7 @@ public Button libreanB;
     }
     /////////////////////////////
     /////////////////////////////
-
+//s
     public void opensearch(ActionEvent e){//هذا الزر مسؤل عن فتح البحث يستخدم فقط عند الضغط على زر البحث
         TranslateTransition searchTtrans=new TranslateTransition();
         TranslateTransition searchBtrans=new TranslateTransition();
