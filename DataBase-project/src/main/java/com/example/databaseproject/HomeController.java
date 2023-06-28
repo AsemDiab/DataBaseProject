@@ -206,11 +206,11 @@ public Button libreanB;
         if(inout)
             closesearch();
 
-        Boolean inoutSlide = false;
+        boolean inoutSlide = false;
         if(inoutSlide)
         closeSub(e);
 else{
-    openSub(e);
+    openSub();
 }
 
     }
@@ -272,7 +272,7 @@ else if(LogInPageController.type.equals(TypeOfUseers.Author)){
 
 
 
-    public void openSub(ActionEvent e){
+    public void openSub(){
 
         side.setVisible(false);
         side1.setVisible(true);
