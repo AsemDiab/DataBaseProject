@@ -62,7 +62,7 @@
       </AnchorPane>
       <Pane id="topLayer" prefHeight="84.0" prefWidth="1100.0" stylesheets="@HomePageStyle.css" AnchorPane.bottomAnchor="546.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label id="nameLabel" layoutX="935.0" layoutY="22.0" prefHeight="28.0" prefWidth="100.0" text="Osama Ammar" />
+            <Label id="nameLabel" fx:id="nameL" layoutX="924.0" layoutY="29.0" prefHeight="28.0" prefWidth="100.0" text="Osama Ammar" />
             <Button id="slideB" fx:id="OpenSideManu" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" onAction="#slideEvent" prefHeight="48.0" prefWidth="49.0">
                <graphic>
                   <ImageView id="slideIcon" fitHeight="15.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
@@ -75,7 +75,6 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label id="kindLabel" layoutX="961.0" layoutY="48.0" prefHeight="16.0" prefWidth="49.0" text="(Reader)" />
             <TextField id="searchFeild" fx:id="searchf" layoutX="329.0" layoutY="28.0" prefHeight="28.0" prefWidth="221.0" />
             <Pane id="pane" fx:id="transpane" layoutX="318.0" layoutY="28.0" prefHeight="30.0" prefWidth="232.0" stylesheets="@HomePageStyle.css" />
             <Button id="searchB" fx:id="searcht" layoutX="530.0" layoutY="22.0" mnemonicParsing="false" onAction="#searchTransition" onMouseClicked="#searchTransition">
@@ -104,6 +103,9 @@
             </Button>
             <Button fx:id="adminB" layoutX="213.0" layoutY="29.0" mnemonicParsing="false" onAction="#swetchAdminPage" text="to admin Page" />
             <Button fx:id="libreanB" layoutX="104.0" layoutY="29.0" mnemonicParsing="false" onAction="#swetchLibrarianPage" text="to LibreanPage" />
+            <Pane fx:id="namepane" layoutX="924.0" layoutY="51.0" prefHeight="2.0" prefWidth="100.0" />
+            <Pane fx:id="namepane2" layoutX="824.0" layoutY="50.0" prefHeight="9.0" prefWidth="100.0" />
+            <Pane fx:id="namepane1" layoutX="824.0" layoutY="51.0" prefHeight="2.0" prefWidth="100.0" />
          </children></Pane>
       <Circle fx:id="uuuu" fill="DODGERBLUE" layoutX="450.0" layoutY="345.0" radius="100.0" stroke="BLACK" strokeType="INSIDE" />
       <Button id="photoB" fx:id="authorB" layoutX="996.0" layoutY="532.0" mnemonicParsing="false" onAction="#swetchAuthorPage" prefHeight="84.0" prefWidth="83.0" stylesheets="@HomePageStyle.css">
