@@ -290,6 +290,6 @@ public class MulitpagePane implements Initializable {
         panel4.setVisible(false);
         panel5.setVisible(false);
         panel6.setVisible(false);
-        fillPanels();
+       // fillPanels();
     }
 }

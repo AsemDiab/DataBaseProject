@@ -13,7 +13,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -48,10 +47,7 @@ public Button libreanB;
     private Pane transpane;
     @FXML
     private Button OpenSideManu;
-    @FXML
-    private Circle backarrow1;
-    @FXML
-    private Circle backarrow2;
+
     @FXML
     AnchorPane side;
     @FXML
@@ -229,6 +225,7 @@ else if(LogInPageController.type.equals(TypeOfUseers.Author)){
         System.out.println("openSub");
         try {
             Parent root =FXMLLoader.load(getClass().getResource("MyTabbedPane.fxml"));
+            contantPane.getChildren().add(root);
         }
         catch (Exception exception){
             System.out.println("failed");
