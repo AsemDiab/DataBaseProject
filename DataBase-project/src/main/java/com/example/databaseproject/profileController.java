@@ -34,8 +34,9 @@ public class profileController implements Initializable {
         stage.show();
     }
     public void join(){
-        cp.setStroke(Color.TRANSPARENT);
-        cp.setFill(new ImagePattern(new Image(getClass().getResource("main-menu.png").toExternalForm())));
+cp.setFill(new ImagePattern(new Image(getClass().getResource("anime4.png").toExternalForm())));
+
+
 
     }
     @Override

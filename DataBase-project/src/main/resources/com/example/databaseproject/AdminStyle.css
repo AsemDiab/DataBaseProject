@@ -1,0 +1,20 @@
+.Button {
+    -fx-background-color: #000000;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #ffffff;
+    -fx-cursor: hand;
+}
+
+.Button:hover {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #000000;
+    -fx-border-color: #000000;
+    -fx-box-shadow: 0px 0px 5px #000000;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.24), 0, 12, 0, 0);
+
+}
