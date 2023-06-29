@@ -1,5 +1,4 @@
 package com.example.databaseproject;
-
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,32 +10,23 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
 public class HomeController implements Initializable {
-
     //important
-
     private Parent root;
     private Stage stage;
     private Scene scene;
     //////////////////////////
 
-
-
     ///////////////////////////
-
-
     private Boolean inout=false;//هاي مشان اعرف اذا انو السيرش مفتوح ولا مسكر
     //photo
     @FXML
@@ -47,14 +37,12 @@ public Button libreanB;
     public Button authorB;
     @FXML
     public Circle uuuu;//هاي للبورفايل
-
     @FXML
     private TextField searchf;
     @FXML
     private Button searcht;
     @FXML
     private Pane transpane;
-
     @FXML
     private Button OpenSideManu;
     @FXML
@@ -65,7 +53,6 @@ public Button libreanB;
     AnchorPane side;
     @FXML
     AnchorPane side1;
-
     /////////////////////////////////////////////
     //            switch scenes                //
     /////////////////////////////////////////////
@@ -87,7 +74,6 @@ public Button libreanB;
         stage.setScene(scene);
         stage.show();
     }
-
     public void swetchLibrarianPage(ActionEvent e) throws IOException {
         root= FXMLLoader.load(getClass().getResource("LibrianPage.fxml"));
         stage=(Stage)((Node)e.getSource()).getScene().getWindow();
@@ -103,16 +89,13 @@ public Button libreanB;
         stage.setScene(scene);
         stage.show();
     }
-
     /////////////////////////////////////////////
     //               methods                   //
     /////////////////////////////////////////////
-
     public void closesearch(){//هذا الفنكشن مسؤل عن اغلاق البحث يجب استخدامه عند الضغط علي اي زر اخر
         TranslateTransition searchTtrans=new TranslateTransition();
         TranslateTransition searchBtrans=new TranslateTransition();
         TranslateTransition searchPtrans=new TranslateTransition();
-
         searchTtrans.setNode(searchf);
         searchBtrans.setNode(searcht);
         searchPtrans.setNode(transpane);
@@ -122,15 +105,11 @@ public Button libreanB;
                 searchTtrans.setDuration(Duration.millis(200));
                 searchTtrans.setByX(-170);
                 searchTtrans.play();
-
-
                 //
-
                 searchBtrans.setDuration(Duration.millis(200));
                 searchBtrans.setByX(65);
                 searchBtrans.play();
                 ///
-
                 searchPtrans.setCycleCount(1);
                 searchPtrans.setDuration(Duration.millis(200));
                 searchPtrans.setByX(70);
@@ -142,47 +121,32 @@ public Button libreanB;
     }
     /////////////////////////////
     /////////////////////////////
-//s
     public void opensearch(ActionEvent e){//هذا الزر مسؤل عن فتح البحث يستخدم فقط عند الضغط على زر البحث
         TranslateTransition searchTtrans=new TranslateTransition();
         TranslateTransition searchBtrans=new TranslateTransition();
         TranslateTransition searchPtrans=new TranslateTransition();
-
         searchTtrans.setNode(searchf);
         searchBtrans.setNode(searcht);
         searchPtrans.setNode(transpane);
-
         if(!inout) {
             System.out.println("اههههه");
-
             searchTtrans.setDuration(Duration.millis(600));
             searchTtrans.setByX(170);
             searchTtrans.play();
-
-
             //
-
             searchBtrans.setDuration(Duration.millis(600));
             searchBtrans.setByX(-65);
             searchBtrans.play();
             ///
-
             searchPtrans.setCycleCount(1);
             searchPtrans.setDuration(Duration.millis(600));
             searchPtrans.setByX(-70);
             searchPtrans.play();
             inout=true;
         }
-
     }
 //////////////////////////////////////////
     //////////////////////////////////////
-
-
-
-
-
-
     public void searchTransition(ActionEvent e){
         if(inout)
             closesearch();
@@ -200,19 +164,16 @@ public Button libreanB;
         swetchToProfile(e);
         System.out.println("اههههه");
     }
-
     public void slideEvent(ActionEvent e){//زر البروفايل
         System.out.println("ااااا");
         if(inout)
             closesearch();
-
         boolean inoutSlide = false;
         if(inoutSlide)
         closeSub(e);
 else{
     openSub();
 }
-
     }
 //////////////////////////////////////////////
 //          acess types                     //
@@ -265,18 +226,11 @@ else if(LogInPageController.type.equals(TypeOfUseers.Author)){
    // profilec.setFill(new ImagePattern(new Image(getClass().getResource("anime4.png").toExternalForm())));
 }
 
-
-
-
-
-
-
-
     public void openSub(){
-
         side.setVisible(false);
         side1.setVisible(true);
     }
+
     public void closeSub(ActionEvent e){
 
         side1.setVisible(false);
@@ -286,7 +240,6 @@ else if(LogInPageController.type.equals(TypeOfUseers.Author)){
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ini();//inisilaiz
-
 // i will hix my error(convert following line to methods)
         backarrow1.setFill(new ImagePattern(new Image(getClass().getResource("arrowback.png").toExternalForm())));
         backarrow2.setFill(new ImagePattern(new Image(getClass().getResource("arrowback.png").toExternalForm())));
@@ -294,7 +247,6 @@ else if(LogInPageController.type.equals(TypeOfUseers.Author)){
         side.setVisible(true);
         side1.setTranslateX(-250);
         side1.setVisible(false);
-
         OpenSideManu.setOnAction(Event->{
             if(isSideManuOpened){
                 if(inout)
@@ -327,12 +279,7 @@ else if(LogInPageController.type.equals(TypeOfUseers.Author)){
             isSideManuOpened=true;}
         });
         //button that close side Manu
-        backarrow2.setOnMouseClicked(MouseEvent->{
-
-
-        });
         backarrow1.setOnMouseClicked(MouseEvent->{
-
             TranslateTransition translateTransition2=new TranslateTransition();
             translateTransition2.setNode(side);
             translateTransition2.setToX(-250);
@@ -345,9 +292,4 @@ else if(LogInPageController.type.equals(TypeOfUseers.Author)){
             translateTransition3.play();
         });
     }
-
-    //
-
-    //methods
-
 }
