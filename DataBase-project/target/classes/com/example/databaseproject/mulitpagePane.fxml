@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.switchsence.com.example.databaseproject.MulitpagePane">
+   <children>
+      <HBox layoutX="33.0" layoutY="17.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="button1" mnemonicParsing="false" onAction="#openPanel1" prefHeight="100.0" prefWidth="170.0" text="All">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="Button2" mnemonicParsing="false" onAction="#OpenPane2" prefHeight="100.0" prefWidth="170.0" style="-fx-background-color: transport;" text="University Books">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="Button3" mnemonicParsing="false" onAction="#OpenPane3" prefHeight="100.0" prefWidth="170.0" style="-fx-background-color: transport;" text="Manga">
+               <font>
+                  <Font name="System Bold Italic" size="19.0" />
+               </font>
+            </Button>
+            <Button fx:id="Button4" mnemonicParsing="false" onAction="#OpenPane4" prefHeight="100.0" prefWidth="170.0" style="-fx-background-color: transport;" text="Novels">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="Button5" mnemonicParsing="false" onAction="#OpenPane5" prefHeight="100.0" prefWidth="170.0" style="-fx-background-color: transport;" text="Short Story">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="Button6" mnemonicParsing="false" onAction="#OpenPane6" prefHeight="100.0" prefWidth="170.0" style="-fx-background-color: transport;" text="Self-Help Books">
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <Pane fx:id="panel3" layoutX="118.0" layoutY="295.0" prefHeight="530.0" prefWidth="1100.0" style="-fx-background-color: #00f000;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="530.0" prefWidth="1100.0" style="-fx-background-color: #00f000;" vbarPolicy="ALWAYS">
+               <content>
+                  <FlowPane fx:id="paneOfSecondType" prefHeight="2222.0" prefWidth="1100.0" style="-fx-background-color: #00f000;" />
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+      <Pane fx:id="panel4" layoutX="118.0" layoutY="295.0" prefHeight="530.0" prefWidth="1100.0" style="-fx-background-color: #f0ff00;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="530.0" prefWidth="1100.0" style="-fx-background-color: #f0ff00;" vbarPolicy="ALWAYS">
+               <content>
+                  <FlowPane fx:id="paneOFThirdType" prefHeight="2222.0" prefWidth="1100.0" style="-fx-background-color: #f0ff00;" />
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+      <Pane fx:id="panel5" layoutX="118.0" layoutY="295.0" prefHeight="530.0" prefWidth="1100.0" style="-fx-background-color: #0000f0;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="530.0" prefWidth="1100.0" style="-fx-background-color: #0000f0;" vbarPolicy="ALWAYS">
+               <content>
+                  <FlowPane fx:id="paneOfFourthType" prefHeight="2222.0" prefWidth="1100.0" style="-fx-background-color: #0000f0;" />
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+      <Pane fx:id="panel6" layoutX="118.0" layoutY="295.0" prefHeight="530.0" prefWidth="1100.0" style="-fx-background-color: #ff00ff;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="530.0" prefWidth="1100.0" style="-fx-background-color: #ff00ff;" vbarPolicy="ALWAYS">
+               <content>
+                  <FlowPane fx:id="paneOfFifthType" prefHeight="2222.0" prefWidth="1100.0" style="-fx-background-color: #ff00ff;" />
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+      <Pane fx:id="panel2" layoutX="118.0" layoutY="295.0" prefHeight="530.0" prefWidth="1100.0" style="-fx-background-color: #0f0000;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="530.0" prefWidth="1100.0" style="-fx-background-color: #0f0000;" vbarPolicy="ALWAYS">
+               <content>
+                  <FlowPane fx:id="PaneOfFirstType" prefHeight="2222.0" prefWidth="1100.0" style="-fx-background-color: #0f0000;" />
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+      <Pane fx:id="pane1" layoutX="108.0" layoutY="285.0" prefHeight="530.0" prefWidth="1100.0" style="-fx-background-color: #f00000;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+         <children>
+            <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" prefHeight="530.0" prefWidth="1100.0" style="-fx-background-color: #f00000;" vbarPolicy="ALWAYS">
+               <content>
+                  <FlowPane fx:id="paneOfAll" prefHeight="2222.0" prefWidth="1100.0" style="-fx-background-color: #f00000;" />
+               </content>
+            </ScrollPane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

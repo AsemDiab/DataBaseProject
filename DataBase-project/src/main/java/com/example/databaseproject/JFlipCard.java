@@ -10,7 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
-import javafx.stage.Stage;
+
 import javafx.util.Duration;
 
 
@@ -65,7 +65,7 @@ this.setBackground(new Background(new BackgroundFill(Color.BLUE, CornerRadii.EMP
             label=new Label("hello book");
 
             label.setVisible(false);
-            imageview=new ImageView(getClass().getResource("NarotoRamen.png").toExternalForm());
+            //imageview=new ImageView(getClass().getResource("NarotoRamen.png").toExternalForm());
             imageview.setFitWidth(100);
             imageview.setFitHeight(132.5);
             label.setPrefWidth(100);
