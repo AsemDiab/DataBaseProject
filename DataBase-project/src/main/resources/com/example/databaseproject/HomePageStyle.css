@@ -26,7 +26,7 @@
     -fx-background-radius: 80%;
     -fx-min-height: 40px;
     -fx-min-width: 40px;
-    -fx-background-color: #d9b26e;
+    -fx-background-color: #DEDCDC;
 
 }
 
@@ -39,25 +39,30 @@
     -fx-background-radius: 80%;
     -fx-min-height: 40px;
     -fx-min-width: 40px;
-    -fx-background-color: #d9b26e;
+    -fx-background-color: #DEDCDC;
+
 }
 
 #slideB:hover {
-    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 10, 0, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(217, 178, 110, 255), 10, 0, 0, 0);
 }
 #photoB{
+    -fx-border-radius: 50%;
     -fx-background-radius: 50%;
-    -fx-min-height: 40px;
-    -fx-min-width: 40px;
-    -fx-background-color: #d9b26e;
+
+    -fx-background-color: #DEDCDC;
+    -fx-border-color: #d9b26e;
+    -fx-border-width: 2px;
+
 }
+
 #photoB:hover {
-    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.5), 10, 0, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(217, 178, 110, 255), 10, 0, 0, 0);
 }
 
 #searchFeild {
 
-    -fx-background-color: white;
+    -fx-background-color: #DEDCDC;
     -fx-background-insets: 0, 0 0 3 0;
     -fx-background-radius: 10;
     -fx-font-family: serif;
@@ -68,10 +73,10 @@
     -fx-background-color: #d9b26e, -fx-background ;
 }
 #slidephoto {
-    -fx-border-color: transparent; /* Set the border color to transparent */
+    -fx-border-color: #DEDCDC; /* Set the border color to transparent */
 }
 #profilec {
-    -fx-border-color: transparent; /* Set the border color to transparent */
+    -fx-border-color: #DEDCDC; /* Set the border color to transparent */
 }
 .Button{
 -fx-background-color: #ffff00;

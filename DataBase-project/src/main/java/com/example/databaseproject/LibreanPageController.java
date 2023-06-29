@@ -24,6 +24,8 @@ public class LibreanPageController implements Initializable {
         root= FXMLLoader.load(getClass().getResource("HomePage.fxml"));
         stage=(Stage)((Node)e.getSource()).getScene().getWindow();
         scene=new Scene(root);
+        stage.setX(60);
+        stage.setY(10);
         stage.setScene(scene);
         stage.show();
     }

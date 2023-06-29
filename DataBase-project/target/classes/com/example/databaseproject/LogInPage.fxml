@@ -5,13 +5,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.LogInPageController">
-   <children>
-      <Button layoutX="266.0" layoutY="187.0" mnemonicParsing="false" onAction="#swetchToHome" text="click Here" />
-      <TextField fx:id="text" layoutX="232.0" layoutY="162.0" />
-      <Label layoutX="95.0" layoutY="47.0" text="Admin pass:1234" />
-      <Label layoutX="266.0" layoutY="47.0" text="Reader pass:222" />
-      <Label layoutX="480.0" layoutY="47.0" text="Librarin pass:111" />
-      <Label layoutX="452.0" layoutY="119.0" text="AuthorPass:333" />
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+            prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.databaseproject.LogInPageController">
+   <Button layoutX="266.0" layoutY="187.0" mnemonicParsing="false" onAction="#swetchToHome" text="click Here"/>
+   <TextField fx:id="text" layoutX="232.0" layoutY="162.0"/>
+   <Label layoutX="95.0" layoutY="47.0" text="Admin pass:1234"/>
+   <Label layoutX="266.0" layoutY="47.0" text="Reader pass:222"/>
+   <Label layoutX="480.0" layoutY="47.0" text="Librarin pass:111"/>
+   <Label layoutX="452.0" layoutY="119.0" text="AuthorPass:333"/>
 </AnchorPane>
