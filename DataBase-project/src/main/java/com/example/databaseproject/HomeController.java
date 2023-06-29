@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -47,7 +48,10 @@ public Button libreanB;
     private Pane transpane;
     @FXML
     private Button OpenSideManu;
-
+    @FXML
+    private Circle backarrow1;
+    @FXML
+    private Circle backarrow2;
     @FXML
     AnchorPane side;
     @FXML
@@ -82,7 +86,7 @@ public Button libreanB;
         stage.show();
     }
     public void swetchAuthorPage(ActionEvent e) throws IOException {
-        root= FXMLLoader.load(getClass().getResource("AdminPage.fxml"));
+        root= FXMLLoader.load(getClass().getResource("Author.fxml"));
         stage=(Stage)((Node)e.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
@@ -192,7 +196,7 @@ public Button libreanB;
         authorB.setVisible(false);
     }
     public void isReader(){
-        uuuu.setVisible(true);
+
         libreanB.setVisible(false);
         adminB.setVisible(false);
         authorB.setVisible(false);
@@ -225,8 +229,7 @@ else if(LogInPageController.type.equals(TypeOfUseers.Author)){
         System.out.println("openSub");
         try {
             //هنا يتم فتح التصنيفات
-            Parent root =FXMLLoader.load(getClass().getResource("MyTabbedPane.fxml"));
-            contantPane.getChildren().add(root);
+            root =FXMLLoader.load(getClass().getResource("MyTabbedPane.fxml"));
         }
         catch (Exception exception){
             System.out.println("failed");
