@@ -224,6 +224,7 @@ else if(LogInPageController.type.equals(TypeOfUseers.Author)){
     public void openSub(){
         System.out.println("openSub");
         try {
+            //هنا يتم فتح التصنيفات
             Parent root =FXMLLoader.load(getClass().getResource("MyTabbedPane.fxml"));
             contantPane.getChildren().add(root);
         }
