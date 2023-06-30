@@ -165,9 +165,38 @@ public Button libreanB;
     }
     public void slideEvent(ActionEvent e){//زر البروفايل
         System.out.println("ااااا");
-        if(inout)
-            closesearch();
-        boolean inoutSlide = false;
+//        if(inout)
+//            closesearch();
+//        boolean inoutSlide = false;
+        if(isSideManuOpened){
+            if(inout)
+                closesearch();
+            TranslateTransition translateTransition2=new TranslateTransition();
+            translateTransition2.setNode(side);
+            translateTransition2.setToX(-250);
+            translateTransition2.setDuration(Duration.millis(200));
+            translateTransition2.play();
+            TranslateTransition translateTransition3=new TranslateTransition();
+            translateTransition3.setNode(side1);
+            translateTransition3.setToX(-250);
+            translateTransition3.setDuration(Duration.millis(500));
+            translateTransition3.play();
+            isSideManuOpened=false;
+        }
+        else {
+            if(inout)
+                closesearch();
+            TranslateTransition translateTransition=new TranslateTransition();
+            translateTransition.setNode(side);
+            translateTransition.setToX(0);
+            translateTransition.setDuration(Duration.millis(500));
+            translateTransition.play();
+            TranslateTransition translateTransition1=new TranslateTransition();
+            translateTransition1.setNode(side1);
+            translateTransition1.setToX(0);
+            translateTransition1.setDuration(Duration.millis(500));
+            translateTransition1.play();
+            isSideManuOpened=true;}
 
     }
 //////////////////////////////////////////////
@@ -192,7 +221,7 @@ public Button libreanB;
         authorB.setVisible(false);
     }
     public void isReader(){
-        uuuu.setVisible(true);
+      //  uuuu.setVisible(true);
         libreanB.setVisible(false);
         adminB.setVisible(false);
         authorB.setVisible(false);
@@ -222,6 +251,7 @@ else if(LogInPageController.type.equals(TypeOfUseers.Author)){
 }
 
     public void openSub(){
+        slideEvent(new ActionEvent());
         System.out.println("openSub");
         try {
             //هنا يتم فتح التصنيفات
@@ -244,37 +274,7 @@ else if(LogInPageController.type.equals(TypeOfUseers.Author)){
 
         side.setTranslateX(-250);
         side.setVisible(true);
-        OpenSideManu.setOnAction(Event->{
-            if(isSideManuOpened){
-                if(inout)
-                    closesearch();
-                TranslateTransition translateTransition2=new TranslateTransition();
-                translateTransition2.setNode(side);
-                translateTransition2.setToX(-250);
-                translateTransition2.setDuration(Duration.millis(200));
-                translateTransition2.play();
-                TranslateTransition translateTransition3=new TranslateTransition();
-                translateTransition3.setNode(side1);
-                translateTransition3.setToX(-250);
-                translateTransition3.setDuration(Duration.millis(500));
-                translateTransition3.play();
-                isSideManuOpened=false;
-            }
-            else {
-                if(inout)
-                    closesearch();
-            TranslateTransition translateTransition=new TranslateTransition();
-            translateTransition.setNode(side);
-            translateTransition.setToX(0);
-            translateTransition.setDuration(Duration.millis(500));
-            translateTransition.play();
-            TranslateTransition translateTransition1=new TranslateTransition();
-            translateTransition1.setNode(side1);
-            translateTransition1.setToX(0);
-            translateTransition1.setDuration(Duration.millis(500));
-            translateTransition1.play();
-            isSideManuOpened=true;}
-        });
+
         try {
             anchorPane=FXMLLoader.load(getClass().getResource("MyTabbedPane.fxml"));
         }
