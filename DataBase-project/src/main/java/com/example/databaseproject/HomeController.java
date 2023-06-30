@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -47,7 +48,10 @@ public Button libreanB;
     private Pane transpane;
     @FXML
     private Button OpenSideManu;
-
+    @FXML
+    private Circle backarrow1;
+    @FXML
+    private Circle backarrow2;
     @FXML
     AnchorPane side;
     @FXML
@@ -82,7 +86,7 @@ public Button libreanB;
         stage.show();
     }
     public void swetchAuthorPage(ActionEvent e) throws IOException {
-        root= FXMLLoader.load(getClass().getResource("AdminPage.fxml"));
+        root= FXMLLoader.load(getClass().getResource("Author.fxml"));
         stage=(Stage)((Node)e.getSource()).getScene().getWindow();
         scene=new Scene(root);
         stage.setScene(scene);
@@ -165,38 +169,9 @@ public Button libreanB;
     }
     public void slideEvent(ActionEvent e){//زر البروفايل
         System.out.println("ااااا");
-//        if(inout)
-//            closesearch();
-//        boolean inoutSlide = false;
-        if(isSideManuOpened){
-            if(inout)
-                closesearch();
-            TranslateTransition translateTransition2=new TranslateTransition();
-            translateTransition2.setNode(side);
-            translateTransition2.setToX(-250);
-            translateTransition2.setDuration(Duration.millis(200));
-            translateTransition2.play();
-            TranslateTransition translateTransition3=new TranslateTransition();
-            translateTransition3.setNode(side1);
-            translateTransition3.setToX(-250);
-            translateTransition3.setDuration(Duration.millis(500));
-            translateTransition3.play();
-            isSideManuOpened=false;
-        }
-        else {
-            if(inout)
-                closesearch();
-            TranslateTransition translateTransition=new TranslateTransition();
-            translateTransition.setNode(side);
-            translateTransition.setToX(0);
-            translateTransition.setDuration(Duration.millis(500));
-            translateTransition.play();
-            TranslateTransition translateTransition1=new TranslateTransition();
-            translateTransition1.setNode(side1);
-            translateTransition1.setToX(0);
-            translateTransition1.setDuration(Duration.millis(500));
-            translateTransition1.play();
-            isSideManuOpened=true;}
+        if(inout)
+            closesearch();
+        boolean inoutSlide = false;
 
     }
 //////////////////////////////////////////////
@@ -221,7 +196,7 @@ public Button libreanB;
         authorB.setVisible(false);
     }
     public void isReader(){
-      //  uuuu.setVisible(true);
+
         libreanB.setVisible(false);
         adminB.setVisible(false);
         authorB.setVisible(false);
@@ -251,12 +226,10 @@ else if(LogInPageController.type.equals(TypeOfUseers.Author)){
 }
 
     public void openSub(){
-        slideEvent(new ActionEvent());
         System.out.println("openSub");
         try {
             //هنا يتم فتح التصنيفات
-            Parent root =FXMLLoader.load(getClass().getResource("MyTabbedPane.fxml"));
-            contantPane.getChildren().add(root);
+            root =FXMLLoader.load(getClass().getResource("MyTabbedPane.fxml"));
         }
         catch (Exception exception){
             System.out.println("failed");
@@ -274,7 +247,37 @@ else if(LogInPageController.type.equals(TypeOfUseers.Author)){
 
         side.setTranslateX(-250);
         side.setVisible(true);
-
+        OpenSideManu.setOnAction(Event->{
+            if(isSideManuOpened){
+                if(inout)
+                    closesearch();
+                TranslateTransition translateTransition2=new TranslateTransition();
+                translateTransition2.setNode(side);
+                translateTransition2.setToX(-250);
+                translateTransition2.setDuration(Duration.millis(200));
+                translateTransition2.play();
+                TranslateTransition translateTransition3=new TranslateTransition();
+                translateTransition3.setNode(side1);
+                translateTransition3.setToX(-250);
+                translateTransition3.setDuration(Duration.millis(500));
+                translateTransition3.play();
+                isSideManuOpened=false;
+            }
+            else {
+                if(inout)
+                    closesearch();
+            TranslateTransition translateTransition=new TranslateTransition();
+            translateTransition.setNode(side);
+            translateTransition.setToX(0);
+            translateTransition.setDuration(Duration.millis(500));
+            translateTransition.play();
+            TranslateTransition translateTransition1=new TranslateTransition();
+            translateTransition1.setNode(side1);
+            translateTransition1.setToX(0);
+            translateTransition1.setDuration(Duration.millis(500));
+            translateTransition1.play();
+            isSideManuOpened=true;}
+        });
         try {
             anchorPane=FXMLLoader.load(getClass().getResource("MyTabbedPane.fxml"));
         }
