@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="374.0" prefWidth="514.0" style="-fx-background-color: #57707a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.BookLoginWindowController">
+   <children>
+      <ImageView fitHeight="403.0" fitWidth="532.0" layoutX="70.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="-10.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-10.0">
+         <image>
+            <Image url="@pic/book.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="text" layoutX="330.0" layoutY="102.0" prefHeight="38.0" prefWidth="164.0" style="-fx-background-color: transport;">
+         <font>
+            <Font name="Blackadder ITC" size="16.0" />
+         </font></TextField>
+      <Text layoutX="268.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName">
+         <font>
+            <Font name="Blackadder ITC" size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="270.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+         <font>
+            <Font name="Blackadder ITC" size="16.0" />
+         </font>
+      </Text>
+      <Line endX="71.20001220703125" endY="-1.66162109375" layoutX="402.0" layoutY="184.0" startX="-132.00003051757812" startY="-1.6616363525390625" />
+      <Line endX="65.60003662109375" endY="-1.66162109375" layoutX="402.0" layoutY="140.0" startX="-132.00003051757812" startY="-1.6616363525390625" />
+      <ImageView fitHeight="31.0" fitWidth="32.0" layoutX="44.0" layoutY="294.0" onMouseClicked="#exit" pickOnBounds="true" preserveRatio="true" rotate="179.4" style="-fx-blend-mode: color-burn;">
+         <image>
+            <Image url="@pic/exit.gif" />
+         </image>
+      </ImageView>
+      <TextField fx:id="passwordText" layoutX="330.0" layoutY="152.0" prefHeight="38.0" prefWidth="138.0" style="-fx-background-color: transport;" AnchorPane.bottomAnchor="188.6" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="-2.842170943040401E-14" AnchorPane.topAnchor="152.0">
+         <font>
+            <Font name="Blackadder ITC" size="16.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="passwordField" layoutX="322.0" layoutY="159.0" prefHeight="38.0" prefWidth="138.0" style="-fx-background-color: transport;" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="152.0" />
+      <CheckBox layoutX="278.0" layoutY="197.0" mnemonicParsing="false" onAction="#change" text="Show password">
+         <font>
+            <Font name="Blackadder ITC" size="10.0" />
+         </font>
+      </CheckBox>
+      <Button layoutX="333.0" layoutY="238.0" mnemonicParsing="false" onAction="#swetchToHome" prefHeight="26.0" prefWidth="72.0" style="-fx-background-color: transport;" text="Button">
+         <font>
+            <Font name="Blackadder ITC" size="18.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="imageView" fitHeight="403.0" fitWidth="532.0" layoutX="69.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="-10.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-10.0">
+         <image>
+            <Image url="@pic/loop_2.gif" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
