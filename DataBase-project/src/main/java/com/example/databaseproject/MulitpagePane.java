@@ -72,6 +72,7 @@ public class MulitpagePane implements Initializable {
 
     @FXML
     void OpenPane2(ActionEvent event) {
+
         Button2.setStyle("-fx-background-color: #00ff00;-fx-background-radius:50 50 0 0 ;");
         Button1.setStyle("-fx-background-color: transport;");
         Button3.setStyle("-fx-background-color: transport;");

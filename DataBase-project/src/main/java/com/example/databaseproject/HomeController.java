@@ -211,9 +211,6 @@ if(LogInPageController.type.equals(TypeOfUseers.Admin)){
    else if(LogInPageController.type.equals(TypeOfUseers.Librarian)){
         isLibrarian();
     }
-else if(LogInPageController.type.equals(TypeOfUseers.Author)){
-    isAuthor();
-}
  else if(LogInPageController.type.equals(TypeOfUseers.Reader)){
         isReader();
     }
@@ -230,6 +227,7 @@ else if(LogInPageController.type.equals(TypeOfUseers.Author)){
         try {
             //هنا يتم فتح التصنيفات
             root =FXMLLoader.load(getClass().getResource("MyTabbedPane.fxml"));
+            contantPane.getChildren().add(root);
         }
         catch (Exception exception){
             System.out.println("failed");
