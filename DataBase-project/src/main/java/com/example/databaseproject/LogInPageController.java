@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -19,6 +21,7 @@ import static com.example.databaseproject.TypeOfUseers.*;
 public class LogInPageController implements Initializable {
 @FXML
         private TextField text;
+
 private Boolean isIn;
     static TypeOfUseers type ;
     private Parent root;
@@ -63,6 +66,7 @@ type=Librarian;
         }
 
     }
+
 
 
 

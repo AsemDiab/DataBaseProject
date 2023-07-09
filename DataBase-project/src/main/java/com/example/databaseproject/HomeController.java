@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
@@ -125,39 +126,56 @@ public Button libreanB;
     /////////////////////////////
     /////////////////////////////
     public void opensearch(ActionEvent e){//هذا الزر مسؤل عن فتح البحث يستخدم فقط عند الضغط على زر البحث
-        TranslateTransition searchTtrans=new TranslateTransition();
-        TranslateTransition searchBtrans=new TranslateTransition();
-        TranslateTransition searchPtrans=new TranslateTransition();
-        searchTtrans.setNode(searchf);
-        searchBtrans.setNode(searcht);
-        searchPtrans.setNode(transpane);
-        if(!inout) {
-            System.out.println("اههههه");
-            searchTtrans.setDuration(Duration.millis(600));
-            searchTtrans.setByX(170);
-            searchTtrans.play();
-            //
-            searchBtrans.setDuration(Duration.millis(600));
-            searchBtrans.setByX(-65);
-            searchBtrans.play();
-            ///
-            searchPtrans.setCycleCount(1);
-            searchPtrans.setDuration(Duration.millis(600));
-            searchPtrans.setByX(-70);
-            searchPtrans.play();
-            inout=true;
+        new OpenSearchThread().start();
+    }
+    static Boolean key=true;
+    class  OpenSearchThread extends Thread{
+
+        @Override
+        public void run() {
+            if(key){
+                key=false;
+                TranslateTransition searchTtrans=new TranslateTransition();
+                TranslateTransition searchBtrans=new TranslateTransition();
+                TranslateTransition searchPtrans=new TranslateTransition();
+                searchTtrans.setNode(searchf);
+                searchBtrans.setNode(searcht);
+                searchPtrans.setNode(transpane);
+                if(!inout) {
+                    System.out.println("اههههه");
+                    searchTtrans.setDuration(Duration.millis(600));
+                    searchTtrans.setByX(170);
+                    searchTtrans.play();
+                    //
+                    searchBtrans.setDuration(Duration.millis(600));
+                    searchBtrans.setByX(-65);
+                    searchBtrans.play();
+                    ///
+                    searchPtrans.setCycleCount(1);
+                    searchPtrans.setDuration(Duration.millis(600));
+                    searchPtrans.setByX(-70);
+                    searchPtrans.play();
+                    inout=true;
+                    try {
+                        sleep(600);
+                    }
+                    catch (Exception exception){}
+                    key=true;
+                }
+            }
         }
     }
 //////////////////////////////////////////
     //////////////////////////////////////
     public void searchTransition(ActionEvent e){
+        if (key){
         if(inout)
             closesearch();
         else
             opensearch(e);
         if(!searchf.getText().isEmpty()){
             System.out.println("hola");
-        }
+        }}
   }
     ///////////////////////////////////////
     /////////////////////////////////////////
@@ -172,6 +190,36 @@ public Button libreanB;
         if(inout)
             closesearch();
         boolean inoutSlide = false;
+        if(isSideManuOpened){
+            if(inout)
+                closesearch();
+            TranslateTransition translateTransition2=new TranslateTransition();
+            translateTransition2.setNode(side);
+            translateTransition2.setToX(-250);
+            translateTransition2.setDuration(Duration.millis(200));
+            translateTransition2.play();
+            TranslateTransition translateTransition3=new TranslateTransition();
+            translateTransition3.setNode(side1);
+            translateTransition3.setToX(-250);
+            translateTransition3.setDuration(Duration.millis(500));
+            translateTransition3.play();
+            isSideManuOpened=false;
+        }
+        else {
+            if(inout)
+                closesearch();
+            TranslateTransition translateTransition=new TranslateTransition();
+            translateTransition.setNode(side);
+            translateTransition.setToX(0);
+            translateTransition.setDuration(Duration.millis(500));
+            translateTransition.play();
+            TranslateTransition translateTransition1=new TranslateTransition();
+            translateTransition1.setNode(side1);
+            translateTransition1.setToX(0);
+            translateTransition1.setDuration(Duration.millis(500));
+            translateTransition1.play();
+            isSideManuOpened=true;}
+
 
     }
 //////////////////////////////////////////////
@@ -225,14 +273,19 @@ else if(LogInPageController.type.equals(TypeOfUseers.Author)){
    // profilec.setFill(new ImagePattern(new Image(getClass().getResource("anime4.png").toExternalForm())));
 }
 
+public void closeHomeView(MouseEvent mouseEvent){
+        System.exit(0);
+}
     public void openSub(){
         System.out.println("openSub");
         try {
+            slideEvent(new ActionEvent());
             //هنا يتم فتح التصنيفات
             root =FXMLLoader.load(getClass().getResource("MyTabbedPane.fxml"));
+            contantPane.getChildren().add(root);
         }
         catch (Exception exception){
-            System.out.println("failed");
+            System.out.println("failed"+exception);
         }
 
     }
@@ -242,7 +295,8 @@ else if(LogInPageController.type.equals(TypeOfUseers.Author)){
     AnchorPane anchorPane;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ini();//inisilaiz
+        // i cofuse here so i comment it check it plese:)
+        //ini();//inisilaiz
 // i will hix my error(convert following line to methods)
 
         side.setTranslateX(-250);

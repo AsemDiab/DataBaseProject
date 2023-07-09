@@ -8,12 +8,27 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
 import java.security.cert.PolicyNode;
 import java.util.ResourceBundle;
 
 public class MulitpagePane implements Initializable {
+
+    @FXML
+    Line rectangle1;
+    @FXML
+    Line  rectangle2;
+    @FXML
+    Line  rectangle3;
+    @FXML
+    Line  rectangle4;
+    @FXML
+    Line  rectangle5;
+    @FXML
+    Line  rectangle6;
 
     @FXML
     private Button Button2;
@@ -72,100 +87,136 @@ public class MulitpagePane implements Initializable {
 
     @FXML
     void OpenPane2(ActionEvent event) {
-        Button2.setStyle("-fx-background-color: #00ff00;-fx-background-radius:0 50 0 0 ;");
-        Button1.setStyle("-fx-background-color: transport;");
-        Button3.setStyle("-fx-background-color: transport;");
-        Button4.setStyle("-fx-background-color: transport;");
-        Button5.setStyle("-fx-background-color: transport;");
-        Button6.setStyle("-fx-background-color: transport;");
+        Button2.setStyle("-fx-background-color: transport;-fx-background-radius:0 50 0 0 ;-fx-text-fill: #ffffff;");
+        Button1.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button3.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button4.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button5.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button6.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
         panel1.setVisible(false);
         panel2.setVisible(true);
         panel3.setVisible(false);
         panel4.setVisible(false);
         panel5.setVisible(false);
         panel6.setVisible(false);
+        rectangle1.setVisible(false);
+        rectangle2.setVisible(true);
+        rectangle3.setVisible(false);
+        rectangle4.setVisible(false);
+        rectangle5.setVisible(false);
+        rectangle6.setVisible(false);
     }
 
     @FXML
     void OpenPane3(ActionEvent event) {
-        Button3.setStyle("-fx-background-color: #ffff00;-fx-background-radius:0 50 0 0 ;");
-        Button2.setStyle("-fx-background-color: transport;");
-        Button1.setStyle("-fx-background-color: transport;");
-        Button4.setStyle("-fx-background-color: transport;");
-        Button5.setStyle("-fx-background-color: transport;");
-        Button6.setStyle("-fx-background-color: transport;");
+        Button3.setStyle("-fx-background-color: transport;-fx-background-radius:0 50 0 0 ;-fx-text-fill: #ffffff;");
+        Button2.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button1.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button4.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button5.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button6.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
         panel1.setVisible(false);
         panel2.setVisible(false);
         panel3.setVisible(true);
         panel4.setVisible(false);
         panel5.setVisible(false);
         panel6.setVisible(false);
+        rectangle1.setVisible(false);
+        rectangle2.setVisible(false);
+        rectangle3.setVisible(true);
+        rectangle4.setVisible(false);
+        rectangle5.setVisible(false);
+        rectangle6.setVisible(false);
     }
 
     @FXML
     void OpenPane4(ActionEvent event) {
-        Button4.setStyle("-fx-background-color: #0000ff;-fx-background-radius:0 50 0 0 ;");
-        Button2.setStyle("-fx-background-color: transport;");
-        Button3.setStyle("-fx-background-color: transport;");
-        Button1.setStyle("-fx-background-color: transport;");
-        Button5.setStyle("-fx-background-color: transport;");
-        Button6.setStyle("-fx-background-color: transport;");
+        Button4.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;-fx-background-radius:0 50 0 0 ;-fx-text-fill: #ffffff;");
+        Button2.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button3.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button1.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button5.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button6.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
         panel1.setVisible(false);
         panel2.setVisible(false);
         panel3.setVisible(false);
         panel4.setVisible(true);
         panel5.setVisible(false);
         panel6.setVisible(false);
+        rectangle1.setVisible(false);
+        rectangle2.setVisible(false);
+        rectangle3.setVisible(false);
+        rectangle4.setVisible(true);
+        rectangle5.setVisible(false);
+        rectangle6.setVisible(false);
     }
 
     @FXML
     void OpenPane5(ActionEvent event) {
-        Button5.setStyle("-fx-background-color: #ff00ff;-fx-background-radius:0 50 0 0 ;");
-        Button2.setStyle("-fx-background-color: transport;");
-        Button3.setStyle("-fx-background-color: transport;");
-        Button4.setStyle("-fx-background-color: transport;");
-        Button1.setStyle("-fx-background-color: transport;");
-        Button6.setStyle("-fx-background-color: transport;");
+        Button5.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;-fx-background-radius:0 50 0 0 ;-fx-text-fill: #ffffff;");
+        Button2.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button3.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button4.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button1.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button6.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
         panel1.setVisible(false);
         panel2.setVisible(false);
         panel3.setVisible(false);
         panel4.setVisible(false);
         panel5.setVisible(true);
         panel6.setVisible(false);
+        rectangle1.setVisible(false);
+        rectangle2.setVisible(false);
+        rectangle3.setVisible(false);
+        rectangle4.setVisible(false);
+        rectangle5.setVisible(true);
+        rectangle6.setVisible(false);
     }
 
     @FXML
     void OpenPane6(ActionEvent event) {
-        Button6.setStyle("-fx-background-color: #00ffff;-fx-background-radius:0 50 0 0 ;");
-        Button2.setStyle("-fx-background-color: transport;");
-        Button3.setStyle("-fx-background-color: transport;");
-        Button4.setStyle("-fx-background-color: transport;");
-        Button5.setStyle("-fx-background-color: transport;");
-        Button1.setStyle("-fx-background-color: transport;");
+        Button6.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;-fx-background-radius:0 50 0 0 ;-fx-text-fill: #ffffff;");
+        Button2.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button3.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button4.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button5.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button1.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
         panel1.setVisible(false);
         panel2.setVisible(false);
         panel3.setVisible(false);
         panel4.setVisible(false);
         panel5.setVisible(false);
         panel6.setVisible(true);
+        rectangle1.setVisible(false);
+        rectangle2.setVisible(false);
+        rectangle3.setVisible(false);
+        rectangle4.setVisible(false);
+        rectangle5.setVisible(false);
+        rectangle6.setVisible(true);
     }
 
     @FXML
     void openPanel1(ActionEvent event) {
         //button1.setBackground(new Background(new BackgroundFill(Color.RED, CornerRadii.EMPTY, Insets.EMPTY)));
 
-        Button1.setStyle("-fx-background-color: #3d322c;-fx-background-radius:0 50 0 0 ;");
-        Button2.setStyle("-fx-background-color: transport;");
-        Button3.setStyle("-fx-background-color: transport;");
-        Button4.setStyle("-fx-background-color: transport;");
-        Button5.setStyle("-fx-background-color: transport;");
-        Button6.setStyle("-fx-background-color: transport;");
+        Button1.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;-fx-text-fill: #ffffff;");
+        Button2.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button3.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button4.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button5.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button6.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
         panel1.setVisible(true);
         panel2.setVisible(false);
         panel3.setVisible(false);
         panel4.setVisible(false);
         panel5.setVisible(false);
         panel6.setVisible(false);
+        rectangle1.setVisible(true);
+        rectangle2.setVisible(false);
+        rectangle3.setVisible(false);
+        rectangle4.setVisible(false);
+        rectangle5.setVisible(false);
+        rectangle6.setVisible(false);
     }
 
     void fillPanels(){
@@ -278,12 +329,13 @@ public class MulitpagePane implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Button1.setStyle("-fx-background-color:  #d9b26e;-fx-background-radius:0 50 0 0 ;");
-        Button2.setStyle("-fx-background-color: transport;");
-        Button3.setStyle("-fx-background-color: transport;");
-        Button4.setStyle("-fx-background-color: transport;");
-        Button5.setStyle("-fx-background-color: transport;");
-        Button6.setStyle("-fx-background-color: transport;");
+        Button1.setStyle("-fx-background-color: transport;-fx-background-radius:0 50 0 0 ;-fx-text-fill: #ffffff;");
+        Button2.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button3.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button4.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button5.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+        Button6.setStyle("-fx-background-color: transport;-fx-text-fill: #000000;");
+
         panel1.setVisible(true);
         panel2.setVisible(false);
         panel3.setVisible(false);
@@ -297,12 +349,14 @@ paneOfAll.setBackground(new Background(new BackgroundImage(image,BackgroundRepea
         false,
         true,
         false))));
-        Button1.setStyle("-fx-background-color: #3d322c;-fx-background-radius:0 50 0 0 ;-fx-Text-fill: #d9b26e");
-        Button2.setStyle("-fx-background-color: #00ff00;-fx-background-radius:0 50 0 0 ;");
-        Button3.setStyle("-fx-background-color: #ffff00;-fx-background-radius:0 50 0 0 ;");
-        Button4.setStyle("-fx-background-color: #0000ff;-fx-background-radius:0 50 0 0 ;");
-        Button5.setStyle("-fx-background-color: #ff00ff;-fx-background-radius:0 50 0 0 ;");
-        Button6.setStyle("-fx-background-color: #00ffff;-fx-background-radius:0 50 0 0 ;");
+
+        rectangle1.setVisible(true);
+        rectangle2.setVisible(false);
+        rectangle3.setVisible(false);
+        rectangle4.setVisible(false);
+        rectangle5.setVisible(false);
+        rectangle6.setVisible(false);
+
 
     }
 }
