@@ -1,36 +1,67 @@
+.contanaer{
+    -fx-background-color:#DEDCDC;
+    -fx-border-color: #3d322c;
+    -fx-border-width: 10px;
+}
+
 .Button {
-    -fx-background-color: #000000;
-    -fx-text-fill: #ffffff;
+    -fx-background-color: #3d322c;
+    -fx-text-fill: #DEDCDC;
     -fx-font-family: "Arial";
     -fx-font-size: 14px;
     -fx-padding: 10px 20px;
-    -fx-background-radius: 5px;
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
-    -fx-border-color: #ffffff;
+  -fx-border-width: 0px;
     -fx-cursor: hand;
+
 }
 
 .Button:hover {
-    -fx-background-color: #ffffff;
-    -fx-text-fill: #000000;
-    -fx-border-color: #000000;
+    -fx-border-width: 2px;
+    -fx-background-color:#DEDCDC;
+    -fx-text-fill: #3d322c;
+    -fx-border-color: #3d322c;
     -fx-box-shadow: 0px 0px 5px #000000;
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.24), 0, 12, 0, 0);
 
 }
 .ButtonC {
-    -fx-background-color: #ffffff;
+    -fx-background-color: #DEDCDC;
 
-    -fx-text-fill: #000000;
+    -fx-text-fill: #3d322c;
     -fx-font-family: "Arial";
     -fx-font-size: 14px;
     -fx-padding: 10px 20px;
-    -fx-background-radius: 5px;
+
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
-    -fx-border-color: #000000;
+    -fx-border-color: #3d322c;
     -fx-cursor: hand;
 }
+.searchFeild {
+    -fx-background-color: white;
+    -fx-background-insets: 0, 0 0 3 0;
+    -fx-font-family: serif;
+    -fx-font-size: 16px;
 
+}
+
+.searchFeild:focused {
+    -fx-background-color: #d9b26e, -fx-background ;
+}
+.nameLabel{
+    -fx-font-size: 18px;
+    -fx-font-family: "Lucida Console", "Courier New", monospace;
+    -fx-text-fill: #3d322c;
+    -fx-effect: dropshadow(gaussian, #d9b26e, 2, 0, 0, 0);
+    -fx-alignment: center;
+}
+.dote{
+    -fx-font-size: 20px;
+}
+.pane{
+    -fx-border-color:#d9b26e ;
+    -fx-border-width: 5px;
+}

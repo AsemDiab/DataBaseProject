@@ -259,9 +259,6 @@ if(LogInPageController.type.equals(TypeOfUseers.Admin)){
    else if(LogInPageController.type.equals(TypeOfUseers.Librarian)){
         isLibrarian();
     }
-else if(LogInPageController.type.equals(TypeOfUseers.Author)){
-    isAuthor();
-}
  else if(LogInPageController.type.equals(TypeOfUseers.Reader)){
         isReader();
     }
