@@ -95,3 +95,7 @@
 -fx-background-radius:500 500 500 500 ;
 
 }
+.pane{
+    -fx-background-color: #3d322c;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 0);
+}

@@ -21,7 +21,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import static com.example.databaseproject.TypeOfUseers.*;
-import static com.example.databaseproject.TypeOfUseers.Author;
+//import static com.example.databaseproject.TypeOfUseers.Author;
 
 public class BookLoginWindowController implements Initializable {
 
@@ -115,10 +115,7 @@ public class BookLoginWindowController implements Initializable {
             type= Reader;
             isIn=true;
         }
-        else if(text.getText().equals("333")){
-            type= Author;
-            isIn=true;
-        }
+
         else{
             isIn=false;
             System.out.println("غللط");
