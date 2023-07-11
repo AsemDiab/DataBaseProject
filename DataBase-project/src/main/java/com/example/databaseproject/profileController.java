@@ -34,7 +34,7 @@ public class profileController implements Initializable {
         stage.show();
     }
     public void join(){
-cp.setFill(new ImagePattern(new Image("D:\\Asem\\DataBaseProject1\\DataBase-project\\src\\main\\resources\\com\\example\\databaseproject\\pic\\anime4.png")));
+//cp.setFill(new ImagePattern(new Image("D:\\Asem\\DataBaseProject1\\DataBase-project\\src\\main\\resources\\com\\example\\databaseproject\\pic\\anime4.png")));
 
 
 

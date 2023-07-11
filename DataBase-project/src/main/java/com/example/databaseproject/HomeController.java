@@ -230,26 +230,26 @@ public Button libreanB;
     public void isAdmin(){
         //uuuu.setVisible(false);
         libreanB.setVisible(true);
-        adminB.setVisible(true);
         authorB.setVisible(true);
+
     }
     public void isAuthor(){
         //uuuu.setVisible(false);
         libreanB.setVisible(false);
-        adminB.setVisible(false);
-        authorB.setVisible(true);
+        authorB.setVisible(false);
+
     }
     public void isLibrarian(){
         //uuuu.setVisible(false);
         libreanB.setVisible(true);
-        adminB.setVisible(false);
         authorB.setVisible(false);
+
     }
     public void isReader(){
 
         libreanB.setVisible(false);
-        adminB.setVisible(false);
         authorB.setVisible(false);
+
     }
 //////////////////////////////////////////////
 //          osama inisialize                //
