@@ -49,17 +49,21 @@
 
 
 #searchFeild {
-
     -fx-background-color: #DEDCDC;
     -fx-background-insets: 0, 0 0 3 0;
     -fx-background-radius: 10;
     -fx-font-family: serif;
     -fx-font-size: 16px;
+    -fx-border-radius: 10;
+    -fx-border-width: 0 0 3 0; /* Add border width for the bottom border */
+    -fx-border-color: transparent; /* Set initial border color as transparent */
 }
 
 #searchFeild:focused {
-    -fx-background-color: #d9b26e ;
+    -fx-background-color: #DCDEDE ;
+    -fx-border-color: #d9b26e;
 }
+
 #slidephoto {
     -fx-border-color: #DEDCDC; /* Set the border color to transparent */
 }
@@ -82,7 +86,7 @@
 }
 .Button:hover{
 -fx-font-weight: blod;
--fx-background-color:#ffffff ;
+-fx-background-color:#3d322c ;
 -fx-background-radius:500 500 500 500 ;
 -fx-font-size: 16;
 -fx-text-fill: linear-gradient(to bottom right,#FF7F50,#6A5ACD);

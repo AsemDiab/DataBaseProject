@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -52,11 +53,18 @@ public Button libreanB;
     @FXML
     private Button OpenSideManu;
     @FXML
+    private Button profileb;
+    @FXML
+    private Button profileb1;
+    @FXML
     private Circle backarrow1;
     @FXML
     private Circle backarrow2;
     @FXML
     AnchorPane side;
+
+    @FXML
+    public Button authorB1;
     @FXML
     AnchorPane side1;
     /////////////////////////////////////////////
@@ -224,6 +232,31 @@ public Button libreanB;
 
 
     }
+
+    public void adminanime(){
+        authorB1.setVisible(true);
+        authorB.setVisible(false);
+        Tooltip tooltip = new Tooltip("Admin Center");
+        Tooltip.install(authorB1, tooltip);
+    }
+    public void adminanime1(){
+        authorB1.setVisible(false);
+        authorB.setVisible(true);
+        Tooltip tooltip = new Tooltip("Admin Center");
+        Tooltip.install(authorB, tooltip);
+    }
+    public void profileanime(){
+        profileb1.setVisible(true);
+        profileb.setVisible(false);
+        Tooltip tooltip = new Tooltip("profile page");
+        Tooltip.install(profileb1, tooltip);
+    }
+    public void profileanime1(){
+        profileb.setVisible(true);
+        profileb1.setVisible(false);
+        Tooltip tooltip = new Tooltip("profile page");
+        Tooltip.install(profileb, tooltip);
+    }
 //////////////////////////////////////////////
 //          acess types                     //
 //////////////////////////////////////////////
@@ -241,6 +274,7 @@ public Button libreanB;
     }
     public void isLibrarian(){
         //uuuu.setVisible(false);
+
         libreanB.setVisible(true);
         authorB.setVisible(false);
 
