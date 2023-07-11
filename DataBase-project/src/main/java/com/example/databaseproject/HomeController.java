@@ -14,9 +14,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
@@ -253,13 +255,13 @@ public Button libreanB;
 //          osama inisialize                //
 //////////////////////////////////////////////
 public void ini(){
-if(LogInPageController.type.equals(TypeOfUseers.Admin)){
+if(BookLoginWindowController.type.equals(TypeOfUseers.Admin)){
     isAdmin();
 }
-   else if(LogInPageController.type.equals(TypeOfUseers.Librarian)){
+   else if(BookLoginWindowController.type.equals(TypeOfUseers.Librarian)){
         isLibrarian();
     }
- else if(LogInPageController.type.equals(TypeOfUseers.Reader)){
+ else if(BookLoginWindowController.type.equals(TypeOfUseers.Reader)){
         isReader();
     }
  else{
@@ -270,9 +272,22 @@ if(LogInPageController.type.equals(TypeOfUseers.Admin)){
    // profilec.setFill(new ImagePattern(new Image(getClass().getResource("anime4.png").toExternalForm())));
 }
 
-public void closeHomeView(MouseEvent mouseEvent){
-        System.exit(0);
-}
+public void closeHomeView(MouseEvent mouseEvent)throws Exception{
+
+    root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+    stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+    stage.close();
+    stage=new Stage();
+
+    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("BookLoginWindow.fxml"));
+    Scene scene = new Scene(fxmlLoader.load());
+    stage.setTitle("Hello!");
+    stage.setResizable(false);
+    stage.setScene(scene);
+    scene.setFill(Color.TRANSPARENT);
+    stage.initStyle(StageStyle.TRANSPARENT);
+    stage.show();
+    }
     public void openSub(){
         System.out.println("openSub");
         try {
@@ -286,6 +301,9 @@ public void closeHomeView(MouseEvent mouseEvent){
         }
 
     }
+    public void openHomeView(ActionEvent e){
+        contantPane.getChildren().removeAll();
+    }
 
 
     Boolean isSideManuOpened=false;
@@ -293,7 +311,7 @@ public void closeHomeView(MouseEvent mouseEvent){
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // i cofuse here so i comment it check it plese:)
-        //ini();//inisilaiz
+        ini();//inisilaiz
 // i will hix my error(convert following line to methods)
 
         side.setTranslateX(-250);
