@@ -1,4 +1,5 @@
 package com.example.databaseproject;
+
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,13 +17,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 public class HomeController implements Initializable {
     //important
@@ -58,8 +60,8 @@ public Button libreanB;
     private Button profileb1;
     @FXML
     private Circle backarrow1;
-    @FXML
-    private Circle backarrow2;
+
+
     @FXML
     AnchorPane side;
 
@@ -301,8 +303,6 @@ if(BookLoginWindowController.type.equals(TypeOfUseers.Admin)){
  else{
     System.out.println("shit");
  }
-   // uuuu.setVisible(false);
-
    // profilec.setFill(new ImagePattern(new Image(getClass().getResource("anime4.png").toExternalForm())));
 }
 
@@ -346,7 +346,7 @@ public void closeHomeView(MouseEvent mouseEvent)throws Exception{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // i cofuse here so i comment it check it plese:)
         ini();//inisilaiz
-// i will hix my error(convert following line to methods)
+// I will hix my error(convert following line to methods)
 
         side.setTranslateX(-250);
         side.setVisible(true);
@@ -382,25 +382,12 @@ public void closeHomeView(MouseEvent mouseEvent)throws Exception{
             isSideManuOpened=true;}
         });
         try {
-            anchorPane=FXMLLoader.load(getClass().getResource("MyTabbedPane.fxml"));
+            anchorPane=FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MyTabbedPane.fxml")));
         }
         catch (Exception exception){
             System.out.println("SooryBro"+exception);
         }
 
-//        button1.setStyle("-fx-background-color: #f00000;-fx-background-radius:50 50 0 0 ;");
-//        Button2.setStyle("-fx-background-color: transport;");
-//        Button3.setStyle("-fx-background-color: transport;");
-//        Button4.setStyle("-fx-background-color: transport;");
-//        Button5.setStyle("-fx-background-color: transport;");
-//        Button6.setStyle("-fx-background-color: transport;");
-//        pane1.setVisible(true);
-//        panel2.setVisible(false);
-//        panel3.setVisible(false);
-//        panel4.setVisible(false);
-//        panel5.setVisible(false);
-//        panel6.setVisible(false);
-//        fillPanels();
     }
 
     @FXML
@@ -459,7 +446,7 @@ public void closeHomeView(MouseEvent mouseEvent)throws Exception{
 
 
     @FXML
-    void OpenPane2(ActionEvent event) {
+    void OpenPane2() {
         Button2.setStyle("-fx-background-color: #0f0000;-fx-background-radius:50 50 0 0 ;");
         button1.setStyle("-fx-background-color: transport;");
         Button3.setStyle("-fx-background-color: transport;");
@@ -475,7 +462,7 @@ public void closeHomeView(MouseEvent mouseEvent)throws Exception{
     }
 
     @FXML
-    void OpenPane3(ActionEvent event) {
+    void OpenPane3() {
         Button3.setStyle("-fx-background-color: #00f000;-fx-background-radius:50 50 0 0 ;");
         Button2.setStyle("-fx-background-color: transport;");
         button1.setStyle("-fx-background-color: transport;");
@@ -491,7 +478,7 @@ public void closeHomeView(MouseEvent mouseEvent)throws Exception{
     }
 
     @FXML
-    void OpenPane4(ActionEvent event) {
+    void OpenPane4() {
         Button4.setStyle("-fx-background-color: #f0ff00;-fx-background-radius:50 50 0 0 ;");
         Button2.setStyle("-fx-background-color: transport;");
         Button3.setStyle("-fx-background-color: transport;");

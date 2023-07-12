@@ -63,9 +63,6 @@ public class BookLoginWindowController implements Initializable {
     private TextField text;
     private Boolean isIn;
     static TypeOfUseers type ;
-    private Parent root;
-    private Stage stage;
-    private Scene scene;
     @FXML
     private PasswordField passwordField;
     @FXML
@@ -91,11 +88,11 @@ public class BookLoginWindowController implements Initializable {
     public void swetchToHome(ActionEvent e) throws IOException {
         typelogin(e);
         if(isIn) {
-            root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-            stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+            Stage stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
             stage.close();
-            stage=new Stage();
-            scene = new Scene(root);
+            stage =new Stage();
+            Scene scene = new Scene(root);
             stage.setX(50);
             stage.setY(10);
             stage.setScene(scene);

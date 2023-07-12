@@ -80,9 +80,14 @@
 }
 .Button{
 -fx-background-color:  #d9b26e;
--fx-text-fill:#ffffff;
+    -fx-background-radius:500 500 500 500 ;
+
+    -fx-text-fill:#ffffff;
 -fx-font-size: 16;
--fx-background-raduis:500;
+    -fx-border-color: #000000;
+    -fx-border-width: 1;
+    -fx-border-radius: 500;
+/*-fx-background-raduis:500;*/
 }
 .Button:hover{
 -fx-font-weight: blod;
@@ -91,6 +96,7 @@
 -fx-font-size: 16;
 -fx-text-fill: linear-gradient(to bottom right,#FF7F50,#6A5ACD);
  -fx-effect: dropshadow(gaussian, rgba(217, 178, 110, 255), 10, 0, 0, 0);
+
 
 }
 .ImageView:hover{
