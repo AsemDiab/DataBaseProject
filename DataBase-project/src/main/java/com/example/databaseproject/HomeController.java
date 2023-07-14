@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -38,8 +39,15 @@ public class HomeController implements Initializable {
     //photo
     @FXML
 public Button adminB;
+
+@FXML
+public ImageView exitview;
     @FXML
-public Button libreanB;
+    public ImageView CatagorieView;
+
+    @FXML
+    public ImageView HomeIcon;
+
     @FXML
     AnchorPane contantPane;
     @FXML
@@ -60,7 +68,8 @@ public Button libreanB;
     private Button profileb1;
     @FXML
     private Circle backarrow1;
-
+@FXML
+private Pane HomePane;
 
     @FXML
     AnchorPane side;
@@ -80,6 +89,17 @@ public Button libreanB;
         stage.setX(350);
         stage.setY(50);
         stage.setScene(scene);
+        stage.show();
+    }
+    public void swetchLogIn(ActionEvent e) throws IOException {
+        root= FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BookLoginWindow.fxml")));
+        stage=(Stage)((Node)e.getSource()).getScene().getWindow();
+        scene=new Scene(root);
+        stage.setResizable(false);
+        stage.setX(350);
+        stage.setY(50);
+        stage.setScene(scene);
+
         stage.show();
     }
     public void swetchAdminPage(ActionEvent e) throws IOException {
@@ -201,7 +221,7 @@ public Button libreanB;
         System.out.println("ااااا");
         if(inout)
             closesearch();
-        boolean inoutSlide = false;
+
         if(isSideManuOpened){
             if(inout)
                 closesearch();
@@ -263,34 +283,25 @@ public Button libreanB;
 //          acess types                     //
 //////////////////////////////////////////////
     public void isAdmin(){
-        //uuuu.setVisible(false);
-        libreanB.setVisible(true);
+      //  Users.setVisible(true);
         authorB.setVisible(true);
-
     }
-    public void isAuthor(){
-        //uuuu.setVisible(false);
-        libreanB.setVisible(false);
-        authorB.setVisible(false);
 
-    }
     public void isLibrarian(){
-        //uuuu.setVisible(false);
-
-        libreanB.setVisible(true);
-        authorB.setVisible(false);
-
+        //Users.setVisible(false);
+        authorB.setVisible(true);
     }
     public void isReader(){
-
-        libreanB.setVisible(false);
         authorB.setVisible(false);
-
     }
 //////////////////////////////////////////////
 //          osama inisialize                //
 //////////////////////////////////////////////
 public void ini(){
+    Tooltip tooltip = new Tooltip("Search");
+    Tooltip.install(searcht, tooltip);
+    Tooltip tooltip1 = new Tooltip("Menu Mine");
+    Tooltip.install(OpenSideManu, tooltip1);
 if(BookLoginWindowController.type.equals(TypeOfUseers.Admin)){
     isAdmin();
 }
@@ -322,12 +333,31 @@ public void closeHomeView(MouseEvent mouseEvent)throws Exception{
     stage.initStyle(StageStyle.TRANSPARENT);
     stage.show();
     }
+    public void ExitHover(){
+        exitview.setVisible(false);
+    }
+    public void ExitHover1(){
+        exitview.setVisible(true);
+    }
+    public void CatagorieHover(){
+        CatagorieView.setVisible(false);
+    }
+    public void  CatagorieHover1(){
+        CatagorieView.setVisible(true);
+    }
+    public void HomeHover(){
+        HomeIcon.setVisible(false);
+    }
+    public void HomeHover1(){
+        HomeIcon.setVisible(true);
+    }
     public void openSub(){
         System.out.println("openSub");
         try {
+            HomePane.setVisible(false);
             slideEvent(new ActionEvent());
             //هنا يتم فتح التصنيفات
-            root =FXMLLoader.load(getClass().getResource("MyTabbedPane.fxml"));
+            root =FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MyTabbedPane.fxml")));
             contantPane.getChildren().add(root);
         }
         catch (Exception exception){
@@ -335,8 +365,12 @@ public void closeHomeView(MouseEvent mouseEvent)throws Exception{
         }
 
     }
+
     public void openHomeView(ActionEvent e){
+        slideEvent(new ActionEvent());
         contantPane.getChildren().removeAll();
+        HomePane.setVisible(true);
+
     }
 
 

@@ -1,20 +1,57 @@
 .Button {
-    -fx-background-color: #000000;
+    -fx-background-color:  #d9b26e;
     -fx-text-fill: #ffffff;
     -fx-font-family: "Arial";
-    -fx-font-size: 14px;
-    -fx-padding: 10px 20px;
+    -fx-font-size: 12px;
+    -fx-padding: 10px 15px;
     -fx-background-radius: 5px;
     -fx-border-radius: 5px;
     -fx-border-color: #ffffff;
     -fx-cursor: hand;
 }
 
-.Button:hover {
-    -fx-background-color: #ffffff;
-    -fx-text-fill: #000000;
-    -fx-border-color: #000000;
-    -fx-box-shadow: 0px 0px 5px #000000;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.24), 0, 12, 0, 0);
 
+.table-view {
+    -fx-background-color: #F5F5F5;
+}
+
+.table-view .column-header {
+    -fx-background-color: #E0E0E0;
+    -fx-text-fill: #333333;
+}
+
+.table-row-cell {
+    -fx-background-color: #FFFFFF;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #BDD7EE;
+}
+
+.table-row-cell .table-cell {
+    -fx-padding: 4px 8px;
+}
+.custommenubutton {
+    -fx-background-color:#3d322c; /* Red background color */
+    -fx-text-inner-color: #FFFFFF; /* White text color */
+    -fx-padding: 5px 10px; /* Padding around the button */
+    -fx-font-size: 12px; /* Font size */
+    -fx-font-weight: bold; /* Font weight */
+}
+.line{
+    -fx-background-color: #DCDEDE;
+}
+.searchFeild {
+    -fx-background-color: #DEDCDC;
+    -fx-background-insets: 0, 0 0 3 0;
+    -fx-background-radius: 10;
+    -fx-font-family: serif;
+    -fx-font-size: 16px;
+    -fx-border-radius: 10;
+    -fx-border-width: 0 0 3 0; /* Add border width for the bottom border */
+    -fx-border-color: transparent; /* Set initial border color as transparent */
+}
+.searchFeild:focused {
+    -fx-background-color: #DCDEDE ;
+    -fx-border-color: #d9b26e;
 }

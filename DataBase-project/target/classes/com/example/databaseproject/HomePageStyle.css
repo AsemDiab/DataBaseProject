@@ -12,9 +12,20 @@
     -fx-text-fill: white;
     -fx-effect: dropshadow(gaussian, #d9b26e, 2, 0, 0, 0);
 }
+.nameLabel{
+    -fx-font-size: 15px;
+    -fx-font-family: "Lucida Console", "Courier New", monospace;
+    -fx-text-fill: #3d322c;
+    -fx-effect: dropshadow(gaussian, #d9b26e, 2, 0, 0, 0);
+}
 
 
-
+.nameLabel2{
+    -fx-font-size: 15px;
+    -fx-font-family: "Lucida Console", "Courier New", monospace;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, #d9b26e, 2, 0, 0, 0);
+}
 
 
 #slideB {
@@ -90,12 +101,13 @@
 /*-fx-background-raduis:500;*/
 }
 .Button:hover{
--fx-font-weight: blod;
--fx-background-color:#3d322c ;
--fx-background-radius:500 500 500 500 ;
--fx-font-size: 16;
--fx-text-fill: linear-gradient(to bottom right,#FF7F50,#6A5ACD);
- -fx-effect: dropshadow(gaussian, rgba(217, 178, 110, 255), 10, 0, 0, 0);
+    -fx-font-weight: blod;
+    -fx-background-color:#3d322c ;
+    -fx-background-radius:500 500 500 500 ;
+    -fx-font-size: 16;
+    -fx-text-fill: linear-gradient(to top right, #d9b26e, #DCDEDE);
+
+    -fx-effect: dropshadow(gaussian, rgba(217, 178, 110, 255), 10, 0, 0, 0);
 
 
 }
