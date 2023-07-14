@@ -43,7 +43,7 @@ public class BookLoginWindowController implements Initializable {
         @Override
         public void run() {
             try {
-                sleep(4200);
+                sleep(3600);
 
             }
             catch (Exception exception){}

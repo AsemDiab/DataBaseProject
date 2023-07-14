@@ -6,12 +6,12 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="659.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.AdminPageControoler">
    <TableView layoutX="144.0" layoutY="215.0" prefHeight="205.0" prefWidth="200.0" stylesheets="@AdminStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="215.0">
@@ -24,21 +24,20 @@
    <Pane layoutX="-1.0" layoutY="42.0" prefHeight="216.0" prefWidth="1100.0" styleClass="pane" stylesheets="@HomePageStyle.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <Pane fx:id="BookPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;">
          <children>
-            <TextField layoutX="21.0" layoutY="44.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
-            <TextField layoutX="21.0" layoutY="121.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
-            <TextField layoutX="193.0" layoutY="44.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
-            <TextField layoutX="193.0" layoutY="121.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
-            <Line endX="-31.0" endY="100.0" layoutX="625.0" layoutY="116.0" startX="-31.0" startY="-116.0" stroke="#dcdede" />
-            <Label alignment="CENTER" layoutX="21.0" layoutY="28.0" prefHeight="16.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Book ID" textFill="#be1717" />
-            <Label alignment="CENTER" layoutX="21.0" layoutY="99.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Book Name" />
-            <Label alignment="CENTER" layoutX="193.0" layoutY="28.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Author Name" />
-            <Label alignment="CENTER" layoutX="193.0" layoutY="99.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Language" />
-            <Button fx:id="typeOfSearch" layoutX="193.0" layoutY="177.0" mnemonicParsing="false" onAction="#togglebutton" prefHeight="25.0" prefWidth="157.0" text="Single Search" />
-            <TextField layoutX="374.0" layoutY="44.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
-            <Label alignment="CENTER" layoutX="374.0" layoutY="28.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Section Id" />
-            <MenuButton fx:id="menu" layoutX="21.0" layoutY="177.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" text="Type">
+            <TextField layoutX="21.0" layoutY="36.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <TextField layoutX="21.0" layoutY="104.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <TextField layoutX="193.0" layoutY="36.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <TextField layoutX="193.0" layoutY="104.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <Label alignment="CENTER" layoutX="21.0" layoutY="15.0" prefHeight="16.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Book ID" textFill="#be1717" />
+            <Label alignment="CENTER" layoutX="21.0" layoutY="83.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Book Name" />
+            <Label alignment="CENTER" layoutX="193.0" layoutY="14.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Author Name" />
+            <Label alignment="CENTER" layoutX="193.0" layoutY="83.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Language" />
+            <Button fx:id="typeOfSearch" layoutX="877.0" layoutY="18.0" mnemonicParsing="false" onAction="#togglebutton" prefHeight="25.0" prefWidth="157.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Single Search" />
+            <TextField layoutX="374.0" layoutY="36.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <Label alignment="CENTER" layoutX="374.0" layoutY="14.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Section Id" />
+            <MenuButton fx:id="menu" layoutX="193.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" text="Type">
               <items>
-                  <MenuItem fx:id="item1" mnemonicParsing="false" onAction="#menuhandel1" text="Type1" />
+                  <MenuItem fx:id="item1" mnemonicParsing="false" onAction="#menuhandel1" style="-fx-pref-width: 142px;" text="Type1" />
                 <MenuItem fx:id="item2" mnemonicParsing="false" onAction="#menuhandel2" text="Type2" />
                 <MenuItem fx:id="item3" mnemonicParsing="false" onAction="#menuhandel3" text="Type3" />
                   <MenuItem fx:id="item4" mnemonicParsing="false" onAction="#menuhandel4" text="Type4" />
@@ -46,6 +45,16 @@
                   <MenuItem fx:id="item6" mnemonicParsing="false" onAction="#menuhandel6" text="Type6" />
               </items>
             </MenuButton>
+            <Button layoutX="877.0" layoutY="158.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Edit" />
+            <Button layoutX="877.0" layoutY="124.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Remove" />
+            <TextField layoutX="374.0" layoutY="104.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <TextField layoutX="21.0" layoutY="166.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <Label alignment="CENTER" layoutX="374.0" layoutY="83.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Number of pages" />
+            <Label alignment="CENTER" layoutX="21.0" layoutY="151.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Total Copy" />
+            <Button layoutX="877.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Search" />
+            <TextArea fx:id="textA" layoutX="541.0" layoutY="26.0" prefHeight="189.0" prefWidth="283.0" />
+            <Label alignment="CENTER" layoutX="541.0" layoutY="6.0" prefHeight="17.0" prefWidth="283.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Description" />
+            <Button layoutX="877.0" layoutY="91.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Add" />
          </children></Pane>
       <Button fx:id="BackB" layoutX="-1.0" layoutY="1.0" mnemonicParsing="false" onAction="#swetchToHome" prefHeight="29.0" prefWidth="53.0" style="-fx-background-color: non; -fx-text-fill: #DCDEDE; -fx-border-color: #DCDEDE;" text="Back" />
       <Button fx:id="Book" layoutX="-1.0" layoutY="30.0" mnemonicParsing="false" onAction="#open_BookPane" prefHeight="46.0" prefWidth="53.0" style="-fx-background-color: non; -fx-border-color: #DCDEDE;">
@@ -64,7 +73,10 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Pane fx:id="UsersPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: blue;" visible="false" />
+      <Pane fx:id="UsersPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;" visible="false">
+         <children>
+            <TextField layoutX="50.0" layoutY="36.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+         </children></Pane>
       <Pane fx:id="EquipmentPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: green;" visible="false" />
       <Button fx:id="Borrow" layoutX="-1.0" layoutY="76.0" mnemonicParsing="false" onAction="#open_BorrowPane" prefHeight="46.0" prefWidth="53.0" style="-fx-background-color: non; -fx-border-color: #DCDEDE;" />
       <Pane fx:id="BorrowPane" layoutX="52.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: red;" visible="false">

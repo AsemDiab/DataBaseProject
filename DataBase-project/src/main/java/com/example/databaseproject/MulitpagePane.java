@@ -342,13 +342,13 @@ public class MulitpagePane implements Initializable {
         panel4.setVisible(false);
         panel5.setVisible(false);
         panel6.setVisible(false);
-        Image image=new Image("D:\\Asem\\DataBaseProject1\\DataBase-project\\src\\main\\resources\\com\\example\\databaseproject\\pic\\lastClosedDoors.png");
-        paneOfAll.getChildren().add(new JFlipCard(image));  // fillPanels();
-paneOfAll.setBackground(new Background(new BackgroundImage(image,BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT, new BackgroundSize( BackgroundSize.AUTO,BackgroundSize.AUTO
-        ,false,
-        false,
-        true,
-        false))));
+        //Image image=new Image("D:\\Asem\\DataBaseProject1\\DataBase-project\\src\\main\\resources\\com\\example\\databaseproject\\pic\\lastClosedDoors.png");
+      //  paneOfAll.getChildren().add(new JFlipCard(image));  // fillPanels();
+//paneOfAll.setBackground(new Background(new BackgroundImage(image,BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,BackgroundPosition.DEFAULT, new BackgroundSize( BackgroundSize.AUTO,BackgroundSize.AUTO
+    //    ,false,
+      //  false,
+        //true,
+        //false))));
 
         rectangle1.setVisible(true);
         rectangle2.setVisible(false);

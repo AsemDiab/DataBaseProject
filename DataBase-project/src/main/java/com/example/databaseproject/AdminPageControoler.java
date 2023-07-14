@@ -7,10 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -26,6 +23,9 @@ public Pane BookPane;
 public Pane UsersPane;
 @FXML
 public Pane EquipmentPane;
+@FXML
+public TextArea textA;
+
     @FXML
     public Pane BorrowPane;
     @FXML
@@ -122,5 +122,6 @@ public void open_UsersPane(){
         else if(BookLoginWindowController.type.equals(TypeOfUseers.Librarian)){
             Users.setVisible(false);
         }
+        textA.setWrapText(true);
     }
 }

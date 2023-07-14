@@ -58,3 +58,14 @@
 .menu-item > .label {
     -fx-pref-width: 120px;
 }
+.Buttonright{
+    -fx-background-color: #d9b26e;
+    -fx-text-fill: #3d322c;
+    -fx-border-color: #DCDEDE;
+
+}
+.Buttonright:hover{
+    -fx-background-color:#3d322c;
+    -fx-text-fill: #DCDEDE;
+    -fx-border-color:#d9b26e;
+}

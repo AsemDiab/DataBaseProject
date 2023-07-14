@@ -11,11 +11,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="374.0" prefWidth="514.0" style="-fx-background-color: #57707a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.BookLoginWindowController">
+<AnchorPane prefHeight="363.0" prefWidth="530.0" style="-fx-background-color: #57707a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.BookLoginWindowController">
    <children>
-      <ImageView fitHeight="403.0" fitWidth="532.0" layoutX="70.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="-10.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-10.0">
+      <ImageView fitHeight="347.0" fitWidth="563.0" layoutX="-1.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="13.266666666666652" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-0.60400390625" AnchorPane.topAnchor="17.0">
          <image>
-            <Image url="@pic/book.png" />
+            <Image url="@pic/bookkkkkkk1.png" />
          </image>
       </ImageView>
       <TextField fx:id="text" layoutX="330.0" layoutY="102.0" prefHeight="38.0" prefWidth="164.0" style="-fx-background-color: transport;">
@@ -55,9 +55,9 @@
             <Font name="Blackadder ITC" size="18.0" />
          </font>
       </Button>
-      <ImageView fx:id="imageView" fitHeight="403.0" fitWidth="532.0" layoutX="69.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="-10.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-10.0">
+      <ImageView fx:id="imageView" fitHeight="377.0" fitWidth="532.0" layoutX="-1.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="16.8619425455729" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="6.0">
          <image>
-            <Image url="@pic/loop_2.gif" />
+            <Image url="@pic/book-32.gif" />
          </image>
       </ImageView>
    </children>
