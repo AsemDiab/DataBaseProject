@@ -1,5 +1,6 @@
 package com.example.databaseproject;
 
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -47,7 +49,10 @@ public TextArea textA;
     public MenuItem item6;
     @FXML
     public MenuButton menu;
-
+public boolean isopenp=false;
+    public boolean isopenB=true;
+    public boolean isopenBo=false;
+    public boolean isopenE=false;
 
 
     public void menuhandel1(){
@@ -79,28 +84,72 @@ public void togglebutton(){
     }
 }
 public void open_UsersPane(){
-    UsersPane.setVisible(true);
-    EquipmentPane.setVisible(false);
+        if(!isopenp) {
+            UsersPane.setVisible(true);
+            FadeTransition f = new FadeTransition(Duration.seconds(0.3), UsersPane);
+            f.setFromValue(0);
+            f.setToValue(1);
+            f.play();
+            EquipmentPane.setVisible(false);
             BookPane.setVisible(false);
             BorrowPane.setVisible(false);
+            isopenE=false;
+            isopenB=false;
+            isopenp=true;
+            isopenBo=false;
+
+        }
 }
     public void open_BookPane(){
-        UsersPane.setVisible(false);
-        EquipmentPane.setVisible(false);
-        BookPane.setVisible(true);
-        BorrowPane.setVisible(false);
+        if(!isopenB) {
+            BookPane.setVisible(true);
+            FadeTransition f = new FadeTransition(Duration.seconds(0.3), BookPane);
+            f.setFromValue(0);
+            f.setToValue(1);
+            f.play();
+            UsersPane.setVisible(false);
+            EquipmentPane.setVisible(false);
+
+            BorrowPane.setVisible(false);
+
+            isopenE=false;
+            isopenB=true;
+            isopenp=false;
+            isopenBo=false;
+
+        }
     }
     public void open_EquipmentPane(){
-        UsersPane.setVisible(false);
-        EquipmentPane.setVisible(true);
-        BookPane.setVisible(false);
-        BorrowPane.setVisible(false);
+        if(!isopenE) {
+            EquipmentPane.setVisible(true);
+            FadeTransition f = new FadeTransition(Duration.seconds(0.3), EquipmentPane);
+            f.setFromValue(0);
+            f.setToValue(1);
+            f.play();
+            UsersPane.setVisible(false);
+            BookPane.setVisible(false);
+            BorrowPane.setVisible(false);
+            isopenE=true;
+            isopenB=false;
+            isopenp=false;
+            isopenBo=false;
+        }
     }
     public void open_BorrowPane(){
-        UsersPane.setVisible(false);
-        EquipmentPane.setVisible(false);
-        BookPane.setVisible(false);
-        BorrowPane.setVisible(true);
+        if(!isopenBo) {
+            UsersPane.setVisible(false);
+            EquipmentPane.setVisible(false);
+            BookPane.setVisible(false);
+            BorrowPane.setVisible(true);
+            FadeTransition f = new FadeTransition(Duration.seconds(0.3), BorrowPane);
+            f.setFromValue(0);
+            f.setToValue(1);
+            f.play();
+            isopenE = false;
+            isopenB = false;
+            isopenp = false;
+            isopenBo = true;
+        }
     }
 
 

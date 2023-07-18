@@ -121,3 +121,8 @@
     -fx-background-color: #3d322c;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 0);
 }
+.class{
+    -fx-background-color:#DCDEDE;
+    -fx-border-color:#DCDEDE;
+
+}
