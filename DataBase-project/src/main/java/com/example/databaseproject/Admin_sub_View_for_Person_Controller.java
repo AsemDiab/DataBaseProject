@@ -8,14 +8,14 @@ public class Admin_sub_View_for_Person_Controller {
     @FXML
     public MenuButton GenderMenuB;
     @FXML
-    public MenuItem ManMenuItem;
+    public  MenuItem ManMenuItem;
     @FXML
-    public MenuItem WomanMenuItem;
+    public  MenuItem WomanMenuItem;
     //for Gender
-    public void ManFun(){
+    public  void ManFun(){
         GenderMenuB.setText(ManMenuItem.getText());
     }
-    public void WomanFun(){
+    public  void WomanFun(){
         GenderMenuB.setText(WomanMenuItem.getText());
     }
 

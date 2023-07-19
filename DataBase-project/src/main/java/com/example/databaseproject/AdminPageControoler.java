@@ -34,6 +34,8 @@ public TextArea textA;
     public Button Users;
     @FXML
     public Button typeOfSearch;
+    @FXML
+    public Button typeOfSearch11;
     public boolean issingle=true;
     @FXML
     public MenuItem item1;
@@ -49,12 +51,23 @@ public TextArea textA;
     public MenuItem item6;
     @FXML
     public MenuButton menu;
+    @FXML
+    public MenuButton GenderMenuB;
+    @FXML
+    public  MenuItem ManMenuItem;
+    @FXML
+    public  MenuItem WomanMenuItem;
 public boolean isopenp=false;
     public boolean isopenB=true;
     public boolean isopenBo=false;
     public boolean isopenE=false;
 
-
+    public  void ManFun(){
+        GenderMenuB.setText(ManMenuItem.getText());
+    }
+    public  void WomanFun(){
+        GenderMenuB.setText(WomanMenuItem.getText());
+    }
     public void menuhandel1(){
         menu.setText(item1.getText());
     }
@@ -83,6 +96,16 @@ public void togglebutton(){
         issingle=true;
     }
 }
+    public void togglebutton1(){
+        if(issingle){
+            typeOfSearch11.setText("Multi Search");
+            issingle=false;
+        }
+        else{
+            typeOfSearch11.setText("Single Search");
+            issingle=true;
+        }
+    }
 public void open_UsersPane(){
         if(!isopenp) {
             UsersPane.setVisible(true);
