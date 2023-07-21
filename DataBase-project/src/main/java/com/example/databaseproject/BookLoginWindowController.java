@@ -82,6 +82,7 @@ public class BookLoginWindowController implements Initializable {
         }
 
     }
+
     public  TypeOfUseers gettype(){
         return type;
     }

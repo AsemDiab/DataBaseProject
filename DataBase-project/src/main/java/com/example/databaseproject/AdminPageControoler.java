@@ -27,7 +27,16 @@ public Pane UsersPane;
 public Pane EquipmentPane;
 @FXML
 public TextArea textA;
-
+@FXML
+public MenuItem AllMenuItem;
+@FXML
+public MenuItem WomanMenuItem1;
+    @FXML
+    public MenuItem ReaderMenuItem;
+    @FXML
+    public MenuItem AdminMenuItem;
+    @FXML
+    public MenuItem LibrarinMenuItem;
     @FXML
     public Pane BorrowPane;
     @FXML
@@ -65,12 +74,16 @@ public boolean isopenp=false;
     public Label intrestLabel1;
     public Label intrestLabel;
     public TextField VisableOrNotText;
-
+    @FXML
+public MenuButton state;
     public  void ManFun(){
         GenderMenuB.setText(ManMenuItem.getText());
     }
     public  void WomanFun(){
         GenderMenuB.setText(WomanMenuItem.getText());
+    }
+    public  void AllFun(){
+        GenderMenuB.setText(WomanMenuItem1.getText());
     }
     public void menuhandel1(){
         menu.setText(item1.getText());
@@ -189,6 +202,18 @@ public void open_UsersPane(){
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+    public void stateOfAdmin(){
+        state.setText(AdminMenuItem.getText());
+    }
+    public void stateOfLibrarin(){
+        state.setText(LibrarinMenuItem.getText());
+    }
+    public void stateOfReader(){
+        state.setText(ReaderMenuItem.getText());
+    }
+    public void stateOfAll(){
+        state.setText(AllMenuItem.getText());
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

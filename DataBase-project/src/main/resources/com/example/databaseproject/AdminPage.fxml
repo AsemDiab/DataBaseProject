@@ -50,14 +50,14 @@
          <Label alignment="CENTER" layoutX="193.0" layoutY="83.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Language" />
          <TextField layoutX="374.0" layoutY="36.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
          <Label alignment="CENTER" layoutX="374.0" layoutY="14.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Section Id" />
-         <MenuButton fx:id="menu" layoutX="193.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" text="Type">
+         <MenuButton fx:id="menu" alignment="CENTER" layoutX="193.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" styleClass="MenuButton" stylesheets="@AdminStyle.css" text="ALL">
             <items>
-               <MenuItem fx:id="item1" mnemonicParsing="false" onAction="#menuhandel1" style="-fx-pref-width: 142px;" text="Type1" />
-               <MenuItem fx:id="item2" mnemonicParsing="false" onAction="#menuhandel2" text="Type2" />
-               <MenuItem fx:id="item3" mnemonicParsing="false" onAction="#menuhandel3" text="Type3" />
-               <MenuItem fx:id="item4" mnemonicParsing="false" onAction="#menuhandel4" text="Type4" />
-               <MenuItem fx:id="item5" mnemonicParsing="false" onAction="#menuhandel5" text="Type5" />
-               <MenuItem fx:id="item6" mnemonicParsing="false" onAction="#menuhandel6" text="Type6" />
+               <MenuItem fx:id="item1" mnemonicParsing="false" onAction="#menuhandel1" style="-fx-pref-width: 142px;" text="MANGA" />
+               <MenuItem fx:id="item2" mnemonicParsing="false" onAction="#menuhandel2" text="NOVELS" />
+               <MenuItem fx:id="item3" mnemonicParsing="false" onAction="#menuhandel3" text="ACADEMIC" />
+               <MenuItem fx:id="item4" mnemonicParsing="false" onAction="#menuhandel4" text="HUMAN DEVILOPMENT" />
+               <MenuItem fx:id="item5" mnemonicParsing="false" onAction="#menuhandel5" text="FANTASY" />
+               <MenuItem fx:id="item6" mnemonicParsing="false" onAction="#menuhandel6" text="ALL" />
             </items>
          </MenuButton>
          <TextField layoutX="374.0" layoutY="104.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
@@ -94,17 +94,19 @@
          <Label alignment="CENTER" layoutX="14.0" layoutY="138.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Join Date" />
          <Label alignment="CENTER" layoutX="181.0" layoutY="74.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Gender" />
          <PieChart layoutX="471.0" prefHeight="216.0" prefWidth="330.0" style="-fx-background-color: red;" />
-         <MenuButton fx:id="GenderMenuB" layoutX="181.0" layoutY="96.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0">
+         <MenuButton fx:id="GenderMenuB" alignment="CENTER" layoutX="181.0" layoutY="96.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" text="All">
             <items>
                <MenuItem fx:id="ManMenuItem" mnemonicParsing="false" onAction="#ManFun" style="-fx-pref-width: 142px;" text="Man" />
                <MenuItem fx:id="WomanMenuItem" mnemonicParsing="false" onAction="#WomanFun" style="-fx-pref-width: 142px;" text="Woman" />
+               <MenuItem fx:id="WomanMenuItem1" mnemonicParsing="false" onAction="#AllFun" style="-fx-pref-width: 142px;" text="All" />
             </items>
          </MenuButton>
-         <MenuButton layoutX="181.0" layoutY="40.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0">
+         <MenuButton fx:id="state" alignment="CENTER" layoutX="181.0" layoutY="40.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" text="All">
             <items>
-               <MenuItem mnemonicParsing="false" style="-fx-pref-width: 142px;" text="Admin" />
-               <MenuItem mnemonicParsing="false" style="-fx-pref-width: 142px;" text="Librarian" />
-               <MenuItem mnemonicParsing="false" style="-fx-pref-width: 142px;" text="Reader" />
+               <MenuItem fx:id="AdminMenuItem" mnemonicParsing="false" onAction="#stateOfAdmin" style="-fx-pref-width: 142px;" text="Admin" />
+               <MenuItem fx:id="LibrarinMenuItem" mnemonicParsing="false" onAction="#stateOfLibrarin" style="-fx-pref-width: 142px;" text="Librarian" />
+               <MenuItem fx:id="ReaderMenuItem" mnemonicParsing="false" onAction="#stateOfReader" style="-fx-pref-width: 142px;" text="Reader" />
+               <MenuItem fx:id="AllMenuItem" mnemonicParsing="false" onAction="#stateOfAll" style="-fx-pref-width: 142px;" text="All" />
             </items>
          </MenuButton>
          <Pane layoutX="882.0" layoutY="-15.0" prefHeight="223.0" prefWidth="200.0" style="-fx-background-color: Transparent;">

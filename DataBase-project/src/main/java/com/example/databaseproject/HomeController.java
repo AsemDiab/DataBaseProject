@@ -1,5 +1,6 @@
 package com.example.databaseproject;
 
+import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,6 +30,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 public class HomeController implements Initializable {
     //important
+
     private Parent root;
     private Stage stage;
     private Scene scene;
@@ -41,6 +43,10 @@ public class HomeController implements Initializable {
 public Button adminB;
 @FXML
 public ImageView AnimeImage;
+@FXML
+public Pane AnimePane;
+    @FXML
+    public Pane NovelsPane;
 @FXML
 public ImageView exitview;
     @FXML
@@ -58,9 +64,19 @@ public ImageView exitview;
     @FXML
     private TextField searchf;
     @FXML
+    public Button AnimePaneB;
+    @FXML
     private Button searcht;
     @FXML
     private Pane transpane;
+    @FXML
+    private Pane Pane4;
+    @FXML
+    private Pane Pane5;
+    @FXML
+    private Pane Pane6;
+    @FXML
+    public Pane ActionPane;
     @FXML
     private Button OpenSideManu;
     @FXML
@@ -81,6 +97,7 @@ private Pane HomePane;
     public Button authorB1;
     @FXML
     AnchorPane side1;
+    public int anyPaneIsOpen=1;
     /////////////////////////////////////////////
     //            switch scenes                //
     /////////////////////////////////////////////
@@ -157,6 +174,146 @@ private Pane HomePane;
             }
         }
     }
+
+    ///////////////////////////////
+    //Catagori
+    ///////////////////////////////
+    public void closePane(){
+        if(anyPaneIsOpen==1){
+            FadeTransition f = new FadeTransition(Duration.seconds(0.5), AnimePane);
+            f.setFromValue(1);
+            f.setToValue(0);
+            f.play();
+        }
+        else if(anyPaneIsOpen==2){
+            FadeTransition f = new FadeTransition(Duration.seconds(0.5), NovelsPane);
+            f.setFromValue(1);
+            f.setToValue(0);
+            f.play();
+        }
+        else if(anyPaneIsOpen==3){
+            FadeTransition f = new FadeTransition(Duration.seconds(0.5), ActionPane);
+            f.setFromValue(1);
+            f.setToValue(0);
+            f.play();
+        }
+        else if(anyPaneIsOpen==4){
+            FadeTransition f = new FadeTransition(Duration.seconds(0.5), Pane4);
+            f.setFromValue(1);
+            f.setToValue(0);
+            f.play();
+        }
+        else if(anyPaneIsOpen==5){
+            FadeTransition f = new FadeTransition(Duration.seconds(0.5), Pane5);
+            f.setFromValue(1);
+            f.setToValue(0);
+            f.play();
+        }
+        else if(anyPaneIsOpen==6){
+            FadeTransition f = new FadeTransition(Duration.seconds(0.5), Pane6);
+            f.setFromValue(1);
+            f.setToValue(0);
+            f.play();
+        }
+    }
+    public void OpenAnimePane(ActionEvent e){
+        if(!(anyPaneIsOpen==1)) {
+            closePane();
+            NovelsPane.setVisible(false);
+            ActionPane.setVisible(false);
+            AnimePane.setVisible(true);
+
+            FadeTransition f = new FadeTransition(Duration.seconds(0.5), AnimePane);
+            f.setFromValue(0);
+            f.setToValue(1);
+            f.play();
+
+            anyPaneIsOpen=1;
+        }
+    }
+    public void OpenNovelsPane(ActionEvent e){
+        if(!(anyPaneIsOpen==2)) {
+            closePane();
+            AnimePane.setVisible(false);
+            ActionPane.setVisible(false);
+            NovelsPane.setVisible(true);
+            FadeTransition f = new FadeTransition(Duration.seconds(0.5), NovelsPane);
+            f.setFromValue(0);
+            f.setToValue(1);
+            f.play();
+
+            anyPaneIsOpen=2;
+        }
+    }
+
+    public void OpenActionPane(ActionEvent e){
+        if(!(anyPaneIsOpen==3)) {
+            closePane();
+            AnimePane.setVisible(false);
+            NovelsPane.setVisible(false);
+            ActionPane.setVisible(true);
+            FadeTransition f = new FadeTransition(Duration.seconds(0.5), ActionPane);
+            f.setFromValue(0);
+            f.setToValue(1);
+            f.play();
+
+            anyPaneIsOpen=3;
+        }
+    }
+
+    public void OpenPane4(ActionEvent e){
+        if(!(anyPaneIsOpen==4)) {
+            closePane();
+
+            AnimePane.setVisible(false);
+            NovelsPane.setVisible(false);
+            ActionPane.setVisible(false);
+            Pane5.setVisible(false);
+            Pane6.setVisible(false);
+            Pane4.setVisible(true);
+            FadeTransition f = new FadeTransition(Duration.seconds(0.5), Pane4);
+            f.setFromValue(0);
+            f.setToValue(1);
+            f.play();
+
+            anyPaneIsOpen=4;
+        }
+    }
+    public void OpenPane55(ActionEvent e){
+        if(!(anyPaneIsOpen==5)) {
+            closePane();
+            AnimePane.setVisible(false);
+            NovelsPane.setVisible(false);
+            ActionPane.setVisible(false);
+            Pane4.setVisible(false);
+            Pane6.setVisible(false);
+            Pane5.setVisible(true);
+            FadeTransition f = new FadeTransition(Duration.seconds(0.5), Pane5);
+            f.setFromValue(0);
+            f.setToValue(1);
+            f.play();
+
+            anyPaneIsOpen=5;
+        }
+    }
+    public void OpenPane66(ActionEvent e){
+        if(!(anyPaneIsOpen==6)) {
+            closePane();
+            AnimePane.setVisible(false);
+            NovelsPane.setVisible(false);
+            ActionPane.setVisible(false);
+            Pane5.setVisible(false);
+            Pane4.setVisible(false);
+            Pane6.setVisible(true);
+            FadeTransition f = new FadeTransition(Duration.seconds(0.5), Pane6);
+            f.setFromValue(0);
+            f.setToValue(1);
+            f.play();
+
+            anyPaneIsOpen=6;
+        }
+    }
+    ////////////////////////////
     /////////////////////////////
     /////////////////////////////
     public void opensearch(ActionEvent e){//هذا الزر مسؤل عن فتح البحث يستخدم فقط عند الضغط على زر البحث
