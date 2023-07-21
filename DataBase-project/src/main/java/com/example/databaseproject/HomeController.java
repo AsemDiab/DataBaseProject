@@ -39,7 +39,8 @@ public class HomeController implements Initializable {
     //photo
     @FXML
 public Button adminB;
-
+@FXML
+public ImageView AnimeImage;
 @FXML
 public ImageView exitview;
     @FXML
@@ -70,6 +71,8 @@ public ImageView exitview;
     private Circle backarrow1;
 @FXML
 private Pane HomePane;
+    @FXML
+    private Pane HomePane1;
 
     @FXML
     AnchorPane side;
@@ -99,7 +102,6 @@ private Pane HomePane;
         stage.setX(350);
         stage.setY(50);
         stage.setScene(scene);
-
         stage.show();
     }
     public void swetchAdminPage(ActionEvent e) throws IOException {
@@ -355,10 +357,11 @@ public void closeHomeView(MouseEvent mouseEvent)throws Exception{
         System.out.println("openSub");
         try {
             HomePane.setVisible(false);
+            HomePane1.setVisible(true);
+
             slideEvent(new ActionEvent());
             //هنا يتم فتح التصنيفات
-            root =FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MyTabbedPane.fxml")));
-            contantPane.getChildren().add(root);
+
         }
         catch (Exception exception){
             System.out.println("failed"+exception);
@@ -370,6 +373,7 @@ public void closeHomeView(MouseEvent mouseEvent)throws Exception{
         slideEvent(new ActionEvent());
         contantPane.getChildren().removeAll();
         HomePane.setVisible(true);
+        HomePane1.setVisible(false);
 
     }
 

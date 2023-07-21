@@ -61,6 +61,10 @@ public boolean isopenp=false;
     public boolean isopenB=true;
     public boolean isopenBo=false;
     public boolean isopenE=false;
+    public Button Borrow;
+    public Label intrestLabel1;
+    public Label intrestLabel;
+    public TextField VisableOrNotText;
 
     public  void ManFun(){
         GenderMenuB.setText(ManMenuItem.getText());

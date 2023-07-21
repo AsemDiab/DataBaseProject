@@ -126,3 +126,24 @@
     -fx-border-color:#DCDEDE;
 
 }
+.blur-effect {
+    -fx-effect: "blur";
+    -fx-effect-radius: 10; /* Adjust the blur radius as needed */
+}
+.osamaButton{
+    -fx-background-color: Transparent;
+    -fx-border-color: #DCDEDE;
+    -fx-fill:#DCDEDE;
+    -fx-text-fill: #DCDEDE;
+    -fx-border-width: 0 0 3 0;
+}
+.osamaButton:hover{
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+    -fx-text-fill: Black;
+    -fx-border-width: 0 0 3 0;
+    -fx-border-color: #d9b26e;
+}
+.pp{
+    -fx-pref-height: 700px;
+    -fx-pref-width: 1100px;
+}

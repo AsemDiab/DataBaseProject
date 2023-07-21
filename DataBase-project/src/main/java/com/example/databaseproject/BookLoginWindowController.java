@@ -95,6 +95,7 @@ public class BookLoginWindowController implements Initializable {
             Scene scene = new Scene(root);
             stage.setX(50);
             stage.setY(10);
+            stage.setResizable(false);
             stage.setScene(scene);
             stage.show();
         }
