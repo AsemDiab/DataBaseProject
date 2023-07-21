@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="363.0" prefWidth="530.0" style="-fx-background-color: #57707a;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.BookLoginWindowController">
+<AnchorPane prefHeight="363.0" prefWidth="530.0" style="-fx-background-color: transport;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.BookLoginWindowController">
    <children>
       <ImageView fitHeight="347.0" fitWidth="563.0" layoutX="-1.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="13.266666666666652" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-0.60400390625" AnchorPane.topAnchor="17.0">
          <image>
