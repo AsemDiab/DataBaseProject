@@ -9,9 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -49,6 +47,10 @@ public Pane AnimePane;
     public Pane NovelsPane;
 @FXML
 public ImageView exitview;
+    @FXML
+    public RadioButton radioButton;
+    @FXML
+    public PasswordField passf;
     @FXML
     public ImageView CatagorieView;
 
@@ -101,7 +103,7 @@ private Pane HomePane;
     /////////////////////////////////////////////
     //            switch scenes                //
     /////////////////////////////////////////////
-    public void swetchToProfile(ActionEvent e) throws IOException {
+   /* public void swetchToProfile(ActionEvent e) throws IOException {
         root= FXMLLoader.load(getClass().getResource("ProfilePage.fxml"));
         stage=(Stage)((Node)e.getSource()).getScene().getWindow();
         scene=new Scene(root);
@@ -110,7 +112,7 @@ private Pane HomePane;
         stage.setY(50);
         stage.setScene(scene);
         stage.show();
-    }
+    }*/
     public void swetchLogIn(ActionEvent e) throws IOException {
         root= FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BookLoginWindow.fxml")));
         stage=(Stage)((Node)e.getSource()).getScene().getWindow();
@@ -222,7 +224,9 @@ private Pane HomePane;
             NovelsPane.setVisible(false);
             ActionPane.setVisible(false);
             AnimePane.setVisible(true);
-
+            Pane5.setVisible(false);
+            Pane6.setVisible(false);
+            Pane4.setVisible(false);
             FadeTransition f = new FadeTransition(Duration.seconds(0.5), AnimePane);
             f.setFromValue(0);
             f.setToValue(1);
@@ -237,6 +241,9 @@ private Pane HomePane;
             AnimePane.setVisible(false);
             ActionPane.setVisible(false);
             NovelsPane.setVisible(true);
+            Pane5.setVisible(false);
+            Pane6.setVisible(false);
+            Pane4.setVisible(false);
             FadeTransition f = new FadeTransition(Duration.seconds(0.5), NovelsPane);
             f.setFromValue(0);
             f.setToValue(1);
@@ -252,6 +259,9 @@ private Pane HomePane;
             AnimePane.setVisible(false);
             NovelsPane.setVisible(false);
             ActionPane.setVisible(true);
+            Pane5.setVisible(false);
+            Pane6.setVisible(false);
+            Pane4.setVisible(false);
             FadeTransition f = new FadeTransition(Duration.seconds(0.5), ActionPane);
             f.setFromValue(0);
             f.setToValue(1);
@@ -296,6 +306,7 @@ private Pane HomePane;
             anyPaneIsOpen=5;
         }
     }
+
     public void OpenPane66(ActionEvent e){
         if(!(anyPaneIsOpen==6)) {
             closePane();
@@ -373,7 +384,7 @@ private Pane HomePane;
     public void profileEvent(ActionEvent e) throws IOException {//زر البروفايل
         if(inout)
             closesearch();
-        swetchToProfile(e);
+        //swetchToProfile(e);
         System.out.println("اههههه");
     }
     public void slideEvent(ActionEvent e){//زر البروفايل

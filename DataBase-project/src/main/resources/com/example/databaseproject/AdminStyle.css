@@ -9,8 +9,6 @@
     -fx-border-color: #ffffff;
     -fx-cursor: hand;
 }
-
-
 .table-view {
     -fx-background-color: #F5F5F5;
 }
@@ -62,7 +60,6 @@
     -fx-background-color: #d9b26e;
     -fx-text-fill: #3d322c;
     -fx-border-color: #DCDEDE;
-
 }
 .Buttonright:hover{
     -fx-background-color:#3d322c;
@@ -71,6 +68,27 @@
 }
 .MenuButton{
     -fx-background-color: #d9b26e;
-    -fx-text-fill: #3d322c;
+    -fx-text-fill: white;
+    -fx-font-family: serif;
+
     -fx-border-color: #DCDEDE;
+}
+/* Hide the default checkmark by setting its color to transparent */
+.check-box > .box > .mark {
+   /* -fx-background-color: transparent;*/
+}
+/* Create a circular border for the checkbox */
+.check-box > .box {
+    -fx-background-radius: 50%;
+    -fx-border-radius: 50%;
+    -fx-border-color: #DCDEDE; /* Set the border color as per your preference */
+    -fx-border-width: 2px; /* Set the border width as per your preference */
+}
+/* Increase the size of the circular checkbox */
+.check-box > .box > .mark-container {
+    -fx-padding: 8px; /* Set the padding as per your preference */
+}
+/* Hide the label (text) of the checkbox */
+.check-box > .box > .label {
+    -fx-text-fill: black;
 }

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
@@ -14,16 +16,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="659.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.AdminPageControoler">
-   <TableView layoutX="144.0" layoutY="215.0" prefHeight="205.0" prefWidth="200.0" stylesheets="@AdminStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="215.0">
-      <columns>
-         <TableColumn prefWidth="75.0" text="C1" />
-         <TableColumn prefWidth="75.99996185302734" text="C2" />
-         <TableColumn minWidth="0.0" prefWidth="74.66668701171875" text="a" />
-      </columns>
-   </TableView>
    <Pane layoutX="-1.0" layoutY="42.0" prefHeight="216.0" prefWidth="1100.0" styleClass="pane" stylesheets="@HomePageStyle.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <Pane fx:id="BookPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;">
          <Pane layoutX="883.0" layoutY="-12.0" prefHeight="223.0" prefWidth="200.0">
@@ -67,41 +61,22 @@
          <TextArea fx:id="textA" layoutX="541.0" layoutY="26.0" prefHeight="189.0" prefWidth="283.0" />
          <Label alignment="CENTER" layoutX="541.0" layoutY="6.0" prefHeight="17.0" prefWidth="283.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Description" />
       </Pane>
-      <Button fx:id="BackB" layoutX="-1.0" layoutY="1.0" mnemonicParsing="false" onAction="#swetchToHome" prefHeight="29.0" prefWidth="53.0" style="-fx-background-color: non; -fx-text-fill: #DCDEDE; -fx-border-color: #DCDEDE;" text="Back" />
-      <Button fx:id="Book" layoutX="-1.0" layoutY="30.0" mnemonicParsing="false" onAction="#open_BookPane" prefHeight="46.0" prefWidth="53.0" style="-fx-background-color: non; -fx-border-color: #DCDEDE;">
-         <graphic>
-            <ImageView fitHeight="37.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@pic/wired-outline-112-book-morph.gif" />
-               </image>
-            </ImageView>
-         </graphic></Button>
-      <Button fx:id="Users" layoutX="-1.0" layoutY="170.0" mnemonicParsing="false" onAction="#open_UsersPane" prefHeight="46.0" prefWidth="53.0" style="-fx-background-color: non; -fx-border-color: #DCDEDE;">
-         <graphic>
-            <ImageView fitHeight="59.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@pic/wired-outline-21-avatar.gif" />
-               </image>
-            </ImageView>
-         </graphic></Button>
       <Pane fx:id="UsersPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;" visible="false">
-         <TextField layoutX="14.0" layoutY="36.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
-         <Label alignment="CENTER" layoutX="14.0" layoutY="15.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Name" />
-         <TextField layoutX="14.0" layoutY="92.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+         <TextField layoutX="14.0" layoutY="58.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+         <Label alignment="CENTER" layoutX="14.0" layoutY="32.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Name" />
          <TextField layoutX="14.0" layoutY="155.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
-         <Label alignment="CENTER" layoutX="14.0" layoutY="74.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Person Id" />
-         <Label alignment="CENTER" layoutX="181.0" layoutY="24.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Member ship state" />
-         <Label alignment="CENTER" layoutX="14.0" layoutY="138.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Join Date" />
-         <Label alignment="CENTER" layoutX="181.0" layoutY="74.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Gender" />
-         <PieChart layoutX="471.0" prefHeight="216.0" prefWidth="330.0" style="-fx-background-color: red;" />
-         <MenuButton fx:id="GenderMenuB" alignment="CENTER" layoutX="181.0" layoutY="96.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" text="All">
+         <Label alignment="CENTER" layoutX="14.0" layoutY="132.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Person Id" />
+         <Label alignment="CENTER" layoutX="643.0" layoutY="88.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Member ship state" />
+         <Label alignment="CENTER" layoutX="214.0" layoutY="82.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Join Date" />
+         <Label alignment="CENTER" layoutX="671.0" layoutY="23.0" prefHeight="17.0" prefWidth="100.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Gender" />
+         <MenuButton fx:id="GenderMenuB" alignment="CENTER" layoutX="668.0" layoutY="45.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="106.0" styleClass="MenuButton" stylesheets="@AdminStyle.css" text="All">
             <items>
                <MenuItem fx:id="ManMenuItem" mnemonicParsing="false" onAction="#ManFun" style="-fx-pref-width: 142px;" text="Man" />
                <MenuItem fx:id="WomanMenuItem" mnemonicParsing="false" onAction="#WomanFun" style="-fx-pref-width: 142px;" text="Woman" />
                <MenuItem fx:id="WomanMenuItem1" mnemonicParsing="false" onAction="#AllFun" style="-fx-pref-width: 142px;" text="All" />
             </items>
          </MenuButton>
-         <MenuButton fx:id="state" alignment="CENTER" layoutX="181.0" layoutY="40.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" text="All">
+         <MenuButton fx:id="state" alignment="CENTER" layoutX="643.0" layoutY="118.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" styleClass="MenuButton" stylesheets="@AdminStyle.css" text="All">
             <items>
                <MenuItem fx:id="AdminMenuItem" mnemonicParsing="false" onAction="#stateOfAdmin" style="-fx-pref-width: 142px;" text="Admin" />
                <MenuItem fx:id="LibrarinMenuItem" mnemonicParsing="false" onAction="#stateOfLibrarin" style="-fx-pref-width: 142px;" text="Librarian" />
@@ -118,22 +93,137 @@
                <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="200.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Edit" />
             </VBox>
          </Pane>
-         <Line endX="326.0" endY="142.00001525878906" layoutX="475.0" layoutY="76.0" startX="326.0" startY="-80.33333587646484" stroke="#f8f8f8" />
-         <Line endX="326.0" endY="142.00001525878906" layoutX="145.0" layoutY="77.0" startX="326.0" startY="-80.33333587646484" stroke="#f8f8f8" />
-         <TextField fx:id="VisableOrNotText" layoutX="181.0" layoutY="155.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+         <TextField fx:id="VisableOrNotText" layoutX="418.0" layoutY="58.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
          <Label fx:id="intrestLabel" alignment="CENTER" layoutX="181.0" layoutY="138.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Interest" visible="false" />
-         <Label fx:id="intrestLabel1" alignment="CENTER" layoutX="181.0" layoutY="138.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Section id" />
+         <Label fx:id="intrestLabel1" alignment="CENTER" layoutX="418.0" layoutY="32.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Section id" />
+         <DatePicker layoutX="214.0" layoutY="108.0" prefHeight="32.0" prefWidth="157.0" />
+         <PasswordField fx:id="passf" layoutX="418.0" layoutY="155.0" prefHeight="16.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+         <Label fx:id="intrestLabel11" alignment="CENTER" layoutX="418.0" layoutY="130.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="PassWord" />
+         <RadioButton fx:id="radioButton" layoutX="587.0" layoutY="152.0" mnemonicParsing="false" onAction="#radioButtonAction" prefHeight="39.0" prefWidth="21.0" />
+         <Button layoutX="669.0" layoutY="173.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="106.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Report" />
       </Pane>
-      <Pane fx:id="EquipmentPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: green;" visible="false" />
-      <Button fx:id="Borrow" layoutX="-1.0" layoutY="76.0" mnemonicParsing="false" onAction="#open_BorrowPane" prefHeight="46.0" prefWidth="53.0" style="-fx-background-color: non; -fx-border-color: #DCDEDE;" />
-      <Pane fx:id="BorrowPane" layoutX="52.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;" visible="false" />
-      <Button fx:id="Equipment" layoutX="-1.0" layoutY="124.0" mnemonicParsing="false" onAction="#open_EquipmentPane" prefHeight="46.0" prefWidth="53.0" style="-fx-background-color: non; -fx-border-color: #DCDEDE;">
-         <graphic>
-            <ImageView fitHeight="59.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@pic/wired-outline-478-computer-display.gif" />
-               </image>
-            </ImageView>
-         </graphic></Button>
+      <Pane fx:id="EquipmentPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;" visible="false">
+         <children>
+            <TextField layoutX="35.0" layoutY="92.0" prefHeight="32.0" prefWidth="207.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <Label alignment="CENTER" layoutX="35.0" layoutY="74.0" prefHeight="17.0" prefWidth="207.0" styleClass="nameLabel2" stylesheets="@profile.css" text="equipment id" />
+            <TextField layoutX="268.0" layoutY="92.0" prefHeight="32.0" prefWidth="207.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <Label alignment="CENTER" layoutX="268.0" layoutY="74.0" prefHeight="17.0" prefWidth="207.0" styleClass="nameLabel2" stylesheets="@profile.css" text="section id" />
+            <TextField layoutX="509.0" layoutY="91.0" prefHeight="32.0" prefWidth="207.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <Label alignment="CENTER" layoutX="509.0" layoutY="65.0" prefHeight="17.0" prefWidth="207.0" styleClass="nameLabel2" stylesheets="@profile.css" text="equipment type" />
+            <Button layoutX="306.0" layoutY="162.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="132.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Report" />
+            <Pane layoutX="882.0" layoutY="-15.0" prefHeight="223.0" prefWidth="200.0" style="-fx-background-color: Transparent;">
+               <children>
+                  <VBox layoutX="-33.0" layoutY="14.0" prefHeight="223.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="typeOfSearch22" mnemonicParsing="false" onAction="#togglebutton2" prefHeight="39.0" prefWidth="204.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Single Search" />
+                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="223.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Search" />
+                        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="213.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Add" />
+                        <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="200.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Remove" />
+                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="200.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Edit" />
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+         </children></Pane>
+      <Pane fx:id="BorrowPane" layoutX="52.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;" visible="false">
+         <children>
+            <TextField layoutX="26.0" layoutY="45.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <TextField layoutX="228.0" layoutY="44.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <TextField layoutX="26.0" layoutY="143.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <Label alignment="CENTER" layoutX="26.0" layoutY="21.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Person ID" />
+            <Label alignment="CENTER" layoutX="26.0" layoutY="115.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Book ID" />
+            <Label alignment="CENTER" layoutX="228.0" layoutY="21.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Borrowing ID" />
+            <Label alignment="CENTER" layoutX="305.0" layoutY="115.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" />
+            <DatePicker editable="false" layoutX="228.0" layoutY="143.0" prefHeight="32.0" prefWidth="157.0" />
+            <Label alignment="CENTER" layoutX="228.0" layoutY="122.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Date Of Borrowing" />
+            <DatePicker layoutX="412.0" layoutY="92.0" prefHeight="32.0" prefWidth="157.0" />
+            <Label alignment="CENTER" layoutX="412.0" layoutY="69.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Date of Return" />
+            <Label alignment="CENTER" layoutX="590.0" layoutY="52.0" prefHeight="17.0" prefWidth="200.0" styleClass="nameLabel2" stylesheets="@profile.css" text="number of Borrowing : " />
+            <Label alignment="CENTER" layoutX="590.0" layoutY="122.0" prefHeight="43.0" prefWidth="200.0" style="-fx-wrap-text: true;" styleClass="nameLabel2" stylesheets="@profile.css" text="Number of Borrowing opration:" />
+            <Pane layoutX="879.0" layoutY="-14.0" prefHeight="223.0" prefWidth="200.0" style="-fx-background-color: Transparent;">
+               <children>
+                  <VBox layoutX="-33.0" layoutY="14.0" prefHeight="223.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="typeOfSearch33" mnemonicParsing="false" onAction="#togglebutton3" prefHeight="39.0" prefWidth="204.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Single Search" />
+                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="223.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Search" />
+                        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="213.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Add" />
+                        <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="200.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Remove" />
+                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="200.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Edit" />
+                     </children>
+                  </VBox>
+               </children>
+            </Pane>
+         </children></Pane>
+      <VBox prefHeight="216.0" prefWidth="100.0">
+         <children>
+            <Button fx:id="BackB" mnemonicParsing="false" onAction="#swetchToHome" prefHeight="29.0" prefWidth="53.0" style="-fx-background-color: non; -fx-text-fill: #DCDEDE; -fx-border-color: #DCDEDE;" text="Back" />
+            <Button fx:id="Book" mnemonicParsing="false" onAction="#open_BookPane" prefHeight="46.0" prefWidth="53.0" style="-fx-background-color: non; -fx-border-color: #DCDEDE;">
+               <graphic>
+                  <ImageView fitHeight="37.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pic/wired-outline-112-book-morph.gif" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="Borrow" mnemonicParsing="false" onAction="#open_BorrowPane" prefHeight="46.0" prefWidth="53.0" style="-fx-background-color: non; -fx-border-color: #DCDEDE;" />
+            <Button fx:id="Equipment" mnemonicParsing="false" onAction="#open_EquipmentPane" prefHeight="46.0" prefWidth="53.0" style="-fx-background-color: non; -fx-border-color: #DCDEDE;">
+               <graphic>
+                  <ImageView fitHeight="59.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pic/wired-outline-478-computer-display.gif" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="Users" mnemonicParsing="false" onAction="#open_UsersPane" prefHeight="46.0" prefWidth="54.0" style="-fx-background-color: non; -fx-border-color: #DCDEDE;">
+               <graphic>
+                  <ImageView fitHeight="47.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@pic/wired-outline-21-avatar.gif" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
    </Pane>
+   <TableView fx:id="TBook" layoutY="216.0" prefHeight="443.0" prefWidth="1100.0" stylesheets="@tableView.css">
+     <columns>
+       <TableColumn prefWidth="137.5" text="ID" />
+       <TableColumn minWidth="4.666656494140625" prefWidth="137.5" text="Name" />
+         <TableColumn minWidth="0.0" prefWidth="137.5" text="Author Name" />
+         <TableColumn minWidth="0.0" prefWidth="137.5" text="Section ID" />
+         <TableColumn prefWidth="137.5" text="Language" />
+         <TableColumn prefWidth="137.5" text="Number of pages" />
+         <TableColumn prefWidth="137.5" text="Total Copy" />
+         <TableColumn prefWidth="137.5" text="Kind" />
+     </columns>
+   </TableView>
+   <TableView fx:id="TPerson" layoutY="216.0" prefHeight="443.0" prefWidth="1100.0" stylesheets="@tableView.css" visible="false">
+     <columns>
+       <TableColumn prefWidth="183.333333333" text="ID" />
+       <TableColumn prefWidth="183.333333333" text="Name" />
+         <TableColumn prefWidth="183.333333333" text="Section ID" />
+         <TableColumn prefWidth="183.333333333" text="JoinDate" />
+         <TableColumn prefWidth="183.333333333" text="Member ship" />
+         <TableColumn prefWidth="183.333333333" text="Gender" />
+     </columns>
+   </TableView>
+   <TableView fx:id="TEquipment" layoutY="216.0" prefHeight="443.0" prefWidth="1100.0" stylesheets="@tableView.css" visible="false">
+     <columns>
+       <TableColumn prefWidth="366.6666667" text="Id" />
+       <TableColumn prefWidth="366.6666667" text="Section ID" />
+         <TableColumn prefWidth="366.6666667" text="equipment type" />
+     </columns>
+   </TableView>
+   <TableView fx:id="TBorrow" layoutY="216.0" prefHeight="443.0" prefWidth="1100.0" visible="false">
+     <columns>
+       <TableColumn prefWidth="220.0" text="Borrowing ID" />
+       <TableColumn prefWidth="220.0" text="Person ID" />
+         <TableColumn prefWidth="220.0" text="Book ID" />
+         <TableColumn prefWidth="220.0" text="Date Of Borrowing" />
+         <TableColumn prefWidth="220.0" text="Date of Return" />
+     </columns>
+   </TableView>
 </AnchorPane>

@@ -6,10 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-
-
 import java.io.IOException;
+import java.sql.*;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {

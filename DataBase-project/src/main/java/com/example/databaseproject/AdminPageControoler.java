@@ -24,13 +24,25 @@ public Pane BookPane;
 @FXML
 public Pane UsersPane;
 @FXML
+public Button typeOfSearch33;
+@FXML
 public Pane EquipmentPane;
 @FXML
 public TextArea textA;
 @FXML
+public Button typeOfSearch22;
+@FXML
 public MenuItem AllMenuItem;
 @FXML
 public MenuItem WomanMenuItem1;
+@FXML
+public TableView TBook;
+    @FXML
+    public TableView TEquipment;
+    @FXML
+    public TableView TPerson;
+    @FXML
+    public TableView TBorrow;
     @FXML
     public MenuItem ReaderMenuItem;
     @FXML
@@ -46,6 +58,9 @@ public MenuItem WomanMenuItem1;
     @FXML
     public Button typeOfSearch11;
     public boolean issingle=true;
+    public boolean issingle1=true;
+    public boolean issingle2=true;
+    public boolean issingle3=true;
     @FXML
     public MenuItem item1;
     @FXML
@@ -76,6 +91,10 @@ public boolean isopenp=false;
     public TextField VisableOrNotText;
     @FXML
 public MenuButton state;
+    @FXML
+    public RadioButton radioButton;
+    @FXML
+    public PasswordField passf;
     public  void ManFun(){
         GenderMenuB.setText(ManMenuItem.getText());
     }
@@ -114,13 +133,33 @@ public void togglebutton(){
     }
 }
     public void togglebutton1(){
-        if(issingle){
+        if(issingle1){
             typeOfSearch11.setText("Multi Search");
-            issingle=false;
+            issingle1=false;
         }
         else{
             typeOfSearch11.setText("Single Search");
-            issingle=true;
+            issingle1=true;
+        }
+    }
+    public void togglebutton2(){
+        if(issingle2){
+            typeOfSearch22.setText("Multi Search");
+            issingle2=false;
+        }
+        else{
+            typeOfSearch22.setText("Single Search");
+            issingle2=true;
+        }
+    }
+    public void togglebutton3(){
+        if(issingle3){
+            typeOfSearch33.setText("Multi Search");
+            issingle3=false;
+        }
+        else{
+            typeOfSearch33.setText("Single Search");
+            issingle3=true;
         }
     }
 public void open_UsersPane(){
@@ -137,7 +176,10 @@ public void open_UsersPane(){
             isopenB=false;
             isopenp=true;
             isopenBo=false;
-
+            TBook.setVisible(false);
+            TPerson.setVisible(true);
+            TEquipment.setVisible(false);
+            TBorrow.setVisible(false);
         }
 }
     public void open_BookPane(){
@@ -156,7 +198,10 @@ public void open_UsersPane(){
             isopenB=true;
             isopenp=false;
             isopenBo=false;
-
+            TBook.setVisible(true);
+            TPerson.setVisible(false);
+            TEquipment.setVisible(false);
+            TBorrow.setVisible(false);
         }
     }
     public void open_EquipmentPane(){
@@ -173,6 +218,10 @@ public void open_UsersPane(){
             isopenB=false;
             isopenp=false;
             isopenBo=false;
+            TBook.setVisible(false);
+            TPerson.setVisible(false);
+            TEquipment.setVisible(true);
+            TBorrow.setVisible(false);
         }
     }
     public void open_BorrowPane(){
@@ -189,6 +238,11 @@ public void open_UsersPane(){
             isopenB = false;
             isopenp = false;
             isopenBo = true;
+            TBook.setVisible(false);
+            TPerson.setVisible(false);
+            TEquipment.setVisible(false);
+            TBorrow.setVisible(true);
+
         }
     }
 
@@ -214,6 +268,20 @@ public void open_UsersPane(){
     }
     public void stateOfAll(){
         state.setText(AllMenuItem.getText());
+    }
+//////////////////////radio btn
+    public void radioButtonAction(){
+        if (radioButton.isSelected()){
+            passf.setPromptText(passf.getText());
+            passf.setText("");
+            passf.setDisable(true);
+
+        }
+        else {
+            passf.setText(passf.getPromptText());
+            passf.setPromptText("");
+            passf.setDisable(false);
+        }
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
