@@ -3,16 +3,10 @@ package com.example.databaseproject;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-import javafx.scene.shape.Rectangle;
-
 import java.net.URL;
-import java.security.cert.PolicyNode;
 import java.util.ResourceBundle;
 
 public class MulitpagePane implements Initializable {
@@ -65,26 +59,6 @@ public class MulitpagePane implements Initializable {
 
     @FXML
     private Pane panel6;
-    @FXML
-    private FlowPane PaneOfFirstType;
-
-
-    @FXML
-    private FlowPane paneOFThirdType;
-
-    @FXML
-    private FlowPane paneOfAll;
-
-    @FXML
-    private FlowPane paneOfFifthType;
-
-    @FXML
-    private FlowPane paneOfFourthType;
-
-    @FXML
-    private FlowPane paneOfSecondType;
-
-
     @FXML
     void OpenPane2(ActionEvent event) {
         Button2.setStyle("-fx-background-color: transport;-fx-background-radius:0 50 0 0 ;-fx-text-fill: #ffffff;");
@@ -219,114 +193,7 @@ public class MulitpagePane implements Initializable {
         rectangle6.setVisible(false);
     }
 
-    void fillPanels(){
-        FlowPane contant=paneOfAll;
-        contant.setHgap(10);
-        contant.setVgap(10);
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\PHPCookbookCookbooksOReilly.png")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece1.png")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece2.png")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece3.png")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece4.png")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece7.png")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece12.png")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece35.png")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece45.png")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece51.png")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece59.png")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece60.png")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece61.png")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece62.png")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece85.png")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece91.png")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece97.png")));
 
-        PaneOfFirstType.getChildren().add(new JFlipCard(new Image("D:\\Media\\PHPCookbookCookbooksOReilly.png")));
-        FlowPane contant1=paneOfSecondType;
-        contant1.setHgap(10);
-        contant1.setVgap(10);
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece1.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece2.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece3.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece4.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece7.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece12.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece35.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece45.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece51.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece59.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece60.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece61.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece62.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece85.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece91.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece97.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece1.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece2.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece3.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece4.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece7.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece12.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece35.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece45.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece51.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece59.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece60.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece61.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece62.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece85.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece91.jp")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece97.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece1.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece2.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece3.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece4.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece7.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece12.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece35.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece45.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece51.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece59.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece60.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece61.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece62.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece85.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece91.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece97.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece1.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece2.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece3.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece4.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece7.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece12.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece35.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece45.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece51.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece59.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece60.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece61.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece62.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece85.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece91.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece97.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece1.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece2.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece3.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece4.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece7.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece12.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece35.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece45.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece51.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece59.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece60.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece61.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece62.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece85.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece91.png")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece97.png")));
-
-    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Button1.setStyle("-fx-background-color: transport;-fx-background-radius:0 50 0 0 ;-fx-text-fill: #ffffff;");

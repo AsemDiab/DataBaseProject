@@ -21,9 +21,13 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import oracle.jdbc.pool.OracleDataSource;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Objects;
 import java.util.ResourceBundle;
 public class HomeController implements Initializable {
@@ -35,18 +39,18 @@ public class HomeController implements Initializable {
     //////////////////////////
 
     ///////////////////////////
-    private Boolean inout=false;//هاي مشان اعرف اذا انو السيرش مفتوح ولا مسكر
+    private Boolean inout = false;//هاي مشان اعرف اذا انو السيرش مفتوح ولا مسكر
     //photo
     @FXML
-public Button adminB;
-@FXML
-public ImageView AnimeImage;
-@FXML
-public Pane AnimePane;
+    public Button adminB;
+    @FXML
+    public ImageView AnimeImage;
+    @FXML
+    public Pane AnimePane;
     @FXML
     public Pane NovelsPane;
-@FXML
-public ImageView exitview;
+    @FXML
+    public ImageView exitview;
     @FXML
     public RadioButton radioButton;
     @FXML
@@ -78,6 +82,10 @@ public ImageView exitview;
     @FXML
     private Pane Pane6;
     @FXML
+    Label nameL;
+    @FXML
+    Label typeL;
+    @FXML
     public Pane ActionPane;
     @FXML
     private Button OpenSideManu;
@@ -87,8 +95,8 @@ public ImageView exitview;
     private Button profileb1;
     @FXML
     private Circle backarrow1;
-@FXML
-private Pane HomePane;
+    @FXML
+    private Pane HomePane;
     @FXML
     private Pane HomePane1;
 
@@ -99,7 +107,8 @@ private Pane HomePane;
     public Button authorB1;
     @FXML
     AnchorPane side1;
-    public int anyPaneIsOpen=1;
+    public int anyPaneIsOpen = 1;
+
     /////////////////////////////////////////////
     //            switch scenes                //
     /////////////////////////////////////////////
@@ -114,49 +123,56 @@ private Pane HomePane;
         stage.show();
     }*/
     public void swetchLogIn(ActionEvent e) throws IOException {
-        root= FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BookLoginWindow.fxml")));
-        stage=(Stage)((Node)e.getSource()).getScene().getWindow();
-        scene=new Scene(root);
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BookLoginWindow.fxml")));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
         stage.setResizable(false);
         stage.setX(350);
         stage.setY(50);
         stage.setScene(scene);
+        scene.setFill(Color.TRANSPARENT);
+        stage.initStyle(StageStyle.TRANSPARENT);
+
         stage.show();
     }
+
     public void swetchAdminPage(ActionEvent e) throws IOException {
-        root= FXMLLoader.load(getClass().getResource("AdminPage.fxml"));
-        stage=(Stage)((Node)e.getSource()).getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("AdminPage.fxml"));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.setResizable(false);
-        scene=new Scene(root);
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
     public void swetchLibrarianPage(ActionEvent e) throws IOException {
-        root= FXMLLoader.load(getClass().getResource("LibrianPage.fxml"));
-        stage=(Stage)((Node)e.getSource()).getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("LibrianPage.fxml"));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         stage.setResizable(false);
-        scene=new Scene(root);
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
     public void swetchAuthorPage(ActionEvent e) throws IOException {
-        root= FXMLLoader.load(getClass().getResource("Author.fxml"));
-        stage=(Stage)((Node)e.getSource()).getScene().getWindow();
-        scene=new Scene(root);
+        root = FXMLLoader.load(getClass().getResource("Author.fxml"));
+        stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
     /////////////////////////////////////////////
     //               methods                   //
     /////////////////////////////////////////////
-    public void closesearch(){//هذا الفنكشن مسؤل عن اغلاق البحث يجب استخدامه عند الضغط علي اي زر اخر
-        TranslateTransition searchTtrans=new TranslateTransition();
-        TranslateTransition searchBtrans=new TranslateTransition();
-        TranslateTransition searchPtrans=new TranslateTransition();
+    public void closesearch() {//هذا الفنكشن مسؤل عن اغلاق البحث يجب استخدامه عند الضغط علي اي زر اخر
+        TranslateTransition searchTtrans = new TranslateTransition();
+        TranslateTransition searchBtrans = new TranslateTransition();
+        TranslateTransition searchPtrans = new TranslateTransition();
         searchTtrans.setNode(searchf);
         searchBtrans.setNode(searcht);
         searchPtrans.setNode(transpane);
-        if(searchf.getText().isEmpty()) {
+        if (searchf.getText().isEmpty()) {
             if (inout) {
                 //  if (searchf.getText().isEmpty()) {
                 searchTtrans.setDuration(Duration.millis(200));
@@ -180,46 +196,42 @@ private Pane HomePane;
     ///////////////////////////////
     //Catagori
     ///////////////////////////////
-    public void closePane(){
-        if(anyPaneIsOpen==1){
+    public void closePane() {
+        if (anyPaneIsOpen == 1) {
             FadeTransition f = new FadeTransition(Duration.seconds(0.5), AnimePane);
             f.setFromValue(1);
             f.setToValue(0);
             f.play();
-        }
-        else if(anyPaneIsOpen==2){
+        } else if (anyPaneIsOpen == 2) {
             FadeTransition f = new FadeTransition(Duration.seconds(0.5), NovelsPane);
             f.setFromValue(1);
             f.setToValue(0);
             f.play();
-        }
-        else if(anyPaneIsOpen==3){
+        } else if (anyPaneIsOpen == 3) {
             FadeTransition f = new FadeTransition(Duration.seconds(0.5), ActionPane);
             f.setFromValue(1);
             f.setToValue(0);
             f.play();
-        }
-        else if(anyPaneIsOpen==4){
+        } else if (anyPaneIsOpen == 4) {
             FadeTransition f = new FadeTransition(Duration.seconds(0.5), Pane4);
             f.setFromValue(1);
             f.setToValue(0);
             f.play();
-        }
-        else if(anyPaneIsOpen==5){
+        } else if (anyPaneIsOpen == 5) {
             FadeTransition f = new FadeTransition(Duration.seconds(0.5), Pane5);
             f.setFromValue(1);
             f.setToValue(0);
             f.play();
-        }
-        else if(anyPaneIsOpen==6){
+        } else if (anyPaneIsOpen == 6) {
             FadeTransition f = new FadeTransition(Duration.seconds(0.5), Pane6);
             f.setFromValue(1);
             f.setToValue(0);
             f.play();
         }
     }
-    public void OpenAnimePane(ActionEvent e){
-        if(!(anyPaneIsOpen==1)) {
+
+    public void OpenAnimePane(ActionEvent e) {
+        if (!(anyPaneIsOpen == 1)) {
             closePane();
             NovelsPane.setVisible(false);
             ActionPane.setVisible(false);
@@ -232,11 +244,12 @@ private Pane HomePane;
             f.setToValue(1);
             f.play();
 
-            anyPaneIsOpen=1;
+            anyPaneIsOpen = 1;
         }
     }
-    public void OpenNovelsPane(ActionEvent e){
-        if(!(anyPaneIsOpen==2)) {
+
+    public void OpenNovelsPane(ActionEvent e) {
+        if (!(anyPaneIsOpen == 2)) {
             closePane();
             AnimePane.setVisible(false);
             ActionPane.setVisible(false);
@@ -249,12 +262,12 @@ private Pane HomePane;
             f.setToValue(1);
             f.play();
 
-            anyPaneIsOpen=2;
+            anyPaneIsOpen = 2;
         }
     }
 
-    public void OpenActionPane(ActionEvent e){
-        if(!(anyPaneIsOpen==3)) {
+    public void OpenActionPane(ActionEvent e) {
+        if (!(anyPaneIsOpen == 3)) {
             closePane();
             AnimePane.setVisible(false);
             NovelsPane.setVisible(false);
@@ -267,12 +280,12 @@ private Pane HomePane;
             f.setToValue(1);
             f.play();
 
-            anyPaneIsOpen=3;
+            anyPaneIsOpen = 3;
         }
     }
 
-    public void OpenPane4(ActionEvent e){
-        if(!(anyPaneIsOpen==4)) {
+    public void OpenPane4(ActionEvent e) {
+        if (!(anyPaneIsOpen == 4)) {
             closePane();
 
             AnimePane.setVisible(false);
@@ -286,11 +299,12 @@ private Pane HomePane;
             f.setToValue(1);
             f.play();
 
-            anyPaneIsOpen=4;
+            anyPaneIsOpen = 4;
         }
     }
-    public void OpenPane55(ActionEvent e){
-        if(!(anyPaneIsOpen==5)) {
+
+    public void OpenPane55(ActionEvent e) {
+        if (!(anyPaneIsOpen == 5)) {
             closePane();
             AnimePane.setVisible(false);
             NovelsPane.setVisible(false);
@@ -303,12 +317,12 @@ private Pane HomePane;
             f.setToValue(1);
             f.play();
 
-            anyPaneIsOpen=5;
+            anyPaneIsOpen = 5;
         }
     }
 
-    public void OpenPane66(ActionEvent e){
-        if(!(anyPaneIsOpen==6)) {
+    public void OpenPane66(ActionEvent e) {
+        if (!(anyPaneIsOpen == 6)) {
             closePane();
             AnimePane.setVisible(false);
             NovelsPane.setVisible(false);
@@ -321,29 +335,32 @@ private Pane HomePane;
             f.setToValue(1);
             f.play();
 
-            anyPaneIsOpen=6;
+            anyPaneIsOpen = 6;
         }
     }
+
     ////////////////////////////
     /////////////////////////////
     /////////////////////////////
-    public void opensearch(ActionEvent e){//هذا الزر مسؤل عن فتح البحث يستخدم فقط عند الضغط على زر البحث
+    public void opensearch(ActionEvent e) {//هذا الزر مسؤل عن فتح البحث يستخدم فقط عند الضغط على زر البحث
         new OpenSearchThread().start();
     }
-    static Boolean key=true;
-    class  OpenSearchThread extends Thread{
+
+    static Boolean key = true;
+
+    class OpenSearchThread extends Thread {
 
         @Override
         public void run() {
-            if(key){
-                key=false;
-                TranslateTransition searchTtrans=new TranslateTransition();
-                TranslateTransition searchBtrans=new TranslateTransition();
-                TranslateTransition searchPtrans=new TranslateTransition();
+            if (key) {
+                key = false;
+                TranslateTransition searchTtrans = new TranslateTransition();
+                TranslateTransition searchBtrans = new TranslateTransition();
+                TranslateTransition searchPtrans = new TranslateTransition();
                 searchTtrans.setNode(searchf);
                 searchBtrans.setNode(searcht);
                 searchPtrans.setNode(transpane);
-                if(!inout) {
+                if (!inout) {
                     System.out.println("اههههه");
                     searchTtrans.setDuration(Duration.millis(600));
                     searchTtrans.setByX(170);
@@ -357,171 +374,186 @@ private Pane HomePane;
                     searchPtrans.setDuration(Duration.millis(600));
                     searchPtrans.setByX(-70);
                     searchPtrans.play();
-                    inout=true;
+                    inout = true;
                     try {
                         sleep(600);
+                    } catch (Exception exception) {
                     }
-                    catch (Exception exception){}
-                    key=true;
+                    key = true;
                 }
             }
         }
     }
-//////////////////////////////////////////
+
+    //////////////////////////////////////////
     //////////////////////////////////////
-    public void searchTransition(ActionEvent e){
-        if (key){
-        if(inout)
-            closesearch();
-        else
-            opensearch(e);
-        if(!searchf.getText().isEmpty()){
-            System.out.println("hola");
-        }}
-  }
+    public void searchTransition(ActionEvent e) {
+        if (key) {
+            if (inout)
+                closesearch();
+            else
+                opensearch(e);
+            if (!searchf.getText().isEmpty()) {
+                System.out.println("hola");
+            }
+        }
+    }
+
     ///////////////////////////////////////
     /////////////////////////////////////////
     public void profileEvent(ActionEvent e) throws IOException {//زر البروفايل
-        if(inout)
+        if (inout)
             closesearch();
         //swetchToProfile(e);
         System.out.println("اههههه");
     }
-    public void slideEvent(ActionEvent e){//زر البروفايل
+
+    public void slideEvent(ActionEvent e) {//زر البروفايل
         System.out.println("ااااا");
-        if(inout)
+        if (inout)
             closesearch();
 
-        if(isSideManuOpened){
-            if(inout)
+        if (isSideManuOpened) {
+            if (inout)
                 closesearch();
-            TranslateTransition translateTransition2=new TranslateTransition();
+            TranslateTransition translateTransition2 = new TranslateTransition();
             translateTransition2.setNode(side);
             translateTransition2.setToX(-250);
             translateTransition2.setDuration(Duration.millis(200));
             translateTransition2.play();
-            TranslateTransition translateTransition3=new TranslateTransition();
+            TranslateTransition translateTransition3 = new TranslateTransition();
             translateTransition3.setNode(side1);
             translateTransition3.setToX(-250);
             translateTransition3.setDuration(Duration.millis(500));
             translateTransition3.play();
-            isSideManuOpened=false;
-        }
-        else {
-            if(inout)
+            isSideManuOpened = false;
+        } else {
+            if (inout)
                 closesearch();
-            TranslateTransition translateTransition=new TranslateTransition();
+            TranslateTransition translateTransition = new TranslateTransition();
             translateTransition.setNode(side);
             translateTransition.setToX(0);
             translateTransition.setDuration(Duration.millis(500));
             translateTransition.play();
-            TranslateTransition translateTransition1=new TranslateTransition();
+            TranslateTransition translateTransition1 = new TranslateTransition();
             translateTransition1.setNode(side1);
             translateTransition1.setToX(0);
             translateTransition1.setDuration(Duration.millis(500));
             translateTransition1.play();
-            isSideManuOpened=true;}
+            isSideManuOpened = true;
+        }
 
 
     }
 
-    public void adminanime(){
+    public void adminanime() {
         authorB1.setVisible(true);
         authorB.setVisible(false);
         Tooltip tooltip = new Tooltip("Admin Center");
         Tooltip.install(authorB1, tooltip);
     }
-    public void adminanime1(){
+
+    public void adminanime1() {
         authorB1.setVisible(false);
         authorB.setVisible(true);
         Tooltip tooltip = new Tooltip("Admin Center");
         Tooltip.install(authorB, tooltip);
     }
-    public void profileanime(){
+
+    public void profileanime() {
         profileb1.setVisible(true);
         profileb.setVisible(false);
         Tooltip tooltip = new Tooltip("profile page");
         Tooltip.install(profileb1, tooltip);
     }
-    public void profileanime1(){
+
+    public void profileanime1() {
         profileb.setVisible(true);
         profileb1.setVisible(false);
         Tooltip tooltip = new Tooltip("profile page");
         Tooltip.install(profileb, tooltip);
     }
-//////////////////////////////////////////////
+
+    //////////////////////////////////////////////
 //          acess types                     //
 //////////////////////////////////////////////
-    public void isAdmin(){
-      //  Users.setVisible(true);
+    public void isAdmin() {
+        //  Users.setVisible(true);
+
         authorB.setVisible(true);
     }
 
-    public void isLibrarian(){
+    public void isLibrarian() {
         //Users.setVisible(false);
         authorB.setVisible(true);
     }
-    public void isReader(){
+
+    public void isReader() {
         authorB.setVisible(false);
     }
-//////////////////////////////////////////////
+
+    //////////////////////////////////////////////
 //          osama inisialize                //
 //////////////////////////////////////////////
-public void ini(){
-    Tooltip tooltip = new Tooltip("Search");
-    Tooltip.install(searcht, tooltip);
-    Tooltip tooltip1 = new Tooltip("Menu Mine");
-    Tooltip.install(OpenSideManu, tooltip1);
-if(BookLoginWindowController.type.equals(TypeOfUseers.Admin)){
-    isAdmin();
-}
-   else if(BookLoginWindowController.type.equals(TypeOfUseers.Librarian)){
-        isLibrarian();
+    public void ini() {
+        Tooltip tooltip = new Tooltip("Search");
+        Tooltip.install(searcht, tooltip);
+        Tooltip tooltip1 = new Tooltip("Menu Mine");
+        Tooltip.install(OpenSideManu, tooltip1);
+        if (BookLoginWindowController.type.equals(TypeOfUseers.Admin)) {
+            isAdmin();
+        } else if (BookLoginWindowController.type.equals(TypeOfUseers.Librarian)) {
+            isLibrarian();
+        } else if (BookLoginWindowController.type.equals(TypeOfUseers.Reader)) {
+            isReader();
+        } else {
+            System.out.println("shit");
+        }
+        // profilec.setFill(new ImagePattern(new Image(getClass().getResource("anime4.png").toExternalForm())));
     }
- else if(BookLoginWindowController.type.equals(TypeOfUseers.Reader)){
-        isReader();
+
+    public void closeHomeView(MouseEvent mouseEvent) throws Exception {
+
+        root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        stage.close();
+        stage = new Stage();
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("BookLoginWindow.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("Hello!");
+        stage.setResizable(false);
+        stage.setScene(scene);
+        scene.setFill(Color.TRANSPARENT);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.show();
     }
- else{
-    System.out.println("shit");
- }
-   // profilec.setFill(new ImagePattern(new Image(getClass().getResource("anime4.png").toExternalForm())));
-}
 
-public void closeHomeView(MouseEvent mouseEvent)throws Exception{
-
-    root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
-    stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-    stage.close();
-    stage=new Stage();
-
-    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("BookLoginWindow.fxml"));
-    Scene scene = new Scene(fxmlLoader.load());
-    stage.setTitle("Hello!");
-    stage.setResizable(false);
-    stage.setScene(scene);
-    scene.setFill(Color.TRANSPARENT);
-    stage.initStyle(StageStyle.TRANSPARENT);
-    stage.show();
-    }
-    public void ExitHover(){
+    public void ExitHover() {
         exitview.setVisible(false);
     }
-    public void ExitHover1(){
+
+    public void ExitHover1() {
         exitview.setVisible(true);
     }
-    public void CatagorieHover(){
+
+    public void CatagorieHover() {
         CatagorieView.setVisible(false);
     }
-    public void  CatagorieHover1(){
+
+    public void CatagorieHover1() {
         CatagorieView.setVisible(true);
     }
-    public void HomeHover(){
+
+    public void HomeHover() {
         HomeIcon.setVisible(false);
     }
-    public void HomeHover1(){
+
+    public void HomeHover1() {
         HomeIcon.setVisible(true);
     }
-    public void openSub(){
+
+    public void openSub() {
         System.out.println("openSub");
         try {
             HomePane.setVisible(false);
@@ -530,14 +562,13 @@ public void closeHomeView(MouseEvent mouseEvent)throws Exception{
             slideEvent(new ActionEvent());
             //هنا يتم فتح التصنيفات
 
-        }
-        catch (Exception exception){
-            System.out.println("failed"+exception);
+        } catch (Exception exception) {
+            System.out.println("failed" + exception);
         }
 
     }
 
-    public void openHomeView(ActionEvent e){
+    public void openHomeView(ActionEvent e) {
         slideEvent(new ActionEvent());
         contantPane.getChildren().removeAll();
         HomePane.setVisible(true);
@@ -546,52 +577,87 @@ public void closeHomeView(MouseEvent mouseEvent)throws Exception{
     }
 
 
-    Boolean isSideManuOpened=false;
+    Boolean isSideManuOpened = false;
     AnchorPane anchorPane;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // i cofuse here so i comment it check it plese:)
         ini();//inisilaiz
 // I will hix my error(convert following line to methods)
+        try{
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+            connection.setAutoCommit(false);
+            // Statement statement=connection.createStatement();
+            String sql = "select * from book ";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet=statement.executeQuery();
 
+            while (resultSet.next()){
+                paneOfAll.getChildren().add(new JFlipCard(resultSet.getInt(1)));
+                switch (resultSet.getInt("Type")){
+                    case 1:NovelFlowPane.getChildren().add(new JFlipCard(resultSet.getInt(1)));
+                        break;
+                    case 2:AcademicFlowPane.getChildren().add(new JFlipCard(resultSet.getInt(1)));
+                        break;
+                    case 3:FantasyFlowPane.getChildren().add(new JFlipCard(resultSet.getInt(1)));
+                        break;
+                    case 4:HumanDevolopmentFlowPane.getChildren().add(new JFlipCard(resultSet.getInt(1)));
+                        break;
+                    case 5:MangaFlowPane.getChildren().add(new JFlipCard(resultSet.getInt(1)));
+                        break;
+
+                }
+
+
+            }
+        }catch (Exception exception){
+            System.out.println(exception);
+        }
+        nameL.setText(User.name);
+        typeL.setText(User.member_status);
+        nameL.setWrapText(true);
         side.setTranslateX(-250);
         side.setVisible(true);
-        OpenSideManu.setOnAction(Event->{
-            if(isSideManuOpened){
-                if(inout)
+        OpenSideManu.setOnAction(Event -> {
+            if (isSideManuOpened) {
+                if (inout)
                     closesearch();
-                TranslateTransition translateTransition2=new TranslateTransition();
+                TranslateTransition translateTransition2 = new TranslateTransition();
                 translateTransition2.setNode(side);
                 translateTransition2.setToX(-250);
                 translateTransition2.setDuration(Duration.millis(200));
                 translateTransition2.play();
-                TranslateTransition translateTransition3=new TranslateTransition();
+                TranslateTransition translateTransition3 = new TranslateTransition();
                 translateTransition3.setNode(side1);
                 translateTransition3.setToX(-250);
                 translateTransition3.setDuration(Duration.millis(500));
                 translateTransition3.play();
-                isSideManuOpened=false;
-            }
-            else {
-                if(inout)
+                isSideManuOpened = false;
+            } else {
+                if (inout)
                     closesearch();
-            TranslateTransition translateTransition=new TranslateTransition();
-            translateTransition.setNode(side);
-            translateTransition.setToX(0);
-            translateTransition.setDuration(Duration.millis(500));
-            translateTransition.play();
-            TranslateTransition translateTransition1=new TranslateTransition();
-            translateTransition1.setNode(side1);
-            translateTransition1.setToX(0);
-            translateTransition1.setDuration(Duration.millis(500));
-            translateTransition1.play();
-            isSideManuOpened=true;}
+                TranslateTransition translateTransition = new TranslateTransition();
+                translateTransition.setNode(side);
+                translateTransition.setToX(0);
+                translateTransition.setDuration(Duration.millis(500));
+                translateTransition.play();
+                TranslateTransition translateTransition1 = new TranslateTransition();
+                translateTransition1.setNode(side1);
+                translateTransition1.setToX(0);
+                translateTransition1.setDuration(Duration.millis(500));
+                translateTransition1.play();
+                isSideManuOpened = true;
+            }
         });
         try {
-            anchorPane=FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MyTabbedPane.fxml")));
-        }
-        catch (Exception exception){
-            System.out.println("SooryBro"+exception);
+            anchorPane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MyTabbedPane.fxml")));
+        } catch (Exception exception) {
+            System.out.println("SooryBro" + exception);
         }
 
     }
@@ -625,6 +691,18 @@ public void closeHomeView(MouseEvent mouseEvent)throws Exception{
 
     @FXML
     private FlowPane paneOfAll;
+    @FXML
+    private FlowPane HumanDevolopmentFlowPane;
+
+    @FXML
+    private FlowPane MangaFlowPane;
+
+    @FXML
+    private FlowPane NovelFlowPane;
+    @FXML
+    private FlowPane FantasyFlowPane;
+    @FXML
+    private FlowPane AcademicFlowPane;
 
     @FXML
     private FlowPane paneOfFifthType;
@@ -748,114 +826,5 @@ public void closeHomeView(MouseEvent mouseEvent)throws Exception{
         panel5.setVisible(false);
         panel6.setVisible(false);
     }
-
-    void fillPanels(){
-        FlowPane contant=paneOfAll;
-        contant.setHgap(10);
-        contant.setVgap(10);
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\PHPCookbookCookbooksOReilly.jpg")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece1.jpg")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece2.jpg")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece3.jpg")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece4.jpg")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece7.jpg")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece12.jpg")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece35.jpg")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece45.jpg")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece51.jpg")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece59.jpg")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece60.jpg")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece61.jpg")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece62.jpg")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece85.jpg")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece91.jpg")));
-        contant.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece97.jpg")));
-
-        PaneOfFirstType.getChildren().add(new JFlipCard(new Image("D:\\Media\\PHPCookbookCookbooksOReilly.jpg")));
-        FlowPane contant1=paneOfSecondType;
-        contant1.setHgap(10);
-        contant1.setVgap(10);
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece1.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece2.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece3.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece4.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece7.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece12.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece35.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece45.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece51.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece59.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece60.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece61.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece62.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece85.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece91.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece97.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece1.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece2.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece3.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece4.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece7.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece12.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece35.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece45.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece51.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece59.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece60.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece61.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece62.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece85.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece91.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece97.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece1.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece2.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece3.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece4.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece7.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece12.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece35.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece45.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece51.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece59.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece60.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece61.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece62.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece85.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece91.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece97.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece1.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece2.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece3.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece4.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece7.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece12.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece35.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece45.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece51.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece59.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece60.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece61.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece62.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece85.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece91.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece97.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece1.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece2.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece3.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece4.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece7.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece12.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece35.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece45.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece51.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece59.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece60.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece61.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece62.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece85.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece91.jpg")));
-        contant1.getChildren().add(new JFlipCard(new Image("D:\\Media\\OnePiece97.jpg")));
-
-    }
-
 }
+

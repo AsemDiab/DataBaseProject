@@ -15,9 +15,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import oracle.jdbc.pool.OracleDataSource;
+
+import javax.swing.*;
+import java.sql.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 import static com.example.databaseproject.TypeOfUseers.*;
@@ -102,24 +109,54 @@ public class BookLoginWindowController implements Initializable {
         }
     }
     public void typelogin(ActionEvent e) throws IOException {
-        if (text.getText().equals("1234")){
-            type=Admin;
-            isIn=true;
+        try{
+        OracleDataSource oracleDataSource = new OracleDataSource() ;
+        oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+        oracleDataSource.setUser("C##Asem");
+        oracleDataSource.setPassword("123456");
+        Connection connection=oracleDataSource.getConnection();
+        connection.setAutoCommit(false);
+        // Statement statement=connection.createStatement();
+        String sql = "select * from person where person_id="+Integer.valueOf(text.getText());
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet=statement.executeQuery();
+        resultSet.next();
+            System.out.println(resultSet.getString(1).equals(text.getText()));
+            System.out.println(resultSet.getString(7).equals(passwordField.getText()));
+            User.name=resultSet.getString(2).trim()+" "+resultSet.getString(3).trim();
+            //we are make name in homepage
+        if(resultSet.getString(7).trim().equals(passwordField.getText().trim())){
+            User.id=Integer.valueOf(text.getText());
+            User.passward=passwordField.getText();
+            if (resultSet.getString(5).trim().toLowerCase().equals("manager")){
+                User.member_status="manager";
+                type=Admin;
+                isIn=true;
+            }
+            else if(resultSet.getString(5).trim().toLowerCase().equals("librarian ")){
+                User.member_status="librarian";
+                type=Librarian;
+                isIn=true;
+            }
+            else if(resultSet.getString(5).trim().toLowerCase().equals("member")){
+                User.member_status="member";
+                type= Reader;
+                isIn=true;
+            }
+
+            else{
+                isIn=false;
+                JOptionPane.showMessageDialog(null,"id or password is wrong");
+                System.out.println("غللط");
+                System.out.println(text.getText());
+            }
+
         }
-        else if(text.getText().equals("111")){
-            type=Librarian;
-            isIn=true;
         }
-        else if(text.getText().equals("222")){
-            type= Reader;
-            isIn=true;
+        catch (Exception exception){
+            System.out.println(exception);
         }
 
-        else{
-            isIn=false;
-            System.out.println("غللط");
-            System.out.println(text.getText());
-        }
 
     }
 

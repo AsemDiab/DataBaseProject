@@ -12,14 +12,50 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import oracle.jdbc.pool.OracleDataSource;
 
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AdminPageControoler implements Initializable {
-@FXML
+    @FXML
+    private DatePicker DatePublish;
+    @FXML
+    private TextField autherNameTextBox;
+
+    @FXML
+    private TextField bookIDTextBox;
+
+    @FXML
+    private TextField bookTitleTextBox;
+    @FXML
+    private TextField languageTextBox;
+    @FXML
+    private TextField numberOfPagesTextBox;
+    @FXML
+    private TextField sectionIDTextBox;
+
+    @FXML
+    private TextField totalCopyTextBox;
+    @FXML
+    private TextArea DescrptionTextBox;
+
+    @FXML
+    private MenuButton menu;
+
+
+
+    @FXML
 public Pane BookPane;
 @FXML
 public Pane UsersPane;
@@ -73,8 +109,7 @@ public TableView TBook;
     public MenuItem item5;
     @FXML
     public MenuItem item6;
-    @FXML
-    public MenuButton menu;
+
     @FXML
     public MenuButton GenderMenuB;
     @FXML
@@ -291,6 +326,225 @@ public void open_UsersPane(){
         else if(BookLoginWindowController.type.equals(TypeOfUseers.Librarian)){
             Users.setVisible(false);
         }
-        textA.setWrapText(true);
+        //textA.setWrapText(true);
     }
+    @FXML
+    void addBook(ActionEvent actionEvent){
+        try {
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+
+
+            // bbokID,Book_title,AutherFname,AutherLAstName,numberOFPAge,DEscrption,LAnguahe,Avalibility,NumberofborrowedBook,TotalCopies,Sectionid,Type,Photo,DateofPublish
+            // Statement statement=connection.createStatement();
+            int type=0;
+            if(menu.getText().toLowerCase().equals("all")){
+                System.out.println("you cant");
+            }
+            else if(menu.getText().toLowerCase().equals("manga")){
+                // اكتب الكود الي بضيف ع المانجا
+                type=5;
+            }
+            else if(menu.getText().toLowerCase().equals("novels")){
+                type=1;
+            }
+            else if(menu.getText().toLowerCase().equals("academic")){
+type=2;
+
+            }
+            else if(menu.getText().toLowerCase().equals("human devilopment")){
+
+type=4;
+            }
+            else if(menu.getText().toLowerCase().equals("fantasy")){
+type=3;
+
+            }
+            String s[]=autherNameTextBox.getText().split(" ");
+            LocalDate localDate=DatePublish.getValue();
+connection.setAutoCommit(false);
+
+            String sql = "INSERT INTO book VALUES ("
+                    +bookIDTextBox.getText()+"," +
+                    "'"+bookTitleTextBox+"'," +
+                    "'"+s[0]+"'," +
+                    "'"+s[1]+"' ," +
+                    numberOfPagesTextBox.getText()+"," +
+                    "'    " +DescrptionTextBox.getText()+"'," +
+                    "'"+languageTextBox.getText()+"'," +
+                    "'Y'," +
+                    "0," +
+                    totalCopyTextBox.getText()+"," +
+                    sectionIDTextBox.getText()+","
+                    +type+"," +
+                    "?,"+
+                    " to_date('"+localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear()+"','dd-mm-yyyy'))";
+            System.out.println(localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear());
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileFilter(new FileNameExtensionFilter("Image Files", "jpg", "jpeg", "png"));
+            fileChooser.showOpenDialog(null);
+            File file = fileChooser.getSelectedFile();
+            System.out.println(file.getName());
+            statement.setBinaryStream(1, new FileInputStream(file));
+            statement.executeUpdate();
+            connection.commit();
+            connection.close();
+            System.out.println("add successfully");
+        }catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+        }
+    }
+@FXML
+    void updateBook(ActionEvent actionEvent){
+
+}
+@FXML
+    void DeleteBook(ActionEvent actionEvent){}
+    @FXML
+    void SearchBook(ActionEvent actionEvent){
+        try {
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+            String s[]=autherNameTextBox.getText().split(" ");
+            int type=0;
+            if(menu.getText().toLowerCase().equals("all")){
+                System.out.println("you cant");
+            }
+            else if(menu.getText().toLowerCase().equals("manga")){
+                // اكتب الكود الي بضيف ع المانجا
+                type=5;
+            }
+            else if(menu.getText().toLowerCase().equals("novels")){
+                type=1;
+            }
+            else if(menu.getText().toLowerCase().equals("academic")){
+                type=2;
+
+            }
+            else if(menu.getText().toLowerCase().equals("human devilopment")){
+
+                type=4;
+            }
+            else if(menu.getText().toLowerCase().equals("fantasy")){
+                type=3;
+
+            }
+
+            System.out.println("Quey");
+            String sql="select * from book ";
+        if(issingle){
+
+            if(!bookIDTextBox.getText().equals(""))
+             sql+= "where Book_id="+bookIDTextBox.getText();
+            else if(!bookTitleTextBox.getText().equals(""))
+                sql+="where Book_title='"+bookTitleTextBox+"'";
+            else if (!sectionIDTextBox.getText().equals(""))
+                sql+="where section_id="+sectionIDTextBox.getText();
+            else if (!languageTextBox.getText().equals("")) {
+                sql+="where language="+languageTextBox.getText();
+            }
+            else if(type!=0)
+                sql+="where type="+type;
+            else if(!autherNameTextBox.getText().equals("")&&s.length>1)
+                sql+="where Auther_FName=' "+s[0]+"' and Auther_LName='"+s[1]+"'";
+
+
+
+
+        }
+        else{
+            Boolean flag=true;
+            if(!bookIDTextBox.getText().equals("")) {
+
+                if (flag){
+                    sql+="where ";
+
+                    flag=false;
+                }else {
+                    sql+=" and ";
+                }
+                sql+="Book_id="+bookIDTextBox.getText();
+            }
+            else if(!bookTitleTextBox.getText().equals("")){
+
+                if (flag){
+                    sql+="where ";
+
+                    flag=false;
+                }else {
+                    sql+=" and ";
+                }
+                sql+="Book_title='"+bookTitleTextBox.getText()+"'";
+            }
+            else if (!sectionIDTextBox.getText().equals("")){
+
+                if (flag){
+                    sql+="where ";
+
+                    flag=false;
+                }else {
+                    sql+=" and ";
+                }
+                sql+="section_id="+sectionIDTextBox.getText();
+            }
+            else if (!languageTextBox.getText().equals("")) {
+                {
+
+                    if (flag){
+                        sql+="where ";
+
+                        flag=false;
+                    }else {
+                        sql+=" and ";
+                    }
+                }
+                sql+="language='"+languageTextBox.getText()+"'";
+            }
+            else if(type!=0){
+
+                if (flag){
+                    sql+="where ";
+
+                    flag=false;
+                }else {
+                    sql+=" and ";
+                }
+                sql+="where type="+type;
+            }
+
+            else if(!autherNameTextBox.getText().equals("")&&s.length>1){
+
+                if (flag){
+                    sql+="where ";
+
+                    flag=false;
+                }else {
+                    sql+=" and ";
+                }
+                sql+="where Auther_FName=' "+s[0]+"' and Auther_LName='"+s[1]+"'";
+            }
+
+        }
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            ResultSet resultSet=statement.executeQuery();
+            resultSet.next();
+            System.out.println(resultSet.getString("Book_title"));
+//            connection.commit();
+            connection.close();
+    }
+    catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+    }
+    }
+
 }

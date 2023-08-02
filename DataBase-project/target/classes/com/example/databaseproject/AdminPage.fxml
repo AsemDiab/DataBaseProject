@@ -26,23 +26,23 @@
                <VBox layoutX="-34.0" layoutY="14.0" prefHeight="223.0" prefWidth="200.0">
                   <children>
                      <Button fx:id="typeOfSearch" mnemonicParsing="false" onAction="#togglebutton" prefHeight="39.0" prefWidth="204.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Single Search" />
-                     <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="223.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Search" />
-                     <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="213.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Add" />
+                     <Button mnemonicParsing="false" onAction="#SearchBook" prefHeight="42.0" prefWidth="223.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Search" />
+                     <Button mnemonicParsing="false" onAction="#addBook" prefHeight="45.0" prefWidth="213.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Add" />
                      <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="246.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Remove" />
                      <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="292.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Edit" />
                   </children>
                </VBox>
             </children>
          </Pane>
-         <TextField layoutX="21.0" layoutY="36.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
-         <TextField layoutX="21.0" layoutY="104.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
-         <TextField layoutX="193.0" layoutY="36.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
-         <TextField layoutX="193.0" layoutY="104.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+         <TextField fx:id="bookIDTextBox" layoutX="21.0" layoutY="36.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+         <TextField fx:id="bookTitleTextBox" layoutX="21.0" layoutY="104.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+         <TextField fx:id="autherNameTextBox" layoutX="193.0" layoutY="36.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+         <TextField fx:id="languageTextBox" layoutX="193.0" layoutY="104.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
          <Label alignment="CENTER" layoutX="21.0" layoutY="15.0" prefHeight="16.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Book ID" textFill="#be1717" />
          <Label alignment="CENTER" layoutX="21.0" layoutY="83.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Book Name" />
          <Label alignment="CENTER" layoutX="193.0" layoutY="14.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Author Name" />
          <Label alignment="CENTER" layoutX="193.0" layoutY="83.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Language" />
-         <TextField layoutX="374.0" layoutY="36.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+         <TextField fx:id="sectionIDTextBox" layoutX="374.0" layoutY="36.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
          <Label alignment="CENTER" layoutX="374.0" layoutY="14.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Section Id" />
          <MenuButton fx:id="menu" alignment="CENTER" layoutX="193.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="157.0" styleClass="MenuButton" stylesheets="@AdminStyle.css" text="ALL">
             <items>
@@ -54,12 +54,13 @@
                <MenuItem fx:id="item6" mnemonicParsing="false" onAction="#menuhandel6" text="ALL" />
             </items>
          </MenuButton>
-         <TextField layoutX="374.0" layoutY="104.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
-         <TextField layoutX="21.0" layoutY="166.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+         <TextField fx:id="numberOfPagesTextBox" layoutX="374.0" layoutY="104.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+         <TextField fx:id="totalCopyTextBox" layoutX="21.0" layoutY="166.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
          <Label alignment="CENTER" layoutX="374.0" layoutY="83.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Number of pages" />
          <Label alignment="CENTER" layoutX="21.0" layoutY="151.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Total Copy" />
-         <TextArea fx:id="textA" layoutX="541.0" layoutY="26.0" prefHeight="189.0" prefWidth="283.0" />
+         <TextArea fx:id="DescrptionTextBox" layoutX="541.0" layoutY="26.0" prefHeight="189.0" prefWidth="283.0" />
          <Label alignment="CENTER" layoutX="541.0" layoutY="6.0" prefHeight="17.0" prefWidth="283.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Description" />
+         <DatePicker fx:id="DatePublish" layoutX="380.0" layoutY="170.0" prefHeight="25.0" prefWidth="150.0" />
       </Pane>
       <Pane fx:id="UsersPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;" visible="false">
          <TextField layoutX="14.0" layoutY="58.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />

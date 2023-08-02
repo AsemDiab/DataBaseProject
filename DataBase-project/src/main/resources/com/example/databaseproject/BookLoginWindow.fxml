@@ -20,11 +20,11 @@
       </ImageView>
       <TextField fx:id="text" layoutX="330.0" layoutY="102.0" prefHeight="38.0" prefWidth="164.0" style="-fx-background-color: transport;">
          <font>
-            <Font name="Blackadder ITC" size="16.0" />
+            <Font name="Serif Regular" size="16.0" />
          </font></TextField>
       <Text layoutX="268.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserName">
          <font>
-            <Font name="Blackadder ITC" size="14.0" />
+            <Font name="Serif Regular" size="14.0" />
          </font>
       </Text>
       <Text layoutX="270.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
@@ -41,7 +41,7 @@
       </ImageView>
       <TextField fx:id="passwordText" layoutX="330.0" layoutY="152.0" prefHeight="38.0" prefWidth="138.0" style="-fx-background-color: transport;" AnchorPane.bottomAnchor="188.6" AnchorPane.leftAnchor="330.0" AnchorPane.rightAnchor="-2.842170943040401E-14" AnchorPane.topAnchor="152.0">
          <font>
-            <Font name="Blackadder ITC" size="16.0" />
+            <Font name="Serif Regular" size="16.0" />
          </font>
       </TextField>
       <PasswordField fx:id="passwordField" layoutX="322.0" layoutY="159.0" prefHeight="38.0" prefWidth="138.0" style="-fx-background-color: transport;" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="152.0" />

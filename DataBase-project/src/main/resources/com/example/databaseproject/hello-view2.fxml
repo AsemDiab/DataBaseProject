@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="515.0" prefWidth="473.0" style="-fx-background-color: #3d322c;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.bookPage">
+   <children>
+      <AnchorPane layoutY="91.0" prefHeight="464.0" prefWidth="539.0" style="-fx-background-color: #d9b26e;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="91.0">
+         <children>
+            <Label fx:id="AutherName" layoutX="176.0" layoutY="9.0" prefHeight="43.0" prefWidth="243.0" textFill="#fcf4f4">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="PageCount" layoutX="176.0" layoutY="57.0" prefHeight="43.0" prefWidth="282.0" textFill="WHITE" />
+            <Label fx:id="Description" alignment="TOP_LEFT" layoutX="20.0" layoutY="182.0" prefHeight="182.0" prefWidth="413.0" textFill="#fff5f5">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="dateOfPublish" layoutX="20.0" layoutY="130.0" prefHeight="43.0" prefWidth="155.0" textFill="#fcf9f9" />
+            <Label fx:id="language" layoutX="180.0" layoutY="108.0" prefHeight="43.0" prefWidth="218.0" textFill="#fcf9f9" />
+            <Button id="btn" fx:id="btn" layoutX="289.0" layoutY="371.0" mnemonicParsing="false" onAction="#Borrow" prefHeight="43.0" prefWidth="112.0" style="-fx-border-color: #3d322c;; -fx-border-radius: 50;" stylesheets="@bookpage.css" text="Borrow" textFill="#f4f0f0" />
+            <ImageView fx:id="imageView" fitHeight="182.0" fitWidth="147.0" layoutX="14.0" layoutY="-87.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="-60.0" />
+         </children>
+      </AnchorPane>
+      <Label fx:id="bookTitle" layoutX="166.0" layoutY="14.0" prefHeight="66.0" prefWidth="301.0" textFill="#faf6f6">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="backToMainWindow" fitHeight="22.0" fitWidth="59.0" layoutX="14.0" layoutY="3.0" onMouseClicked="#closed" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: color-burn;" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="3.0">
+         <image>
+            <Image url="@../../../vector-back-icon.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
