@@ -23,6 +23,7 @@ import javafx.stage.StageStyle;
 import javafx.util.Duration;
 import oracle.jdbc.pool.OracleDataSource;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -193,6 +194,8 @@ public class HomeController implements Initializable {
         }
     }
 
+    @FXML
+    FlowPane homePane;
     ///////////////////////////////
     //Catagori
     ///////////////////////////////
@@ -406,6 +409,30 @@ public class HomeController implements Initializable {
             closesearch();
         //swetchToProfile(e);
         System.out.println("اههههه");
+    }
+    @FXML
+    public void generalSearch(ActionEvent actionEvent){
+       // searchf.getText()
+
+        try {
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+
+            String sql="select * from book where Upper( Auther_FName) like '%"+searchf.getText()+"%' or Upper(Auther_LName) like '%"+searchf.getText()+"%' or" +
+                    " UPPer(book_title) like Upper('%"+searchf.getText()+"%')";
+            PreparedStatement preparedStatement=connection.prepareStatement(sql);
+            ResultSet resultSet=preparedStatement.executeQuery();
+            homePane.getChildren().clear();
+            while(resultSet.next())
+            homePane.getChildren().add(new JFlipCard(resultSet.getInt(1)));
+            connection.close();
+
+        }catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+        }
     }
 
     public void slideEvent(ActionEvent e) {//زر البروفايل

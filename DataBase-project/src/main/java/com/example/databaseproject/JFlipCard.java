@@ -13,6 +13,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.TextAlignment;
 import javafx.scene.transform.Rotate;
 
 import javafx.stage.Stage;
@@ -58,7 +60,10 @@ public class JFlipCard  extends Pane {
             resultSet.next();
             image=new Image(resultSet.getBinaryStream(13));
             label=new Label();
-            label.setText(resultSet.getString(6));
+            label.setText(resultSet.getString(2).trim()+"\n"+resultSet.getString(3).trim()+" "+resultSet.getString(4).trim());
+            label.setTextAlignment(TextAlignment.CENTER);
+            label.setFont(new Font(10));
+            label.setTextFill(Color.WHEAT);
             this.id=id;
         }
         catch (Exception exception){
@@ -66,7 +71,7 @@ public class JFlipCard  extends Pane {
         }
         this.setPrefHeight(hight);
         this.setPrefWidth(width);
-        this.setBackground(new Background(new BackgroundFill(Color.BLUE, CornerRadii.EMPTY, Insets.EMPTY)));
+        this.setBackground(new Background(new BackgroundFill(Color.rgb(61,50,44), CornerRadii.EMPTY, Insets.EMPTY)));
         // label=new Label("hello book");
 
         label.setVisible(false);

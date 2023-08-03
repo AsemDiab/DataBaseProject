@@ -28,8 +28,8 @@
                      <Button fx:id="typeOfSearch" mnemonicParsing="false" onAction="#togglebutton" prefHeight="39.0" prefWidth="204.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Single Search" />
                      <Button mnemonicParsing="false" onAction="#SearchBook" prefHeight="42.0" prefWidth="223.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Search" />
                      <Button mnemonicParsing="false" onAction="#addBook" prefHeight="45.0" prefWidth="213.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Add" />
-                     <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="246.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Remove" />
-                     <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="292.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Edit" />
+                     <Button mnemonicParsing="false" onAction="#DeleteBook" prefHeight="42.0" prefWidth="246.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Remove" />
+                     <Button mnemonicParsing="false" onAction="#updateBook" prefHeight="43.0" prefWidth="292.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Edit" />
                   </children>
                </VBox>
             </children>
@@ -63,9 +63,9 @@
          <DatePicker fx:id="DatePublish" layoutX="380.0" layoutY="170.0" prefHeight="25.0" prefWidth="150.0" />
       </Pane>
       <Pane fx:id="UsersPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;" visible="false">
-         <TextField layoutX="14.0" layoutY="58.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+         <TextField fx:id="userNameTextBox" layoutX="14.0" layoutY="58.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
          <Label alignment="CENTER" layoutX="14.0" layoutY="32.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Name" />
-         <TextField layoutX="14.0" layoutY="155.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+         <TextField fx:id="personIDTextBox" layoutX="14.0" layoutY="155.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
          <Label alignment="CENTER" layoutX="14.0" layoutY="132.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Person Id" />
          <Label alignment="CENTER" layoutX="643.0" layoutY="88.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Member ship state" />
          <Label alignment="CENTER" layoutX="214.0" layoutY="82.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Join Date" />
@@ -81,23 +81,23 @@
             <items>
                <MenuItem fx:id="AdminMenuItem" mnemonicParsing="false" onAction="#stateOfAdmin" style="-fx-pref-width: 142px;" text="Admin" />
                <MenuItem fx:id="LibrarinMenuItem" mnemonicParsing="false" onAction="#stateOfLibrarin" style="-fx-pref-width: 142px;" text="Librarian" />
-               <MenuItem fx:id="ReaderMenuItem" mnemonicParsing="false" onAction="#stateOfReader" style="-fx-pref-width: 142px;" text="Reader" />
+               <MenuItem fx:id="ReaderMenuItem" mnemonicParsing="false" onAction="#stateOfReader" style="-fx-pref-width: 142px;" text="member" />
                <MenuItem fx:id="AllMenuItem" mnemonicParsing="false" onAction="#stateOfAll" style="-fx-pref-width: 142px;" text="All" />
             </items>
          </MenuButton>
          <Pane layoutX="882.0" layoutY="-15.0" prefHeight="223.0" prefWidth="200.0" style="-fx-background-color: Transparent;">
             <VBox layoutX="-34.0" layoutY="14.0" prefHeight="223.0" prefWidth="200.0">
                <Button fx:id="typeOfSearch11" mnemonicParsing="false" onAction="#togglebutton1" prefHeight="39.0" prefWidth="204.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Single Search" />
-               <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="223.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Search" />
-               <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="200.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Add" />
-               <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="246.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Remove" />
-               <Button mnemonicParsing="false" prefHeight="41.0" prefWidth="200.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Edit" />
+               <Button mnemonicParsing="false" onAction="#searchPerson" prefHeight="42.0" prefWidth="223.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Search" />
+               <Button mnemonicParsing="false" onAction="#addPerson" prefHeight="51.0" prefWidth="200.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Add" />
+               <Button mnemonicParsing="false" onAction="#deletePerson" prefHeight="42.0" prefWidth="246.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Remove" />
+               <Button mnemonicParsing="false" onAction="#updatePerson" prefHeight="41.0" prefWidth="200.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Edit" />
             </VBox>
          </Pane>
          <TextField fx:id="VisableOrNotText" layoutX="418.0" layoutY="58.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
          <Label fx:id="intrestLabel" alignment="CENTER" layoutX="181.0" layoutY="138.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Interest" visible="false" />
          <Label fx:id="intrestLabel1" alignment="CENTER" layoutX="418.0" layoutY="32.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Section id" />
-         <DatePicker layoutX="214.0" layoutY="108.0" prefHeight="32.0" prefWidth="157.0" />
+         <DatePicker fx:id="JoinDate" layoutX="214.0" layoutY="108.0" prefHeight="32.0" prefWidth="157.0" />
          <PasswordField fx:id="passf" layoutX="418.0" layoutY="155.0" prefHeight="16.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
          <Label fx:id="intrestLabel11" alignment="CENTER" layoutX="418.0" layoutY="130.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="PassWord" />
          <RadioButton fx:id="radioButton" layoutX="587.0" layoutY="152.0" mnemonicParsing="false" onAction="#radioButtonAction" prefHeight="39.0" prefWidth="21.0" />
@@ -105,11 +105,11 @@
       </Pane>
       <Pane fx:id="EquipmentPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;" visible="false">
          <children>
-            <TextField layoutX="35.0" layoutY="92.0" prefHeight="32.0" prefWidth="207.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <TextField fx:id="equipmentID" layoutX="35.0" layoutY="92.0" prefHeight="32.0" prefWidth="207.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
             <Label alignment="CENTER" layoutX="35.0" layoutY="74.0" prefHeight="17.0" prefWidth="207.0" styleClass="nameLabel2" stylesheets="@profile.css" text="equipment id" />
-            <TextField layoutX="268.0" layoutY="92.0" prefHeight="32.0" prefWidth="207.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <TextField fx:id="eSectionID" layoutX="268.0" layoutY="92.0" prefHeight="32.0" prefWidth="207.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
             <Label alignment="CENTER" layoutX="268.0" layoutY="74.0" prefHeight="17.0" prefWidth="207.0" styleClass="nameLabel2" stylesheets="@profile.css" text="section id" />
-            <TextField layoutX="509.0" layoutY="91.0" prefHeight="32.0" prefWidth="207.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <TextField fx:id="EquipmentType" layoutX="509.0" layoutY="91.0" prefHeight="32.0" prefWidth="207.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
             <Label alignment="CENTER" layoutX="509.0" layoutY="65.0" prefHeight="17.0" prefWidth="207.0" styleClass="nameLabel2" stylesheets="@profile.css" text="equipment type" />
             <Button layoutX="306.0" layoutY="162.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="132.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Report" />
             <Pane layoutX="882.0" layoutY="-15.0" prefHeight="223.0" prefWidth="200.0" style="-fx-background-color: Transparent;">
@@ -117,10 +117,10 @@
                   <VBox layoutX="-33.0" layoutY="14.0" prefHeight="223.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="typeOfSearch22" mnemonicParsing="false" onAction="#togglebutton2" prefHeight="39.0" prefWidth="204.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Single Search" />
-                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="223.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Search" />
-                        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="213.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Add" />
-                        <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="200.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Remove" />
-                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="200.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Edit" />
+                        <Button mnemonicParsing="false" onAction="#selectEqupment" prefHeight="42.0" prefWidth="223.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Search" />
+                        <Button mnemonicParsing="false" onAction="#insertEqupment" prefHeight="45.0" prefWidth="213.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Add" />
+                        <Button mnemonicParsing="false" onAction="#deleteEqupment" prefHeight="47.0" prefWidth="200.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Remove" />
+                        <Button mnemonicParsing="false" onAction="#updateEqupment" prefHeight="43.0" prefWidth="200.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Edit" />
                      </children>
                   </VBox>
                </children>
@@ -128,32 +128,32 @@
          </children></Pane>
       <Pane fx:id="BorrowPane" layoutX="52.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;" visible="false">
          <children>
-            <TextField layoutX="26.0" layoutY="45.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
-            <TextField layoutX="228.0" layoutY="44.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
-            <TextField layoutX="26.0" layoutY="143.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <TextField fx:id="BPeersonID" layoutX="26.0" layoutY="45.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <TextField fx:id="BorrowingID" layoutX="228.0" layoutY="44.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
+            <TextField fx:id="BBookID" layoutX="26.0" layoutY="143.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
             <Label alignment="CENTER" layoutX="26.0" layoutY="21.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Person ID" />
             <Label alignment="CENTER" layoutX="26.0" layoutY="115.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Book ID" />
             <Label alignment="CENTER" layoutX="228.0" layoutY="21.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Borrowing ID" />
             <Label alignment="CENTER" layoutX="305.0" layoutY="115.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" />
-            <DatePicker editable="false" layoutX="228.0" layoutY="143.0" prefHeight="32.0" prefWidth="157.0" />
+            <DatePicker fx:id="DAteOFBorrowing" editable="false" layoutX="228.0" layoutY="143.0" prefHeight="32.0" prefWidth="157.0" />
             <Label alignment="CENTER" layoutX="228.0" layoutY="122.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Date Of Borrowing" />
-            <DatePicker layoutX="412.0" layoutY="92.0" prefHeight="32.0" prefWidth="157.0" />
+            <DatePicker fx:id="DateOfReturn" layoutX="412.0" layoutY="92.0" prefHeight="32.0" prefWidth="157.0" />
             <Label alignment="CENTER" layoutX="412.0" layoutY="69.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Date of Return" />
-            <Label alignment="CENTER" layoutX="590.0" layoutY="52.0" prefHeight="17.0" prefWidth="200.0" styleClass="nameLabel2" stylesheets="@profile.css" text="number of Borrowing : " />
-            <Label alignment="CENTER" layoutX="590.0" layoutY="122.0" prefHeight="43.0" prefWidth="200.0" style="-fx-wrap-text: true;" styleClass="nameLabel2" stylesheets="@profile.css" text="Number of Borrowing opration:" />
+            <Label fx:id="numberOfBrrowing" alignment="CENTER" layoutX="590.0" layoutY="52.0" prefHeight="17.0" prefWidth="200.0" styleClass="nameLabel2" stylesheets="@profile.css" text="number of Borrowing : " />
             <Pane layoutX="879.0" layoutY="-14.0" prefHeight="223.0" prefWidth="200.0" style="-fx-background-color: Transparent;">
                <children>
                   <VBox layoutX="-33.0" layoutY="14.0" prefHeight="223.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="typeOfSearch33" mnemonicParsing="false" onAction="#togglebutton3" prefHeight="39.0" prefWidth="204.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Single Search" />
-                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="223.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Search" />
-                        <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="213.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Add" />
-                        <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="200.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Remove" />
-                        <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="200.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Edit" />
+                        <Button mnemonicParsing="false" onAction="#selectBorrowing" prefHeight="42.0" prefWidth="223.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Search" />
+                        <Button mnemonicParsing="false" onAction="#insertBorrowing" prefHeight="45.0" prefWidth="213.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Add" />
+                        <Button mnemonicParsing="false" onAction="#deleteBorrowing" prefHeight="47.0" prefWidth="200.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Remove" />
+                        <Button mnemonicParsing="false" onAction="#updateBorrowing" prefHeight="43.0" prefWidth="200.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Edit" />
                      </children>
                   </VBox>
                </children>
             </Pane>
+            <Button fx:id="returnButton" layoutX="610.0" layoutY="139.0" mnemonicParsing="false" onAction="#returnBook" prefHeight="25.0" prefWidth="150.0" text="the book returened" />
          </children></Pane>
       <VBox prefHeight="216.0" prefWidth="100.0">
          <children>

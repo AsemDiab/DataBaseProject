@@ -29,7 +29,102 @@ import java.util.ResourceBundle;
 
 public class AdminPageControoler implements Initializable {
     @FXML
+    Label numberOfBrrowing;
+    @FXML
+    private TextField BorrowingID;
+    @FXML
+    private TextField BBookID;
+    @FXML
+    private TextField BPeersonID;
+
+    @FXML
+    private DatePicker DAteOFBorrowing;
+
+    @FXML
+    private DatePicker DateOfReturn;
+
+    @FXML
+    private TextField EquipmentType;
+    @FXML
+    private TextField eSectionID;
+
+    @FXML
+    private TextField equipmentID;
+    @FXML
+    private MenuItem AdminMenuItem;
+
+    @FXML
+    private MenuItem AllMenuItem;
+
+    @FXML
+    private Button BackB;
+
+    @FXML
+    private Button Book;
+
+    @FXML
+    private Pane BookPane;
+
+    @FXML
+    private Button Borrow;
+
+    @FXML
+    private Pane BorrowPane;
+
+    @FXML
     private DatePicker DatePublish;
+
+    @FXML
+    private TextArea DescrptionTextBox;
+
+    @FXML
+    private Button Equipment;
+
+    @FXML
+    private Pane EquipmentPane;
+
+    @FXML
+    private MenuButton GenderMenuB;
+
+    @FXML
+    private DatePicker JoinDate;
+
+    @FXML
+    private MenuItem LibrarinMenuItem;
+
+    @FXML
+    private MenuItem ManMenuItem;
+
+    @FXML
+    private MenuItem ReaderMenuItem;
+
+    @FXML
+    private TableView<?> TBook;
+
+    @FXML
+    private TableView<?> TBorrow;
+
+    @FXML
+    private TableView<?> TEquipment;
+
+    @FXML
+    private TableView<?> TPerson;
+
+    @FXML
+    private Button Users;
+
+    @FXML
+    private Pane UsersPane;
+
+    @FXML
+    private TextField VisableOrNotText;
+
+    @FXML
+    private MenuItem WomanMenuItem;
+
+    @FXML
+    private MenuItem WomanMenuItem1;
+
     @FXML
     private TextField autherNameTextBox;
 
@@ -38,98 +133,86 @@ public class AdminPageControoler implements Initializable {
 
     @FXML
     private TextField bookTitleTextBox;
-    @FXML
-    private TextField languageTextBox;
-    @FXML
-    private TextField numberOfPagesTextBox;
-    @FXML
-    private TextField sectionIDTextBox;
 
     @FXML
-    private TextField totalCopyTextBox;
+    private Label intrestLabel;
+
     @FXML
-    private TextArea DescrptionTextBox;
+    private Label intrestLabel1;
+
+    @FXML
+    private Label intrestLabel11;
+
+    @FXML
+    private MenuItem item1;
+
+    @FXML
+    private MenuItem item2;
+
+    @FXML
+    private MenuItem item3;
+
+    @FXML
+    private MenuItem item4;
+
+    @FXML
+    private MenuItem item5;
+
+    @FXML
+    private MenuItem item6;
+
+    @FXML
+    private TextField languageTextBox;
 
     @FXML
     private MenuButton menu;
 
+    @FXML
+    private TextField numberOfPagesTextBox;
 
+    @FXML
+    private PasswordField passf;
 
     @FXML
-public Pane BookPane;
-@FXML
-public Pane UsersPane;
-@FXML
-public Button typeOfSearch33;
-@FXML
-public Pane EquipmentPane;
-@FXML
-public TextArea textA;
-@FXML
-public Button typeOfSearch22;
-@FXML
-public MenuItem AllMenuItem;
-@FXML
-public MenuItem WomanMenuItem1;
-@FXML
-public TableView TBook;
+    private TextField personIDTextBox;
+
     @FXML
-    public TableView TEquipment;
+    private RadioButton radioButton;
+
     @FXML
-    public TableView TPerson;
+    private TextField sectionIDTextBox;
+
     @FXML
-    public TableView TBorrow;
+    private MenuButton state;
+
     @FXML
-    public MenuItem ReaderMenuItem;
+    private TextField totalCopyTextBox;
+
     @FXML
-    public MenuItem AdminMenuItem;
+    private Button typeOfSearch;
+
     @FXML
-    public MenuItem LibrarinMenuItem;
+    private Button typeOfSearch11;
+
     @FXML
-    public Pane BorrowPane;
+    private Button typeOfSearch22;
+
     @FXML
-    public Button Users;
+    private Button typeOfSearch33;
+
     @FXML
-    public Button typeOfSearch;
-    @FXML
-    public Button typeOfSearch11;
+    private TextField userNameTextBox;
+
     public boolean issingle=true;
     public boolean issingle1=true;
     public boolean issingle2=true;
     public boolean issingle3=true;
-    @FXML
-    public MenuItem item1;
-    @FXML
-    public MenuItem item2;
-    @FXML
-    public MenuItem item3;
-    @FXML
-    public MenuItem item4;
-    @FXML
-    public MenuItem item5;
-    @FXML
-    public MenuItem item6;
 
-    @FXML
-    public MenuButton GenderMenuB;
-    @FXML
-    public  MenuItem ManMenuItem;
-    @FXML
-    public  MenuItem WomanMenuItem;
 public boolean isopenp=false;
     public boolean isopenB=true;
     public boolean isopenBo=false;
     public boolean isopenE=false;
-    public Button Borrow;
-    public Label intrestLabel1;
-    public Label intrestLabel;
-    public TextField VisableOrNotText;
-    @FXML
-public MenuButton state;
-    @FXML
-    public RadioButton radioButton;
-    @FXML
-    public PasswordField passf;
+
     public  void ManFun(){
         GenderMenuB.setText(ManMenuItem.getText());
     }
@@ -293,13 +376,13 @@ public void open_UsersPane(){
         stage.show();
     }
     public void stateOfAdmin(){
-        state.setText(AdminMenuItem.getText());
+        state.setText("admin");
     }
     public void stateOfLibrarin(){
-        state.setText(LibrarinMenuItem.getText());
+        state.setText("librarian");
     }
     public void stateOfReader(){
-        state.setText(ReaderMenuItem.getText());
+        state.setText("member");
     }
     public void stateOfAll(){
         state.setText(AllMenuItem.getText());
@@ -369,7 +452,7 @@ connection.setAutoCommit(false);
 
             String sql = "INSERT INTO book VALUES ("
                     +bookIDTextBox.getText()+"," +
-                    "'"+bookTitleTextBox+"'," +
+                    "'"+bookTitleTextBox.getText()+"'," +
                     "'"+s[0]+"'," +
                     "'"+s[1]+"' ," +
                     numberOfPagesTextBox.getText()+"," +
@@ -401,50 +484,47 @@ connection.setAutoCommit(false);
         }
     }
 @FXML
-    void updateBook(ActionEvent actionEvent){
+    void updateBook(ActionEvent actionEvent) {
 
 }
 @FXML
-    void DeleteBook(ActionEvent actionEvent){}
-    @FXML
-    void SearchBook(ActionEvent actionEvent){
-        try {
-            OracleDataSource oracleDataSource = new OracleDataSource();
-            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
-            oracleDataSource.setUser("C##Asem");
-            oracleDataSource.setPassword("123456");
-            Connection connection=oracleDataSource.getConnection();
-            String s[]=autherNameTextBox.getText().split(" ");
-            int type=0;
-            if(menu.getText().toLowerCase().equals("all")){
-                System.out.println("you cant");
-            }
-            else if(menu.getText().toLowerCase().equals("manga")){
-                // اكتب الكود الي بضيف ع المانجا
-                type=5;
-            }
-            else if(menu.getText().toLowerCase().equals("novels")){
-                type=1;
-            }
-            else if(menu.getText().toLowerCase().equals("academic")){
-                type=2;
+    void DeleteBook(ActionEvent actionEvent){
+    try {
+        OracleDataSource oracleDataSource = new OracleDataSource();
+        oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+        oracleDataSource.setUser("C##Asem");
+        oracleDataSource.setPassword("123456");
+        Connection connection=oracleDataSource.getConnection();
+        String s[]=autherNameTextBox.getText().split(" ");
+        int type=0;
+        if(menu.getText().toLowerCase().equals("all")){
+            System.out.println("you cant");
+        }
+        else if(menu.getText().toLowerCase().equals("manga")){
+            // اكتب الكود الي بضيف ع المانجا
+            type=5;
+        }
+        else if(menu.getText().toLowerCase().equals("novels")){
+            type=1;
+        }
+        else if(menu.getText().toLowerCase().equals("academic")){
+            type=2;
 
-            }
-            else if(menu.getText().toLowerCase().equals("human devilopment")){
+        }
+        else if(menu.getText().toLowerCase().equals("human devilopment")){
 
-                type=4;
-            }
-            else if(menu.getText().toLowerCase().equals("fantasy")){
-                type=3;
+            type=4;
+        }
+        else if(menu.getText().toLowerCase().equals("fantasy")){
+            type=3;
 
-            }
+        }
 
-            System.out.println("Quey");
-            String sql="select * from book ";
+        String sql="delete  from book ";
         if(issingle){
 
             if(!bookIDTextBox.getText().equals(""))
-             sql+= "where Book_id="+bookIDTextBox.getText();
+                sql+= "where Book_id="+bookIDTextBox.getText();
             else if(!bookTitleTextBox.getText().equals(""))
                 sql+="where Book_title='"+bookTitleTextBox+"'";
             else if (!sectionIDTextBox.getText().equals(""))
@@ -534,6 +614,146 @@ connection.setAutoCommit(false);
             }
 
         }
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+       statement.executeUpdate();
+       connection.commit();
+        connection.close();
+}
+    catch (Exception exception){
+        JOptionPane.showMessageDialog(null,exception);
+    }
+    }
+    @FXML
+    void SearchBook(ActionEvent actionEvent){
+        try {
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+            String s[]=autherNameTextBox.getText().split(" ");
+            int type=0;
+            if(menu.getText().toLowerCase().equals("all")){
+                System.out.println("you cant");
+            }
+            else if(menu.getText().toLowerCase().equals("manga")){
+                // اكتب الكود الي بضيف ع المانجا
+                type=5;
+            }
+            else if(menu.getText().toLowerCase().equals("novels")){
+                type=1;
+            }
+            else if(menu.getText().toLowerCase().equals("academic")){
+                type=2;
+
+            }
+            else if(menu.getText().toLowerCase().equals("human devilopment")){
+
+                type=4;
+            }
+            else if(menu.getText().toLowerCase().equals("fantasy")){
+                type=3;
+
+            }
+
+            System.out.println("Quey");
+            String sql="select * from book ";
+            if(issingle){
+
+                if(!bookIDTextBox.getText().equals(""))
+                    sql+= "where Book_id="+bookIDTextBox.getText();
+                else if(!bookTitleTextBox.getText().equals(""))
+                    sql+="where UPPer(book_title) like Upper('"+bookTitleTextBox.getText()+"%')";
+                else if (!sectionIDTextBox.getText().equals(""))
+                    sql+="where section_id="+sectionIDTextBox.getText();
+                else if (!languageTextBox.getText().equals("")) {
+                    sql+="where language like '"+languageTextBox.getText()+"%'";
+                }
+                else if(type!=0)
+                    sql+="where type="+type;
+                else if(!autherNameTextBox.getText().equals("")&&s.length>1)
+                    sql+="where  Auther_FName like '"+s[0]+"%' and Auther_LName like '"+s[1]+"%'";
+
+
+
+
+            }
+            else{
+                Boolean flag=true;
+                if(!bookIDTextBox.getText().equals("")) {
+
+                    if (flag){
+                        sql+="where ";
+
+                        flag=false;
+                    }else {
+                        sql+=" and ";
+                    }
+                    sql+="Book_id="+bookIDTextBox.getText();
+                }
+                if(!bookTitleTextBox.getText().equals("")){
+
+                    if (flag){
+                        sql+="where ";
+
+                        flag=false;
+                    }else {
+                        sql+=" and ";
+                    }
+
+                    sql+="UPPer(book_title) like Upper('"+bookTitleTextBox.getText()+"%')";
+                }
+                if (!sectionIDTextBox.getText().equals("")){
+
+                    if (flag){
+                        sql+="where ";
+
+                        flag=false;
+                    }else {
+                        sql+=" and ";
+                    }
+                    sql+="section_id="+sectionIDTextBox.getText();
+                }
+                if (!languageTextBox.getText().equals("")) {
+                    {
+
+                        if (flag){
+                            sql+="where ";
+
+                            flag=false;
+                        }else {
+                            sql+=" and ";
+                        }
+                    }
+                    sql+="language like '"+languageTextBox.getText()+"%'";
+                }
+                if(type!=0){
+
+                    if (flag){
+                        sql+="where ";
+
+                        flag=false;
+                    }else {
+                        sql+=" and ";
+                    }
+                    sql+="where type="+type;
+                }
+
+                if(!autherNameTextBox.getText().equals("")&&s.length>1){
+
+                    if (flag){
+                        sql+="where ";
+
+                        flag=false;
+                    }else {
+                        sql+=" and ";
+                    }
+                    sql+=" Auther_FName like '"+s[0]+"%' and Auther_LName like '"+s[1]+"%'";
+                }
+
+            }
+            System.out.println(sql);
             PreparedStatement statement = connection.prepareStatement(sql);
 
             ResultSet resultSet=statement.executeQuery();
@@ -541,10 +761,630 @@ connection.setAutoCommit(false);
             System.out.println(resultSet.getString("Book_title"));
 //            connection.commit();
             connection.close();
-    }
-    catch (Exception exception){
+        }
+        catch (Exception exception){
             JOptionPane.showMessageDialog(null,exception);
-    }
+        }
     }
 
+
+    @FXML
+    void addPerson(ActionEvent actionEvent){
+
+        try {
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+
+
+
+            char gender='G';
+            if(GenderMenuB.getText().toLowerCase().equals("all")){
+                System.out.println("you cant");
+            }
+            else if(GenderMenuB.getText().toLowerCase().equals("man")){
+                // اكتب الكود الي بضيف ع المانجا
+                gender='M';
+            }
+            else if(GenderMenuB.getText().toLowerCase().equals("woman")){
+                gender='F';
+            }
+
+            String s[]=userNameTextBox.getText().split(" ");
+            LocalDate localDate=JoinDate.getValue();
+            connection.setAutoCommit(false);
+
+            String sql = "INSERT INTO person VALUES ("
+                    +personIDTextBox.getText()
+                    +",'"+s[0]+"'"+
+                    ",'"+s[1]+"'"+
+                    ", to_date('"+localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear()+"','dd-mm-yyyy'),'"+
+                    state.getText().toLowerCase()
+                    +"','"+gender+"'," +
+                    "'"+passf.getText()+"')";
+            System.out.println(localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear());
+            String sql2="insert into member values ("+personIDTextBox.getText()+","+personIDTextBox.getText()+",'novel')";
+if(state.getText().toLowerCase().equals("admin")){
+    //insert into manager values (11006,11006,15001,to_date('15-5-1999','dd-mm-yyyy'));
+   sql2="insert into manager values (" +
+           personIDTextBox.getText()+","
+           +personIDTextBox.getText()+","+
+           VisableOrNotText.getText()+
+           ",to_date('"+localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear()+"','dd-mm-yyyy'))";}
+            System.out.println(sql2.equals("insert into manager values (11006,11006,15001,to_date('15-5-1999','dd-mm-yyyy'));"));
+            System.out.println(sql2);
+            System.out.println("insert into manager values (11006,11006,15001,to_date('15-5-1999','dd-mm-yyyy'));");
+if(state.getText().toLowerCase().equals("librarian")) {
+    sql2 = "insert into librarian values ("
+            + personIDTextBox.getText() +
+            "," + personIDTextBox.getText() +
+            "," + VisableOrNotText.getText() +
+            ",(select supervisor_id from section where section_id=" + VisableOrNotText.getText() + "))";
+}
+
+PreparedStatement statement = connection.prepareStatement(sql);
+            PreparedStatement statement1=connection.prepareStatement(sql2);
+
+            statement.executeUpdate();
+            connection.commit();
+            statement1.executeUpdate();
+            connection.commit();
+            connection.close();
+            System.out.println("add successfully");
+        }catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+        }
+    }
+    @FXML
+    void updatePerson(ActionEvent actionEvent) {
+
+    }
+    @FXML
+    void deletePerson(ActionEvent actionEvent){
+
+        try{
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+
+            PreparedStatement statement2 = connection.prepareStatement("select member_status from person where person_id="+personIDTextBox.getText());
+            ResultSet resultSet=statement2.executeQuery();
+            connection.setAutoCommit(false);
+            if(resultSet.next()) {
+                String sql2 = " ";
+                switch (resultSet.getString(1).trim().toLowerCase()) {
+                    case "admin":
+                         sql2 = "delete From manager where person_id=" + personIDTextBox.getText();
+                        break;
+                    case "librarian":
+                        sql2 = "delete From librarian where person_id=" + personIDTextBox.getText();
+                        break;
+                    case "member":
+                        sql2 = "delete From member where person_id=" + personIDTextBox.getText();
+                        break;
+
+                }
+                String sql = "delete from person where person_id=" + personIDTextBox.getText();
+
+                PreparedStatement statement = connection.prepareStatement(sql);
+                PreparedStatement statement1 = connection.prepareStatement(sql2);
+
+                statement1.executeUpdate();
+                connection.commit();
+                statement.executeUpdate();
+                connection.commit();
+
+                connection.close();
+            }
+        }catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+
+        }
+    }
+    @FXML
+    void searchPerson(ActionEvent actionEvent){
+        try{
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+            char gender='G';
+            if(GenderMenuB.getText().toLowerCase().equals("all")){
+                System.out.println("you cant");
+            }
+            else if(GenderMenuB.getText().toLowerCase().equals("man")){
+                // اكتب الكود الي بضيف ع المانجا
+                gender='M';
+            }
+            else if(GenderMenuB.getText().toLowerCase().equals("woman")){
+                gender='F';
+            }
+
+            String s[]=userNameTextBox.getText().split(" ");
+
+
+            System.out.println("Quey");
+            String sql="select * from person ";
+            if(issingle1){
+                if(!personIDTextBox.getText().equals(""))
+                    sql+= "where person_id="+personIDTextBox.getText();
+                else if (!VisableOrNotText.getText().equals(""))
+                    sql+="where section_id="+VisableOrNotText.getText();
+                else if(gender!='G')
+                    sql+="where gender="+gender;
+                else if(!userNameTextBox.getText().equals("")&&s.length>1)
+                    sql+="FName like '"+s[0]+"%' and LName like '"+s[1]+"%'";
+                else if (!state.getText().equals("all")) {
+                    sql+="where member_status like ('"+state.getText().toLowerCase()+"%')";//
+                }
+
+
+            }
+            else{
+                Boolean flag=true;
+                if(!personIDTextBox.getText().equals("")) {
+
+                    if (flag){
+                        sql+="where ";
+
+                        flag=false;
+                    }else {
+                        sql+=" and ";
+                    }
+                    sql+="person_id="+personIDTextBox.getText();
+                }
+                if(!state.getText().equals("all")){
+
+                    if (flag){
+                        sql+="where ";
+
+                        flag=false;
+                    }else {
+                        sql+=" and ";
+                    }
+
+                    sql+="member_status like ('"+state.getText().toLowerCase()+"%')";
+                }
+                if (!VisableOrNotText.getText().equals("")){
+
+                    if (flag){
+                        sql+="where ";
+
+                        flag=false;
+                    }else {
+                        sql+=" and ";
+                    }
+                    sql+="section_id="+VisableOrNotText.getText();
+                }
+
+                if(gender!='G'){
+
+                    if (flag){
+                        sql+="where ";
+
+                        flag=false;
+                    }else {
+                        sql+=" and ";
+                    }
+                    sql+="where type="+gender;
+                }
+
+                if(!userNameTextBox.getText().equals("")&&s.length>1){
+
+                    if (flag){
+                        sql+="where ";
+
+                        flag=false;
+                    }else {
+                        sql+=" and ";
+                    }
+                    sql+="FName like '"+s[0]+"%' and LName like '"+s[1]+"%'";
+                }
+
+            }
+            System.out.println(sql);
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            ResultSet resultSet=statement.executeQuery();
+            resultSet.next();
+            System.out.println(resultSet.getString(2));
+//            connection.commit();
+            connection.close();
+        }
+        catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+        }
+    }
+
+    @FXML
+    void insertBorrowing(ActionEvent actionEvent){
+        try {
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+            LocalDate localDate=DateOfReturn.getValue();
+            LocalDate localDate1=DateOfReturn.getValue();
+            connection.setAutoCommit(false);
+
+            String sql = "INSERT INTO Borrowing VALUES ("
+                    +
+                       BorrowingID.getText()  +
+                    ","
+                    +BPeersonID.getText()+","
+                   +BBookID.getText()+
+                    ", to_date('"+localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear()+"','dd-mm-yyyy'),"+
+                    " to_date('"+localDate1.getDayOfMonth()+"-"+localDate1.getMonthValue()+"-"+localDate1.getYear()+"','dd-mm-yyyy')"+
+                  " ,'No')";
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.executeUpdate();
+            connection.commit();
+            PreparedStatement statement1=connection.prepareStatement("select count(Borrowing_id) from Borrowing  ");
+            ResultSet resultSet1=statement1.executeQuery();
+            resultSet1.next();
+            numberOfBrrowing.setText("number of borrowing: "+resultSet1.getString(1));
+            connection.close();
+            System.out.println("add successfully");
+        }catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+        }
+    }
+    @FXML
+    void updateBorrowing(ActionEvent actionEvent){}
+    @FXML
+    void selectBorrowing(ActionEvent actionEvent){
+        try {
+
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+
+            String sql="select * from Borrowing";
+            Boolean flag=true;
+            connection.setAutoCommit(false);
+            if (issingle3){
+                if (!BorrowingID.getText().equals("")) {
+                    if (flag) {
+                        sql += " where ";
+
+                        flag = false;
+                    } else {
+                        sql += " and ";
+                    }
+                    sql += " Borrowing_id=" + BorrowingID.getText();
+                }
+                if (!BBookID.getText().equals("")) {
+                    if (flag) {
+                        sql += " where ";
+
+                        flag = false;
+                    } else {
+                        sql += " and ";
+                    }
+                    sql += " Book_id=" + BBookID.getText();
+                }
+                if (!BPeersonID.getText().equals("")) {
+                    if (flag) {
+                        sql += " where ";
+
+                        flag = false;
+                    } else {
+                        sql += " and ";
+                    }
+                    sql += " person_id=" + BPeersonID.getText();
+                }
+            }
+            else{
+                if (!BorrowingID.getText().equals("")) {
+                    if (flag) {
+                        sql += " where ";
+
+                        flag = false;
+                    } else {
+                        sql += " and ";
+                    }
+                    sql += " Borrowing_id=" + BorrowingID.getText();
+                }
+                if (!BBookID.getText().equals("")) {
+                    if (flag) {
+                        sql += " where ";
+
+                        flag = false;
+                    } else {
+                        sql += " and ";
+                    }
+                    sql += " Book_id=" + BBookID.getText();
+                }
+                if (!BPeersonID.getText().equals("")) {
+                    if (flag) {
+                        sql += " where ";
+
+                        flag = false;
+                    } else {
+                        sql += " and ";
+                    }
+                    sql += " person_id=" + BPeersonID.getText();
+                }
+            }
+
+            PreparedStatement statement=connection.prepareStatement(sql);
+            ResultSet resultSet=statement.executeQuery();
+            resultSet.next();
+            System.out.println(resultSet.getString(1));
+            connection.commit();
+
+
+          PreparedStatement statement1=connection.prepareStatement("select count(Borrowing_id) from Borrowing ");
+          ResultSet resultSet1=statement1.executeQuery();
+          resultSet1.next();
+            numberOfBrrowing.setText("number of borrowing: "+resultSet1.getString(1));
+            connection.close();
+
+
+        }catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+        }
+    }
+    @FXML
+    void deleteBorrowing(ActionEvent actionEvent){
+        try{
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+
+            String sql="delete from borrowing";
+            Boolean flag=true;
+            connection.setAutoCommit(false);
+
+            if(!BorrowingID.getText().equals("")){
+                if (flag){
+                    sql+=" where ";
+
+                    flag=false;
+                }else {
+                    sql+=" and ";
+                }
+                sql+=" Borrowing_id="+BorrowingID.getText();}
+            if(!BBookID.getText().equals("")) {
+                if (flag) {
+                    sql += " where ";
+
+                    flag = false;
+                } else {
+                    sql += " and ";
+                }
+                sql += " Book_id=" + BBookID.getText();
+            }
+            if(!BPeersonID.getText().equals("")){
+                if (flag) {
+                    sql += " where ";
+
+                    flag = false;
+                } else {
+                    sql += " and ";
+                }
+                sql += " person_id=" + BPeersonID.getText();
+            }
+
+
+            PreparedStatement statement=connection.prepareStatement(sql);
+            statement.executeUpdate();
+            connection.commit();
+            PreparedStatement statement1=connection.prepareStatement("select count(Borrowing_id) from Borrowing ");
+            ResultSet resultSet1=statement1.executeQuery();
+            resultSet1.next();
+            numberOfBrrowing.setText("number of borrowing: "+resultSet1.getString(1));
+            connection.close();
+
+        }catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+        }
+
+    }
+
+    @FXML
+    void returnBook(ActionEvent actionEvent){
+        try {
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+            LocalDate localDate=DateOfReturn.getValue();
+            LocalDate localDate1=DateOfReturn.getValue();
+            connection.setAutoCommit(false);
+
+
+            String sql="update borrowing set is_returned=Yes";
+            String invalidQuery="update borrowing set is_returned=Yes";
+            Boolean flag=true;
+            connection.setAutoCommit(false);
+
+            if(!BorrowingID.getText().equals("")){
+                if (flag){
+                    sql+=" where ";
+
+                    flag=false;
+                }else {
+                    sql+=" and ";
+                }
+                sql+=" Borrowing_id="+BorrowingID.getText();}
+            if(!BBookID.getText().equals("")) {
+                if (flag) {
+                    sql += " where ";
+
+                    flag = false;
+                } else {
+                    sql += " and ";
+                }
+                sql += " Book_id=" + BBookID.getText();
+            }
+            if(!BPeersonID.getText().equals("")){
+                if (flag) {
+                    sql += " where ";
+
+                    flag = false;
+                } else {
+                    sql += " and ";
+                }
+                sql += " person_id=" + BPeersonID.getText();
+            }
+
+
+            PreparedStatement statement=connection.prepareStatement(sql);
+            if (!sql.trim().equals(invalidQuery))statement.executeUpdate();
+            connection.commit();
+            connection.close();
+
+        }catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+        }
+    }
+
+    @FXML
+    void insertEqupment(ActionEvent actionEvent){
+        try {
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+            String sql="insert into equipment values("+equipmentID.getText()+","+eSectionID.getText()+",'"+EquipmentType.getText()+"')";
+        PreparedStatement statement=connection.prepareStatement(sql);
+        statement.executeUpdate();
+        connection.close();
+        }catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+        }
+    }
+    @FXML
+    void updateEqupment(ActionEvent actionEvent){
+
+    }
+    @FXML
+    void selectEqupment(ActionEvent actionEvent){
+        try{
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+            String sql="select * from equipment ";
+            if(issingle2){
+                if(!equipmentID.getText().equals(""))
+                    sql+="where equipment_id="+equipmentID.getText();
+                else if(!eSectionID.getText().equals("")){
+                    sql+="where section_id="+eSectionID.getText();
+                } else if (!EquipmentType.getText().equals("")) {
+                    sql+="where Equipment_type like('"+EquipmentType.getText()+"%')";
+                }
+
+            }else {
+                Boolean flag=true;
+
+
+                if(!equipmentID.getText().equals("")){
+                    if (flag){
+                        sql+="where ";
+
+                        flag=false;
+                    }else {
+                        sql+=" and ";
+                    }
+                    sql+=" equipment_id="+equipmentID.getText();}
+                if(!eSectionID.getText().equals("")){
+                    if (flag){
+                        sql+="where ";
+
+                        flag=false;
+                    }else {
+                        sql+=" and ";
+                    }
+                    sql+=" section_id="+eSectionID.getText();
+                } if (!EquipmentType.getText().equals("")) {
+                    if (flag){
+                        sql+="where ";
+
+                        flag=false;
+                    }else {
+                        sql+=" and ";
+                    }
+                    sql+=" Equipment_type like('"+EquipmentType.getText()+"%')";
+                }
+
+            }
+            PreparedStatement statement=connection.prepareStatement(sql);
+            ResultSet resultSet=statement.executeQuery();
+            if(resultSet.next())
+                System.out.println(resultSet.getString(1)+"\t"+resultSet.getString(2)+"\t"+resultSet.getString(3)+"\t");
+            connection.close();
+        }catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+        }
+    }
+    @FXML
+    void deleteEqupment(ActionEvent actionEvent){
+        try{
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+
+            String sql="delete from equipment";
+            Boolean flag=true;
+            connection.setAutoCommit(false);
+
+            if(!equipmentID.getText().equals("")){
+                if (flag){
+                    sql+=" where ";
+
+                    flag=false;
+                }else {
+                    sql+=" and ";
+                }
+                sql+=" equipment_id="+equipmentID.getText();}
+            if(!eSectionID.getText().equals("")){
+                if (flag){
+                    sql+=" where ";
+
+                    flag=false;
+                }else {
+                    sql+=" and ";
+                }
+                sql+=" section_id="+eSectionID.getText();
+            } if (!EquipmentType.getText().equals("")) {
+                if (flag){
+                    sql+=" where ";
+
+                    flag=false;
+                }else {
+                    sql+=" and ";
+                }
+                sql+=" Equipment_type like('"+EquipmentType.getText()+"%')";
+            }
+
+
+        PreparedStatement statement=connection.prepareStatement(sql);
+            statement.executeUpdate();
+            connection.commit();
+            connection.close();
+
+        }catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+        }
+
+    }
 }

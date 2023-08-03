@@ -128,7 +128,7 @@ public class BookLoginWindowController implements Initializable {
         if(resultSet.getString(7).trim().equals(passwordField.getText().trim())){
             User.id=Integer.valueOf(text.getText());
             User.passward=passwordField.getText();
-            if (resultSet.getString(5).trim().toLowerCase().equals("manager")){
+            if (resultSet.getString(5).trim().toLowerCase().equals("admin")){
                 User.member_status="manager";
                 type=Admin;
                 isIn=true;
