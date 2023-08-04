@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import oracle.jdbc.pool.OracleDataSource;
 
 import javax.swing.*;
-import java.sql.*;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,10 +32,7 @@ import static com.example.databaseproject.TypeOfUseers.*;
 
 public class BookLoginWindowController implements Initializable {
 
-    @FXML
-    protected void onHelloButtonClick() {
-        //welcomeText.setText("Welcome to JavaFX Application!");
-    }
+
     @FXML
     ImageView imageView;
     Boolean out=false;
@@ -53,7 +50,9 @@ public class BookLoginWindowController implements Initializable {
                 sleep(3600);
 
             }
-            catch (Exception exception){}
+            catch (Exception exception){
+
+            }
             System.out.println("done");
             imageView.setVisible(false);
         }
@@ -116,6 +115,7 @@ public class BookLoginWindowController implements Initializable {
         oracleDataSource.setPassword("123456");
         Connection connection=oracleDataSource.getConnection();
         connection.setAutoCommit(false);
+
         // Statement statement=connection.createStatement();
         String sql = "select * from person where person_id="+Integer.valueOf(text.getText());
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -125,7 +125,7 @@ public class BookLoginWindowController implements Initializable {
             System.out.println(resultSet.getString(7).equals(passwordField.getText()));
             User.name=resultSet.getString(2).trim()+" "+resultSet.getString(3).trim();
             //we are make name in homepage
-        if(resultSet.getString(7).trim().equals(passwordField.getText().trim())){
+        if(resultSet.getString(7).trim().equals(passwordField.getText().trim())||resultSet.getString(7).trim().equals(passwordText.getText().trim())){
             User.id=Integer.valueOf(text.getText());
             User.passward=passwordField.getText();
             if (resultSet.getString(5).trim().toLowerCase().equals("admin")){
@@ -144,17 +144,19 @@ public class BookLoginWindowController implements Initializable {
                 isIn=true;
             }
 
-            else{
-                isIn=false;
-                JOptionPane.showMessageDialog(null,"id or password is wrong");
-                System.out.println("غللط");
-                System.out.println(text.getText());
-            }
 
+
+        }
+        else{
+            isIn=false;
+            JOptionPane.showMessageDialog(null,"id or password is wrong");
+            System.out.println("غللط");
+            System.out.println(text.getText());
         }
         }
         catch (Exception exception){
-            System.out.println(exception);
+            isIn=false;
+            JOptionPane.showMessageDialog(null,"id or password is wrong");
         }
 
 

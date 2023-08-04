@@ -126,6 +126,8 @@ public class HomeController implements Initializable {
     public void swetchLogIn(ActionEvent e) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("BookLoginWindow.fxml")));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
+        stage.close();
+        stage=new Stage();
         scene = new Scene(root);
         stage.setResizable(false);
         stage.setX(350);
