@@ -4,6 +4,7 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -29,7 +30,7 @@
       </Text>
       <Text layoutX="270.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
          <font>
-            <Font name="Blackadder ITC" size="16.0" />
+            <Font name="Serif Regular" size="16.0" />
          </font>
       </Text>
       <Line endX="71.20001220703125" endY="-1.66162109375" layoutX="402.0" layoutY="184.0" startX="-132.00003051757812" startY="-1.6616363525390625" />
@@ -50,11 +51,19 @@
             <Font name="Blackadder ITC" size="10.0" />
          </font>
       </CheckBox>
-      <Button layoutX="333.0" layoutY="238.0" mnemonicParsing="false" onAction="#swetchToHome" prefHeight="26.0" prefWidth="72.0" style="-fx-background-color: transport;" text="Button">
+      <Button layoutX="333.0" layoutY="238.0" mnemonicParsing="false" onAction="#swetchToHome" prefHeight="26.0" prefWidth="72.0" style="-fx-background-color: transport; -fx-border-color: #000000; -fx-border-radius: 25; -fx-border-width: 0.5;" text="Log in ">
          <font>
             <Font name="Blackadder ITC" size="18.0" />
          </font>
       </Button>
+      <ImageView fitHeight="218.0" fitWidth="235.0" layoutX="14.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: color-burn;">
+         <image>
+            <Image url="@BookNest2.png" />
+         </image>
+         <effect>
+            <Blend mode="SRC_ATOP" opacity="0.0" />
+         </effect>
+      </ImageView>
       <ImageView fx:id="imageView" fitHeight="377.0" fitWidth="532.0" layoutX="-1.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="16.8619425455729" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="6.0">
          <image>
             <Image url="@pic/book-32.gif" />

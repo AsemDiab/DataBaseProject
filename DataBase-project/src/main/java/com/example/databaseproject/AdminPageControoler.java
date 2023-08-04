@@ -1,6 +1,8 @@
 package com.example.databaseproject;
 
 import javafx.animation.FadeTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,10 +26,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AdminPageControoler implements Initializable {
+
+
+    @FXML
+    private DatePicker DatePublish;
     @FXML
     Label numberOfBrrowing;
     @FXML
@@ -71,8 +78,7 @@ public class AdminPageControoler implements Initializable {
     @FXML
     private Pane BorrowPane;
 
-    @FXML
-    private DatePicker DatePublish;
+
 
     @FXML
     private TextArea DescrptionTextBox;
@@ -99,16 +105,84 @@ public class AdminPageControoler implements Initializable {
     private MenuItem ReaderMenuItem;
 
     @FXML
-    private TableView<?> TBook;
+    private TableView<Book> TBook;
 
     @FXML
-    private TableView<?> TBorrow;
+    private TableColumn<Book, String > bookLanguageColumn;
 
     @FXML
-    private TableView<?> TEquipment;
+    private TableColumn<Book, Integer> bookSectionidColumn;
 
     @FXML
-    private TableView<?> TPerson;
+    private TableColumn<Book, Integer> bookTatolCopyCokumn;
+
+    @FXML
+    private TextField bookTitleTextBox;
+
+    @FXML
+    private TableColumn<Book, Date> bookTypeColumn;
+
+    @FXML
+    private TableColumn<Book, Integer> bookidColumn;
+
+    @FXML
+    private TableColumn<Book, String> booktitleColumn;
+
+    @FXML
+    private TableColumn<Book, String> AutherFNameColumn;
+
+    @FXML
+    private TableColumn<Book, String> AutherLNameColumn;
+
+    @FXML
+    private TableView<Borrowing> TBorrow;
+    @FXML
+    private TableColumn<Borrowing, Integer> BorrowigIDColumn;
+
+    @FXML
+    private TableColumn<Borrowing, Date> DateOfBorrowingColumn;
+
+    @FXML
+    private TableColumn<Borrowing , Date> DateOfReturnColumn;
+    @FXML
+    private TableColumn<Borrowing,Integer> BBookIDColumn;
+    @FXML
+    private TableColumn<Borrowing,Integer>BPersonIDColumn;
+
+    @FXML
+    private TableView<Equipment> TEquipment;
+    @FXML
+    private TableColumn<Equipment, Integer> ESectionIDEquipment;
+
+
+
+    @FXML
+    private TableColumn<Equipment, Integer> EquipmentIDColoumn;
+
+
+
+    @FXML
+    private TableColumn<Equipment, String> EquipmentTypeColumn;
+
+    @FXML
+    private TableView<Person> TPerson;
+    @FXML
+    private TableColumn<Person, Date> PJoinDateColumn;
+
+    @FXML
+    private TableColumn<Person, String> PSectionIdColumn;
+
+    @FXML
+    private TableColumn<Person, String> PersonGenderColumn;
+
+    @FXML
+    private TableColumn<Person, Integer> PersonIDColumn;
+
+    @FXML
+    private TableColumn<Person, String> PersonNameColumn;
+
+    @FXML
+    private TableColumn<Person, String> PersonShipColumn;
 
     @FXML
     private Button Users;
@@ -131,8 +205,7 @@ public class AdminPageControoler implements Initializable {
     @FXML
     private TextField bookIDTextBox;
 
-    @FXML
-    private TextField bookTitleTextBox;
+
 
     @FXML
     private Label intrestLabel;
@@ -212,6 +285,9 @@ public boolean isopenp=false;
     public boolean isopenB=true;
     public boolean isopenBo=false;
     public boolean isopenE=false;
+    public  int prevBookID;
+    @FXML
+    private TableColumn<Book, Integer> numberOFpagesColumn;
 
     public  void ManFun(){
         GenderMenuB.setText(ManMenuItem.getText());
@@ -401,8 +477,144 @@ public void open_UsersPane(){
             passf.setDisable(false);
         }
     }
+    int previd;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        bookidColumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
+        booktitleColumn.setCellValueFactory(cellData -> cellData.getValue().titlePropertyProperty());
+        AutherFNameColumn.setCellValueFactory(cellData -> cellData.getValue().fnameProperty());
+        AutherLNameColumn.setCellValueFactory(cellData -> cellData.getValue().lnameProperty());
+        bookTypeColumn.setCellValueFactory(cellData -> cellData.getValue().publishDatePropertyProperty());
+        bookLanguageColumn.setCellValueFactory(cellData -> cellData.getValue().languagePropertyProperty());
+        numberOFpagesColumn.setCellValueFactory(cellData -> cellData.getValue().pageIntegerProperty().asObject());
+        bookSectionidColumn.setCellValueFactory(cellData -> cellData.getValue().sectionIDProrpertyProperty().asObject());
+        bookTatolCopyCokumn.setCellValueFactory(cellData -> cellData.getValue().idProperty().asObject());
+
+      PJoinDateColumn.setCellValueFactory(cellData -> cellData.getValue().datePProperty());
+      PSectionIdColumn.setCellValueFactory(cellData -> cellData.getValue().sectionIDPProperty());
+      PersonGenderColumn.setCellValueFactory(cellData -> cellData.getValue().genderPProperty());
+      PersonIDColumn.setCellValueFactory(cellData -> cellData.getValue().IDPProperty().asObject());
+      PersonNameColumn.setCellValueFactory(cellData -> cellData.getValue().namePProperty());
+      PersonShipColumn.setCellValueFactory(cellData -> cellData.getValue().personShipPProperty());
+
+       BorrowigIDColumn.setCellValueFactory(cellData -> cellData.getValue().IDPProperty().asObject());
+       DateOfBorrowingColumn.setCellValueFactory(cellData -> cellData.getValue().dateBPProperty());
+       DateOfReturnColumn.setCellValueFactory(cellData -> cellData.getValue().dateRPProperty());
+        BBookIDColumn.setCellValueFactory(cellData -> cellData.getValue().bookIDPProperty().asObject());
+       BPersonIDColumn.setCellValueFactory(cellData -> cellData.getValue().borrowerIDPProperty().asObject());
+
+        EquipmentIDColoumn.setCellValueFactory(cellData -> cellData.getValue().idpProperty().asObject());;
+        ESectionIDEquipment.setCellValueFactory(cellData -> cellData.getValue().sectionIDPProperty().asObject());;
+        EquipmentTypeColumn.setCellValueFactory(cellData -> cellData.getValue().typepProperty());
+
+
+
+        TBook.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                try{
+                    OracleDataSource oracleDataSource = new OracleDataSource();
+                    oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+                    oracleDataSource.setUser("C##Asem");
+                    oracleDataSource.setPassword("123456");
+                    Connection connection=oracleDataSource.getConnection();
+                    PreparedStatement preparedStatement=connection.prepareStatement(
+                            "select DESCRIPTION,TYPE_DISCRIPTION from Book  , Book_Type  where book.type=book_type.Type_Id and book.book_id="+newValue.getBookID());
+                    ResultSet resultSet=preparedStatement.executeQuery();
+                    resultSet.next();
+                    DescrptionTextBox.setText(resultSet.getString(1).trim());
+                    menu.setText(resultSet.getString(2).trim());
+                    connection.close();
+                }catch (Exception exception){
+                    JOptionPane.showMessageDialog(null,exception);
+                }
+
+                prevBookID=newValue.getBookID();
+                int selectedId = newValue.getBookID();
+                String selectedTitle = newValue.getTitle();
+                java.sql.Date selectedPublishDate = (java.sql.Date) newValue.getPublishDate();
+                bookIDTextBox.setText(String.valueOf(selectedId));
+                bookTitleTextBox.setText(selectedTitle);
+                autherNameTextBox.setText(newValue.getAutherFname()+" "+newValue.getAutherLname());
+                sectionIDTextBox.setText(String.valueOf(newValue.getSectionID()));
+                languageTextBox.setText(newValue.getLanguage());
+                numberOfPagesTextBox.setText(String.valueOf(newValue.getNumberOfPages()));
+                totalCopyTextBox.setText(String.valueOf(newValue.getTotalCopy()));
+                DatePublish.setValue(selectedPublishDate.toLocalDate());
+            }
+        });
+        TBorrow.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                previd=newValue.ID;
+              java.sql.Date dateOfReturn=(java.sql.Date)newValue.getDateR();
+                java.sql.Date dateOfB=(java.sql.Date)newValue.getDateB();
+              BorrowingID.setText(String.valueOf(newValue.getID()));
+              BBookID.setText(String.valueOf(newValue.getBookID()));
+              BPeersonID.setText(String.valueOf(newValue.getBorrowerID()));
+              DateOfReturn.setValue(dateOfReturn.toLocalDate());
+              DAteOFBorrowing.setValue(dateOfB.toLocalDate());
+            }
+        });
+        TPerson.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                try{
+                    previd= newValue.getID();
+                    OracleDataSource oracleDataSource = new OracleDataSource();
+                    oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+                    oracleDataSource.setUser("C##Asem");
+                    oracleDataSource.setPassword("123456");
+                    Connection connection=oracleDataSource.getConnection();
+                    PreparedStatement preparedStatement=connection.prepareStatement(
+                            "select * from person  where person_id="+newValue.getID());
+                    ResultSet resultSet=preparedStatement.executeQuery();
+                    resultSet.next();
+                    passf.setText(resultSet.getString(7).trim());
+                    PreparedStatement preparedStatement2=connection.prepareStatement(
+                            "select Section_id from manager  where  person_id= "+newValue.getID()+" union "+"select Section_id from Librarian  where  person_id= "+newValue.getID());
+                     resultSet=preparedStatement2.executeQuery();
+                    if(resultSet.next())
+                        VisableOrNotText.setText(String.valueOf(resultSet.getInt(1)));
+                        else
+                            VisableOrNotText.setText("");
+                    connection.close();
+                }catch (Exception exception){
+                    JOptionPane.showMessageDialog(null,exception);
+                }
+
+                previd=newValue.getID();
+                int selectedId = newValue.getID();
+                String selectedTitle = newValue.getName();
+                java.sql.Date selectedPublishDate = (java.sql.Date) newValue.getDate();
+                personIDTextBox.setText(String.valueOf(selectedId));
+                userNameTextBox.setText(newValue.getName());
+                JoinDate.setValue(selectedPublishDate.toLocalDate());
+                GenderMenuB.setText(newValue.getGender());
+                state.setText(newValue.getPersonShip());
+
+
+
+
+
+
+            }
+        });
+        TEquipment.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+
+                previd=newValue.getId();
+                int selectedId = newValue.getId();
+                String selectedTitle = newValue.getType();
+                equipmentID.setText(String.valueOf(selectedId));
+                eSectionID.setText(String.valueOf(newValue.getSectionID()));
+                EquipmentType.setText(newValue.getType());
+
+
+
+
+
+
+            }
+        });
+
         if(BookLoginWindowController.type.equals(TypeOfUseers.Admin)){
             Users.setVisible(true);
         }
@@ -410,7 +622,27 @@ public void open_UsersPane(){
             Users.setVisible(false);
         }
         //textA.setWrapText(true);
+        fillEquipmentTable(new ActionEvent());
+        fillBorrowTable(new ActionEvent());
+        fillPersonTable(new ActionEvent());
+        fillBookTable(new ActionEvent());
+        try {
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+
+
+            PreparedStatement statement1=connection.prepareStatement("select count(Borrowing_id) from Borrowing ");
+            ResultSet resultSet1=statement1.executeQuery();
+            resultSet1.next();
+            numberOfBrrowing.setText("number of borrowing: "+resultSet1.getString(1));
+            connection.close();
+        }catch (Exception exception){}
     }
+
+
     @FXML
     void addBook(ActionEvent actionEvent){
         try {
@@ -485,7 +717,156 @@ connection.setAutoCommit(false);
     }
 @FXML
     void updateBook(ActionEvent actionEvent) {
+    try {
+        OracleDataSource oracleDataSource = new OracleDataSource();
+        oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+        oracleDataSource.setUser("C##Asem");
+        oracleDataSource.setPassword("123456");
+        Connection connection=oracleDataSource.getConnection();
+        String s[]=autherNameTextBox.getText().split(" ");
 
+
+        int type=0;
+        if(menu.getText().toLowerCase().equals("all")){
+            System.out.println("you cant");
+        }
+        else if(menu.getText().toLowerCase().equals("manga")){
+            // اكتب الكود الي بضيف ع المانجا
+            type=5;
+        }
+        else if(menu.getText().toLowerCase().equals("novels")){
+            type=1;
+        }
+        else if(menu.getText().toLowerCase().equals("academic")){
+            type=2;
+
+        }
+        else if(menu.getText().toLowerCase().equals("human devilopment")){
+
+            type=4;
+        }
+        else if(menu.getText().toLowerCase().equals("fantasy")){
+            type=3;
+
+        }
+
+        System.out.println("Quey");
+        String sql="update book  ";
+
+            Boolean flag=true;
+            if(!bookIDTextBox.getText().equals("")) {
+
+                if (flag){
+                    sql+=" set ";
+
+                    flag=false;
+                }else {
+                    sql+=" , ";
+                }
+                sql+="Book_id="+bookIDTextBox.getText();
+            }
+            if(!bookTitleTextBox.getText().equals("")){
+
+                if (flag){
+                    sql+=" set ";
+
+                    flag=false;
+                }else {
+                    sql+=" ,  ";
+                }
+
+                sql+=" book_title = '"+bookTitleTextBox.getText()+"'";
+            }
+            if (!sectionIDTextBox.getText().equals("")){
+
+                if (flag){
+                    sql+=" set ";
+
+                    flag=false;
+                }else {
+                    sql+=" , ";
+                }
+                sql+="section_id= "+sectionIDTextBox.getText();
+            }
+            if (!languageTextBox.getText().equals("")) {
+                {
+
+                    if (flag){
+                        sql+=" set ";
+
+                        flag=false;
+                    }else {
+                        sql+=" , ";
+                    }
+                }
+                sql+="language = '"+languageTextBox.getText()+"'";
+            }
+            if(type!=0){
+
+                if (flag){
+                    sql+=" set ";
+
+                    flag=false;
+                }else {
+                    sql+=" , ";
+                }
+                sql+=" type="+type;
+            }
+
+            if(!autherNameTextBox.getText().equals("")&&s.length>1){
+
+                if (flag){
+                    sql+=" set ";
+
+                    flag=false;
+                }else {
+                    sql+=" , ";
+                }
+                sql+=" AUTHER_FNAME = '"+s[0]+"',  Auther_LName = '"+s[1]+"'";
+            }
+
+        if(!totalCopyTextBox.getText().equals("")){
+
+            if (flag){
+                sql+=" set ";
+
+                flag=false;
+            }else {
+                sql+=" , ";
+            }
+            sql+=" total_copies="+totalCopyTextBox.getText();
+
+        }
+        if(!numberOfPagesTextBox.getText().equals("")){
+
+            if (flag){
+                sql+=" set ";
+
+                flag=false;
+            }else {
+                sql+=" , ";
+            }
+            sql+=" number_of_pages="+numberOfPagesTextBox.getText();
+        }
+
+
+
+
+
+        sql+=" where Book_id="+prevBookID;
+        System.out.println(sql);
+
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.executeUpdate();
+
+       fillBookTable(new ActionEvent());
+//            connection.commit();
+        connection.close();
+    }
+    catch (Exception exception){
+        JOptionPane.showMessageDialog(null,exception);
+    }
 }
 @FXML
     void DeleteBook(ActionEvent actionEvent){
@@ -617,7 +998,6 @@ connection.setAutoCommit(false);
         PreparedStatement statement = connection.prepareStatement(sql);
 
        statement.executeUpdate();
-       connection.commit();
         connection.close();
 }
     catch (Exception exception){
@@ -752,13 +1132,17 @@ connection.setAutoCommit(false);
                     sql+=" Auther_FName like '"+s[0]+"%' and Auther_LName like '"+s[1]+"%'";
                 }
 
+
             }
+
+             ObservableList<Book> books = FXCollections.observableArrayList();
             System.out.println(sql);
             PreparedStatement statement = connection.prepareStatement(sql);
 
             ResultSet resultSet=statement.executeQuery();
-            resultSet.next();
-            System.out.println(resultSet.getString("Book_title"));
+            while (resultSet.next()) {
+                books.add(new Book(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3), resultSet.getString(4), resultSet.getInt(11), resultSet.getString(7), resultSet.getInt(5), resultSet.getInt(10), resultSet.getDate(14)));
+            }TBook.setItems(books);
 //            connection.commit();
             connection.close();
         }
@@ -804,6 +1188,7 @@ connection.setAutoCommit(false);
                     state.getText().toLowerCase()
                     +"','"+gender+"'," +
                     "'"+passf.getText()+"')";
+
             System.out.println(localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear());
             String sql2="insert into member values ("+personIDTextBox.getText()+","+personIDTextBox.getText()+",'novel')";
 if(state.getText().toLowerCase().equals("admin")){
@@ -813,7 +1198,7 @@ if(state.getText().toLowerCase().equals("admin")){
            +personIDTextBox.getText()+","+
            VisableOrNotText.getText()+
            ",to_date('"+localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear()+"','dd-mm-yyyy'))";}
-            System.out.println(sql2.equals("insert into manager values (11006,11006,15001,to_date('15-5-1999','dd-mm-yyyy'));"));
+            System.out.println(sql2.equals("insert into manager values (11006,11006,15001,to_date('15-5-1999','dd-mm-yyyy'))"));
             System.out.println(sql2);
             System.out.println("insert into manager values (11006,11006,15001,to_date('15-5-1999','dd-mm-yyyy'));");
 if(state.getText().toLowerCase().equals("librarian")) {
@@ -821,13 +1206,14 @@ if(state.getText().toLowerCase().equals("librarian")) {
             + personIDTextBox.getText() +
             "," + personIDTextBox.getText() +
             "," + VisableOrNotText.getText() +
-            ",(select supervisor_id from section where section_id=" + VisableOrNotText.getText() + "))";
+            ",( select supervisor_id from section where section_id=" + VisableOrNotText.getText() + "))";
 }
 
 PreparedStatement statement = connection.prepareStatement(sql);
             PreparedStatement statement1=connection.prepareStatement(sql2);
 
             statement.executeUpdate();
+            System.out.println(sql);
             connection.commit();
             statement1.executeUpdate();
             connection.commit();
@@ -839,7 +1225,110 @@ PreparedStatement statement = connection.prepareStatement(sql);
     }
     @FXML
     void updatePerson(ActionEvent actionEvent) {
+     try {   OracleDataSource oracleDataSource = new OracleDataSource();
+        oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+        oracleDataSource.setUser("C##Asem");
+        oracleDataSource.setPassword("123456");
+        Connection connection = oracleDataSource.getConnection();
+        char gender = 'G';
+        if (GenderMenuB.getText().toLowerCase().equals("all")) {
+            System.out.println("you cant");
+        } else if (GenderMenuB.getText().toLowerCase().equals("man")||GenderMenuB.getText().toLowerCase().equals("m")) {
+            // اكتب الكود الي بضيف ع المانجا
+            gender = 'M';
+        } else if (GenderMenuB.getText().toLowerCase().equals("woman")||GenderMenuB.getText().toLowerCase().equals("f")) {
+            gender = 'F';
+        }
 
+        String s[] = userNameTextBox.getText().split(" ");
+
+
+        System.out.println("Quey");
+        String sql = "update person ";
+
+            Boolean flag = true;
+            if (!personIDTextBox.getText().equals("")) {
+
+                if (flag){
+                    sql+=" set ";
+
+                    flag=false;
+                }else {
+                    sql+=" , ";
+                }
+                sql += "person_id=" + personIDTextBox.getText();
+            }
+            if (!state.getText().toLowerCase().trim().equals("all")) {
+
+                if (flag){
+                    sql+=" set ";
+
+                    flag=false;
+                }else {
+                    sql+=" , ";
+                }
+
+                sql += "member_status = '" + state.getText().toLowerCase() + "' ";
+            }
+            if(!passf.getText().equals("")){
+                if (flag){
+                    sql+=" set ";
+
+                    flag=false;
+                }else {
+                    sql+=" , ";
+                }
+
+                sql += "passward = '" + passf.getText() + "' ";
+            }
+
+
+            if (gender != 'G') {
+
+                if (flag) {
+                    sql += " set ";
+
+                    flag = false;
+                } else {
+                    sql += " , ";
+
+                }
+                sql+=" gender='"+gender+"'";
+            }
+                System.out.println(userNameTextBox.getText());
+            if (!userNameTextBox.getText().equals("")&&s.length>1) {
+
+                if (flag){
+                    sql+=" set ";
+
+                    flag=false;
+                }else {
+                    sql+=" , ";
+                }
+                sql += "FName = '" + s[0] + "' , LName = '" + s[1] + "'";
+            }
+
+
+            sql+=" where Person_id="+previd;
+
+         if (!VisableOrNotText.getText().equals("")) {
+
+            if(state.getText().toLowerCase().trim().equals("admin")){
+                PreparedStatement preparedStatement2=connection.prepareStatement("update manager set section_id= "+VisableOrNotText.getText()+"where person_id="+previd);
+            }else {
+                PreparedStatement preparedStatement3=connection.prepareStatement("update librarian set section_id= "+VisableOrNotText.getText()+"where person_id="+previd);
+            }
+         }
+
+        System.out.println(sql);
+        PreparedStatement statement = connection.prepareStatement(sql);
+
+        statement.executeUpdate();
+        connection.close();
+        fillPersonTable(new ActionEvent());
+    }catch(Exception exception){
+        System.out.println(exception);
+    }
     }
     @FXML
     void deletePerson(ActionEvent actionEvent){
@@ -867,7 +1356,7 @@ PreparedStatement statement = connection.prepareStatement(sql);
                         sql2 = "delete From member where person_id=" + personIDTextBox.getText();
                         break;
 
-                }
+             }
                 String sql = "delete from person where person_id=" + personIDTextBox.getText();
 
                 PreparedStatement statement = connection.prepareStatement(sql);
@@ -918,7 +1407,7 @@ PreparedStatement statement = connection.prepareStatement(sql);
                 else if(gender!='G')
                     sql+="where gender="+gender;
                 else if(!userNameTextBox.getText().equals("")&&s.length>1)
-                    sql+="FName like '"+s[0]+"%' and LName like '"+s[1]+"%'";
+                    sql+="FName like ('"+s[0]+"%') and LName like ('"+s[1]+"%')";
                 else if (!state.getText().equals("all")) {
                     sql+="where member_status like ('"+state.getText().toLowerCase()+"%')";//
                 }
@@ -983,7 +1472,7 @@ PreparedStatement statement = connection.prepareStatement(sql);
                     }else {
                         sql+=" and ";
                     }
-                    sql+="FName like '"+s[0]+"%' and LName like '"+s[1]+"%'";
+                    sql+="FName like ('"+s[0]+"%') and LName like ('"+s[1]+"%')";
                 }
 
             }
@@ -991,15 +1480,33 @@ PreparedStatement statement = connection.prepareStatement(sql);
             PreparedStatement statement = connection.prepareStatement(sql);
 
             ResultSet resultSet=statement.executeQuery();
-            resultSet.next();
-            System.out.println(resultSet.getString(2));
+            ObservableList<Person> persons = FXCollections.observableArrayList();
+            PreparedStatement preparedStatement2;
+            ResultSet resultSet1;
+            while (resultSet.next()) {
+                preparedStatement2=connection.prepareStatement(
+                        "select Section_id from manager  where  person_id= "+resultSet.getInt(1)+" union "+" select Section_id from Librarian  where  person_id="+resultSet.getInt(1));
+                resultSet1=preparedStatement2.executeQuery();
+                if(resultSet1.next())
+                    persons.add(new Person(resultSet.getInt(1), resultSet.getString(2)+" "+resultSet.getString(3), resultSet.getDate(4), resultSet.getString(5), resultSet.getString(6),resultSet1.getString(1) ));
+                else
+                    persons.add(new Person(resultSet.getInt(1), resultSet.getString(2)+" "+resultSet.getString(3), resultSet.getDate(4), resultSet.getString(5), resultSet.getString(6),"" ));
+
+            }
+            TPerson.setItems(persons);
 //            connection.commit();
             connection.close();
+
+
+
+
         }
         catch (Exception exception){
             JOptionPane.showMessageDialog(null,exception);
         }
     }
+
+
 
     @FXML
     void insertBorrowing(ActionEvent actionEvent){
@@ -1036,9 +1543,114 @@ PreparedStatement statement = connection.prepareStatement(sql);
         }catch (Exception exception){
             JOptionPane.showMessageDialog(null,exception);
         }
+        fillBorrowTable(new ActionEvent());
     }
     @FXML
-    void updateBorrowing(ActionEvent actionEvent){}
+    void updateBorrowing(ActionEvent actionEvent){
+        try {
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+            String s[]=autherNameTextBox.getText().split(" ");
+
+
+
+
+            System.out.println("Quey");
+            String sql="update Borrowing  ";
+
+            Boolean flag=true;
+            if(!BorrowingID.getText().equals("")) {
+
+                if (flag){
+                    sql+=" set ";
+
+                    flag=false;
+                }else {
+                    sql+=" , ";
+                }
+                sql+="Borrowing_id="+BorrowingID.getText();
+            }
+            if(!BBookID.getText().equals("")){
+
+                if (flag){
+                    sql+=" set ";
+
+                    flag=false;
+                }else {
+                    sql+=" ,  ";
+                }
+
+                sql+=" book_id = '"+BBookID.getText()+"'";
+            }
+            if (!BPeersonID.getText().equals("")){
+
+                if (flag){
+                    sql+=" set ";
+
+                    flag=false;
+                }else {
+                    sql+=" , ";
+                }
+                sql+="Borrower_id= "+BPeersonID.getText()+" ";
+            }
+            if (DAteOFBorrowing.getValue()!=null) {
+                {
+                    LocalDate localDate = DAteOFBorrowing.getValue();
+
+                    if (flag) {
+                        sql += " set ";
+
+                        flag = false;
+                    } else {
+                        sql += " , ";
+                    }
+                    sql+=" Date_Of_Borrowing =to_date('"+localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear()+"','dd-mm-yyyy')  ";
+
+                }
+            }
+            if (DateOfReturn.getValue()!=null) {
+                {
+                    LocalDate localDate = DateOfReturn.getValue();
+
+                    if (flag) {
+                        sql += " set ";
+
+                        flag = false;
+                    } else {
+                        sql += " , ";
+                    }
+                    sql+="Return_Date =to_date('"+localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear()+"','dd-mm-yyyy') ";
+
+                }
+            }
+
+
+
+
+
+
+
+            sql+=" where Borrowing_id = "+previd;
+            System.out.println(sql);
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.executeUpdate();
+
+            fillBorrowTable(new ActionEvent());
+//            connection.commit();
+            connection.close();
+
+
+        }
+        catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+        }
+
+    }
     @FXML
     void selectBorrowing(ActionEvent actionEvent){
         try {
@@ -1048,6 +1660,7 @@ PreparedStatement statement = connection.prepareStatement(sql);
             oracleDataSource.setUser("C##Asem");
             oracleDataSource.setPassword("123456");
             Connection connection=oracleDataSource.getConnection();
+
 
             String sql="select * from Borrowing";
             Boolean flag=true;
@@ -1081,7 +1694,7 @@ PreparedStatement statement = connection.prepareStatement(sql);
                     } else {
                         sql += " and ";
                     }
-                    sql += " person_id=" + BPeersonID.getText();
+                    sql += " Borrower_id=" + BPeersonID.getText();
                 }
             }
             else{
@@ -1119,18 +1732,23 @@ PreparedStatement statement = connection.prepareStatement(sql);
 
             PreparedStatement statement=connection.prepareStatement(sql);
             ResultSet resultSet=statement.executeQuery();
-            resultSet.next();
-            System.out.println(resultSet.getString(1));
             connection.commit();
+            ObservableList<Borrowing> Borrows = FXCollections.observableArrayList();
 
+            while (resultSet.next()) {
+                Borrows.add(new Borrowing(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getDate(4),resultSet.getDate(5)));
+            }
+            TBorrow.setItems(Borrows);
 
           PreparedStatement statement1=connection.prepareStatement("select count(Borrowing_id) from Borrowing ");
           ResultSet resultSet1=statement1.executeQuery();
           resultSet1.next();
             numberOfBrrowing.setText("number of borrowing: "+resultSet1.getString(1));
+
+
+
+
             connection.close();
-
-
         }catch (Exception exception){
             JOptionPane.showMessageDialog(null,exception);
         }
@@ -1184,9 +1802,11 @@ PreparedStatement statement = connection.prepareStatement(sql);
             connection.commit();
             PreparedStatement statement1=connection.prepareStatement("select count(Borrowing_id) from Borrowing ");
             ResultSet resultSet1=statement1.executeQuery();
+            fillBorrowTable(new ActionEvent());
             resultSet1.next();
             numberOfBrrowing.setText("number of borrowing: "+resultSet1.getString(1));
             connection.close();
+            fillBorrowTable(new ActionEvent());
 
         }catch (Exception exception){
             JOptionPane.showMessageDialog(null,exception);
@@ -1268,10 +1888,76 @@ PreparedStatement statement = connection.prepareStatement(sql);
         }catch (Exception exception){
             JOptionPane.showMessageDialog(null,exception);
         }
+        fillEquipmentTable(new ActionEvent());
     }
     @FXML
     void updateEqupment(ActionEvent actionEvent){
+        try {
 
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+
+
+
+
+
+            System.out.println("Quey");
+            String sql="update equipment  ";
+
+            Boolean flag=true;
+            if(!equipmentID.getText().equals("")) {
+
+                if (flag){
+                    sql+=" set ";
+
+                    flag=false;
+                }else {
+                    sql+=" , ";
+                }
+                sql+="equipment_id="+equipmentID.getText();
+            }
+            if(!eSectionID.getText().equals("")){
+
+                if (flag){
+                    sql+=" set ";
+
+                    flag=false;
+                }else {
+                    sql+=" ,  ";
+                }
+
+                sql+=" section_id = "+eSectionID.getText()+"";
+            }
+            if (!EquipmentType.getText().equals("")){
+
+                if (flag){
+                    sql+=" set ";
+
+                    flag=false;
+                }else {
+                    sql+=" , ";
+                }
+                sql+="equipment_type= '"+EquipmentType.getText()+"' ";
+            }
+
+            sql+=" where equipment_id = "+previd;
+            System.out.println(sql);
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+
+            statement.executeUpdate();
+
+            fillEquipmentTable(new ActionEvent());
+//            connection.commit();
+            connection.close();
+        }
+        catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+        }
+        fillEquipmentTable(new ActionEvent());
     }
     @FXML
     void selectEqupment(ActionEvent actionEvent){
@@ -1327,9 +2013,9 @@ PreparedStatement statement = connection.prepareStatement(sql);
             }
             PreparedStatement statement=connection.prepareStatement(sql);
             ResultSet resultSet=statement.executeQuery();
-            if(resultSet.next())
-                System.out.println(resultSet.getString(1)+"\t"+resultSet.getString(2)+"\t"+resultSet.getString(3)+"\t");
+
             connection.close();
+
         }catch (Exception exception){
             JOptionPane.showMessageDialog(null,exception);
         }
@@ -1381,10 +2067,110 @@ PreparedStatement statement = connection.prepareStatement(sql);
             statement.executeUpdate();
             connection.commit();
             connection.close();
+            fillEquipmentTable(new ActionEvent());
 
         }catch (Exception exception){
             JOptionPane.showMessageDialog(null,exception);
         }
 
+    }
+
+
+    @FXML
+    void fillBookTable(ActionEvent actionEvent){
+         ObservableList<Book> books = FXCollections.observableArrayList();
+        try{
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+            String sql="select * from Book ";
+            PreparedStatement preparedStatement=connection.prepareStatement(sql);
+            ResultSet resultSet=preparedStatement.executeQuery();
+            while (resultSet.next())
+                books.add(new Book(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),resultSet.getString(4),resultSet.getInt(11),resultSet.getString(7),resultSet.getInt(5),resultSet.getInt(10),resultSet.getDate(14)));
+            TBook.setItems(books);
+        }catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+        }
+    }
+
+
+
+    @FXML
+    void fillPersonTable(ActionEvent actionEvent){
+        ObservableList<Person> persons = FXCollections.observableArrayList();
+        try{
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+            String sql="select *  from person ";
+            PreparedStatement preparedStatement=connection.prepareStatement(sql);
+            ResultSet resultSet=preparedStatement.executeQuery();
+            ResultSet resultSet1;
+            PreparedStatement preparedStatement2=connection.prepareStatement(" ");
+
+            while (resultSet.next()) {
+                preparedStatement2=connection.prepareStatement(
+                        "select Section_id from manager  where  person_id= "+resultSet.getInt(1)+" union "+" select Section_id from Librarian  where  person_id="+resultSet.getInt(1));
+                resultSet1=preparedStatement2.executeQuery();
+                if(resultSet1.next())
+                    persons.add(new Person(resultSet.getInt(1), resultSet.getString(2)+" "+resultSet.getString(3), resultSet.getDate(4), resultSet.getString(5), resultSet.getString(6),resultSet1.getString(1) ));
+                else
+                    persons.add(new Person(resultSet.getInt(1), resultSet.getString(2)+" "+resultSet.getString(3), resultSet.getDate(4), resultSet.getString(5), resultSet.getString(6),"" ));
+              //  persons.add(new Person(resultSet.getInt(1), resultSet.getString(2)+" "+resultSet.getString(3), resultSet.getDate(4), resultSet.getString(5), "M","" ));
+
+            }
+            TPerson.setItems(persons);
+        }catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+        }
+    }
+
+
+    void fillBorrowTable(ActionEvent actionEvent){
+        ObservableList<Borrowing> Borrows = FXCollections.observableArrayList();
+        try{
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+            String sql="select *  from Borrowing ";
+            PreparedStatement preparedStatement=connection.prepareStatement(sql);
+            ResultSet resultSet=preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Borrows.add(new Borrowing(resultSet.getInt(1),resultSet.getInt(2),resultSet.getInt(3),resultSet.getDate(4),resultSet.getDate(5)));
+            }
+            TBorrow.setItems(Borrows);
+        }catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+        }
+    }
+
+
+    void fillEquipmentTable(ActionEvent actionEvent){
+        ObservableList<Equipment> Borrows = FXCollections.observableArrayList();
+        try{
+            OracleDataSource oracleDataSource = new OracleDataSource();
+            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+            oracleDataSource.setUser("C##Asem");
+            oracleDataSource.setPassword("123456");
+            Connection connection=oracleDataSource.getConnection();
+            String sql="select *  from Equipment ";
+            PreparedStatement preparedStatement=connection.prepareStatement(sql);
+            ResultSet resultSet=preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Borrows.add(new Equipment(resultSet.getString(3),resultSet.getInt(1),resultSet.getInt(2)));
+            }
+            TEquipment.setItems(Borrows);
+        }catch (Exception exception){
+            JOptionPane.showMessageDialog(null,exception);
+        }
     }
 }

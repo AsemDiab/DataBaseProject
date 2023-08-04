@@ -24,7 +24,7 @@
             </Label>
             <Label fx:id="dateOfPublish" layoutX="20.0" layoutY="130.0" prefHeight="43.0" prefWidth="155.0" textFill="#fcf9f9" />
             <Label fx:id="language" layoutX="180.0" layoutY="108.0" prefHeight="43.0" prefWidth="218.0" textFill="#fcf9f9" />
-            <Button id="btn" fx:id="btn" layoutX="289.0" layoutY="371.0" mnemonicParsing="false" onAction="#Borrow" prefHeight="43.0" prefWidth="112.0" style="-fx-border-color: #3d322c;; -fx-border-radius: 50;" stylesheets="@bookpage.css" text="Borrow" textFill="#f4f0f0" />
+            <Button id="btn" fx:id="btn" layoutX="289.0" layoutY="371.0" mnemonicParsing="false" onAction="#Borrow" prefHeight="43.0" prefWidth="112.0" style="-fx-border-color: #3d322c; -fx-border-radius: 50; -fx-background-color: transport;" stylesheets="@bookpage.css" text="Borrow" textFill="#f4f0f0" />
             <ImageView fx:id="imageView" fitHeight="182.0" fitWidth="147.0" layoutX="14.0" layoutY="-87.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="-60.0" />
          </children>
       </AnchorPane>
@@ -35,7 +35,7 @@
       </Label>
       <ImageView fx:id="backToMainWindow" fitHeight="22.0" fitWidth="59.0" layoutX="14.0" layoutY="3.0" onMouseClicked="#closed" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: color-burn;" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="3.0">
          <image>
-            <Image url="@../../../vector-back-icon.jpg" />
+            <Image url="@arrowback.png" />
          </image>
       </ImageView>
    </children>

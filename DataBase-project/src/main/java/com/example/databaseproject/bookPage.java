@@ -27,6 +27,7 @@ import oracle.jdbc.pool.OracleDataSource;
 
 public class bookPage implements Initializable {
     static int id ;
+    Stage stage;
     @FXML
     private Label AutherName;
 
@@ -63,7 +64,6 @@ public class bookPage implements Initializable {
         try {
 
             /*"D:\New folder (2)\Asem\demo\src\main\resources\theShadowOFTheWild.jfif"*/
-
             OracleDataSource oracleDataSource = new OracleDataSource();
             oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
             oracleDataSource.setUser("C##Asem");
@@ -132,21 +132,30 @@ public class bookPage implements Initializable {
             Connection connection=oracleDataSource.getConnection();
             connection.setAutoCommit(false);
             // Statement statement=connection.createStatement();
+            String sql = "select  number_of_borrowed_copies ,total_copies from  Book  where book_id="+id;
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet=statement.executeQuery();
+            resultSet.next();
+            if(resultSet.getInt(1)<resultSet.getInt(2)){
+            sql = "update Book set number_of_borrowed_copies=number_of_borrowed_copies+1 where book_id="+id;
+             statement = connection.prepareStatement(sql);
+            statement.executeUpdate();
             LocalDate date=LocalDate.now();
             System.out.println(date.getDayOfMonth()+"|"+date.getMonthValue()+"|"+date.getYear());
             LocalDate date1=date.plus(2, ChronoUnit.WEEKS);
-            String sql = "insert into Borrowing values ((select max(Borrowing_id)from Borrowing)+1,"+User.id+","+id+",to_date('"+date.getDayOfMonth()+"-"+date.getMonthValue()+"-"+date.getYear()+"','dd-mm-yyyy'),to_date('"+date1.getDayOfMonth()+"-"+date1.getMonthValue()+"-"+date1.getYear()+"','dd-mm-yyyy'),'No')";
-            PreparedStatement statement = connection.prepareStatement(sql);
+             sql = "insert into Borrowing values ((select max(Borrowing_id)from Borrowing)+1,"+User.id+","+id+",to_date('"+date.getDayOfMonth()+"-"+date.getMonthValue()+"-"+date.getYear()+"','dd-mm-yyyy'),to_date('"+date1.getDayOfMonth()+"-"+date1.getMonthValue()+"-"+date1.getYear()+"','dd-mm-yyyy'),'No')";
+             statement = connection.prepareStatement(sql);
             statement.executeUpdate();
             connection.commit();
             connection.close();
-            System.out.println("insert successfully");
+            System.out.println("insert successfully");}
 
         }catch (Exception exception){
             System.out.println(exception);
         }
 
         System.out.println("Borrowed");
+        ((Stage) language.getScene().getWindow()).close();
     }
     @FXML
     public void closed(MouseEvent mouseEvent){

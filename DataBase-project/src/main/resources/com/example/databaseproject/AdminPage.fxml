@@ -19,7 +19,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="659.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.AdminPageControoler">
    <Pane layoutX="-1.0" layoutY="42.0" prefHeight="216.0" prefWidth="1100.0" styleClass="pane" stylesheets="@HomePageStyle.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <Pane fx:id="BookPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;">
+      <Pane fx:id="BookPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;" visible="false">
          <Pane layoutX="883.0" layoutY="-12.0" prefHeight="223.0" prefWidth="200.0">
             <style>-fx-background-color: Transparent;</style>
             <children>
@@ -62,7 +62,7 @@
          <Label alignment="CENTER" layoutX="541.0" layoutY="6.0" prefHeight="17.0" prefWidth="283.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Description" />
          <DatePicker fx:id="DatePublish" layoutX="380.0" layoutY="170.0" prefHeight="25.0" prefWidth="150.0" />
       </Pane>
-      <Pane fx:id="UsersPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;" visible="false">
+      <Pane fx:id="UsersPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;">
          <TextField fx:id="userNameTextBox" layoutX="14.0" layoutY="58.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
          <Label alignment="CENTER" layoutX="14.0" layoutY="32.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Name" />
          <TextField fx:id="personIDTextBox" layoutX="14.0" layoutY="155.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
@@ -191,40 +191,41 @@
    </Pane>
    <TableView fx:id="TBook" layoutY="216.0" prefHeight="443.0" prefWidth="1100.0" stylesheets="@tableView.css">
      <columns>
-       <TableColumn prefWidth="137.5" text="ID" />
-       <TableColumn minWidth="4.666656494140625" prefWidth="137.5" text="Name" />
-         <TableColumn minWidth="0.0" prefWidth="137.5" text="Author Name" />
-         <TableColumn minWidth="0.0" prefWidth="137.5" text="Section ID" />
-         <TableColumn prefWidth="137.5" text="Language" />
-         <TableColumn prefWidth="137.5" text="Number of pages" />
-         <TableColumn prefWidth="137.5" text="Total Copy" />
-         <TableColumn prefWidth="137.5" text="Kind" />
+       <TableColumn fx:id="bookidColumn" prefWidth="100.0" text="ID" />
+       <TableColumn fx:id="booktitleColumn" minWidth="4.666656494140625" prefWidth="120.0" text="title" />
+         <TableColumn fx:id="AutherFNameColumn" minWidth="0.0" prefWidth="148.79998779296875" text="Auther First Name" />
+         <TableColumn fx:id="AutherLNameColumn" prefWidth="147.20001220703125" text="Auther last Name" />
+         <TableColumn fx:id="bookSectionidColumn" minWidth="0.0" prefWidth="137.5" text="Section ID" />
+         <TableColumn fx:id="bookLanguageColumn" prefWidth="120.0" text="Language" />
+         <TableColumn fx:id="numberOFpagesColumn" prefWidth="120.0" text="Number of pages" />
+         <TableColumn fx:id="bookTatolCopyCokumn" prefWidth="100.0" text="Total Copy" />
+         <TableColumn fx:id="bookTypeColumn" prefWidth="100.0" text="publish date" />
      </columns>
    </TableView>
    <TableView fx:id="TPerson" layoutY="216.0" prefHeight="443.0" prefWidth="1100.0" stylesheets="@tableView.css" visible="false">
      <columns>
-       <TableColumn prefWidth="183.333333333" text="ID" />
-       <TableColumn prefWidth="183.333333333" text="Name" />
-         <TableColumn prefWidth="183.333333333" text="Section ID" />
-         <TableColumn prefWidth="183.333333333" text="JoinDate" />
-         <TableColumn prefWidth="183.333333333" text="Member ship" />
-         <TableColumn prefWidth="183.333333333" text="Gender" />
+       <TableColumn fx:id="PersonIDColumn" prefWidth="183.333333333" text="ID" />
+       <TableColumn fx:id="PersonNameColumn" prefWidth="183.333333333" text="Name" />
+         <TableColumn fx:id="PJoinDateColumn" prefWidth="183.333333333" text="JoinDate" />
+         <TableColumn fx:id="PersonShipColumn" prefWidth="183.333333333" text="Member ship" />
+         <TableColumn fx:id="PersonGenderColumn" prefWidth="183.333333333" text="Gender" />
+         <TableColumn fx:id="PSectionIdColumn" prefWidth="183.333333333" text="Section ID" />
      </columns>
    </TableView>
    <TableView fx:id="TEquipment" layoutY="216.0" prefHeight="443.0" prefWidth="1100.0" stylesheets="@tableView.css" visible="false">
      <columns>
-       <TableColumn prefWidth="366.6666667" text="Id" />
-       <TableColumn prefWidth="366.6666667" text="Section ID" />
-         <TableColumn prefWidth="366.6666667" text="equipment type" />
+       <TableColumn fx:id="EquipmentIDColoumn" prefWidth="366.6666667" text="Id" />
+       <TableColumn fx:id="ESectionIDEquipment" prefWidth="366.6666667" text="Section ID" />
+         <TableColumn fx:id="EquipmentTypeColumn" prefWidth="366.6666667" text="equipment type" />
      </columns>
    </TableView>
    <TableView fx:id="TBorrow" layoutY="216.0" prefHeight="443.0" prefWidth="1100.0" visible="false">
      <columns>
-       <TableColumn prefWidth="220.0" text="Borrowing ID" />
-       <TableColumn prefWidth="220.0" text="Person ID" />
-         <TableColumn prefWidth="220.0" text="Book ID" />
-         <TableColumn prefWidth="220.0" text="Date Of Borrowing" />
-         <TableColumn prefWidth="220.0" text="Date of Return" />
+       <TableColumn fx:id="BorrowigIDColumn" prefWidth="220.0" text="Borrowing ID" />
+       <TableColumn fx:id="BPersonIDColumn" prefWidth="220.0" text="Person ID" />
+         <TableColumn fx:id="BBookIDColumn" prefWidth="220.0" text="Book ID" />
+         <TableColumn fx:id="DateOfBorrowingColumn" prefWidth="220.0" text="Date Of Borrowing" />
+         <TableColumn fx:id="DateOfReturnColumn" prefWidth="220.0" text="Date of Return" />
      </columns>
    </TableView>
 </AnchorPane>
