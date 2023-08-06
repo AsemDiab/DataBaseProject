@@ -24,6 +24,8 @@ import java.util.ResourceBundle;
 
 import oracle.jdbc.pool.OracleDataSource;
 
+import javax.swing.*;
+
 
 public class bookPage implements Initializable {
     static int id ;
@@ -149,6 +151,8 @@ public class bookPage implements Initializable {
             connection.commit();
             connection.close();
             System.out.println("insert successfully");}
+
+            JOptionPane.showMessageDialog(null,"the book borrowed");
 
         }catch (Exception exception){
             System.out.println(exception);

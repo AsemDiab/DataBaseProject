@@ -19,7 +19,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="659.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.databaseproject.AdminPageControoler">
    <Pane layoutX="-1.0" layoutY="42.0" prefHeight="216.0" prefWidth="1100.0" styleClass="pane" stylesheets="@HomePageStyle.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <Pane fx:id="BookPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;" visible="false">
+      <Pane fx:id="BookPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;">
          <Pane layoutX="883.0" layoutY="-12.0" prefHeight="223.0" prefWidth="200.0">
             <style>-fx-background-color: Transparent;</style>
             <children>
@@ -58,11 +58,12 @@
          <TextField fx:id="totalCopyTextBox" layoutX="21.0" layoutY="166.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
          <Label alignment="CENTER" layoutX="374.0" layoutY="83.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Number of pages" />
          <Label alignment="CENTER" layoutX="21.0" layoutY="151.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Total Copy" />
-         <TextArea fx:id="DescrptionTextBox" layoutX="541.0" layoutY="26.0" prefHeight="189.0" prefWidth="283.0" />
+         <TextArea fx:id="DescrptionTextBox" layoutX="603.0" layoutY="26.0" prefHeight="189.0" prefWidth="221.0" />
          <Label alignment="CENTER" layoutX="541.0" layoutY="6.0" prefHeight="17.0" prefWidth="283.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Description" />
          <DatePicker fx:id="DatePublish" layoutX="380.0" layoutY="170.0" prefHeight="25.0" prefWidth="150.0" />
+         <Button layoutX="541.0" layoutY="108.0" mnemonicParsing="false" onAction="#a" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Report" />
       </Pane>
-      <Pane fx:id="UsersPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;">
+      <Pane fx:id="UsersPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;" visible="false">
          <TextField fx:id="userNameTextBox" layoutX="14.0" layoutY="58.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
          <Label alignment="CENTER" layoutX="14.0" layoutY="32.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="Name" />
          <TextField fx:id="personIDTextBox" layoutX="14.0" layoutY="155.0" prefHeight="32.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
@@ -101,7 +102,7 @@
          <PasswordField fx:id="passf" layoutX="418.0" layoutY="155.0" prefHeight="16.0" prefWidth="157.0" styleClass="searchFeild" stylesheets="@AdminStyle.css" />
          <Label fx:id="intrestLabel11" alignment="CENTER" layoutX="418.0" layoutY="130.0" prefHeight="17.0" prefWidth="157.0" styleClass="nameLabel2" stylesheets="@profile.css" text="PassWord" />
          <RadioButton fx:id="radioButton" layoutX="587.0" layoutY="152.0" mnemonicParsing="false" onAction="#radioButtonAction" prefHeight="39.0" prefWidth="21.0" />
-         <Button layoutX="669.0" layoutY="173.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="106.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Report" />
+         <Button layoutX="669.0" layoutY="173.0" mnemonicParsing="false" onAction="#b" prefHeight="29.0" prefWidth="106.0" styleClass="Buttonright" stylesheets="@AdminStyle.css" text="Report" />
       </Pane>
       <Pane fx:id="EquipmentPane" layoutX="53.0" prefHeight="216.0" prefWidth="1048.0" style="-fx-background-color: Transparent;" visible="false">
          <children>

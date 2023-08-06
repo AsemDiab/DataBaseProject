@@ -414,6 +414,7 @@ public class HomeController implements Initializable {
     }
     @FXML
     public void generalSearch(ActionEvent actionEvent){
+        fillBooksCatgory();
        // searchf.getText()
 
         try {
@@ -428,8 +429,11 @@ public class HomeController implements Initializable {
             PreparedStatement preparedStatement=connection.prepareStatement(sql);
             ResultSet resultSet=preparedStatement.executeQuery();
             homePane.getChildren().clear();
-            while(resultSet.next())
+            int i=12;
+            while(i>0&&resultSet.next()){
             homePane.getChildren().add(new JFlipCard(resultSet.getInt(1)));
+            i--;
+            }
             connection.close();
 
         }catch (Exception exception){
@@ -542,6 +546,7 @@ public class HomeController implements Initializable {
     }
 
     public void closeHomeView(MouseEvent mouseEvent) throws Exception {
+        fillBooksCatgory();
 
         root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
         stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
@@ -584,6 +589,7 @@ public class HomeController implements Initializable {
 
     public void openSub() {
         System.out.println("openSub");
+        fillBooksCatgory();
         try {
             HomePane.setVisible(false);
             HomePane1.setVisible(true);
@@ -599,12 +605,53 @@ public class HomeController implements Initializable {
 
     public void openHomeView(ActionEvent e) {
         slideEvent(new ActionEvent());
+        fillBooksCatgory();
         contantPane.getChildren().removeAll();
         HomePane.setVisible(true);
         HomePane1.setVisible(false);
 
     }
+public  void fillBooksCatgory(){
+    try{
+        paneOfAll.getChildren().clear();
+        MangaFlowPane.getChildren().clear();
+        HumanDevolopmentFlowPane.getChildren().clear();
+        NovelFlowPane.getChildren().clear();
+        FantasyFlowPane.getChildren().clear();
+        AcademicFlowPane.getChildren().clear();
+        OracleDataSource oracleDataSource = new OracleDataSource();
+        oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
+        oracleDataSource.setUser("C##Asem");
+        oracleDataSource.setPassword("123456");
+        Connection connection=oracleDataSource.getConnection();
+        connection.setAutoCommit(false);
+        // Statement statement=connection.createStatement();
+        String sql = "select * from book ";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet=statement.executeQuery();
 
+        while (resultSet.next()){
+            paneOfAll.getChildren().add(new JFlipCard(resultSet.getInt(1)));
+            switch (resultSet.getInt("Type")){
+                case 1:NovelFlowPane.getChildren().add(new JFlipCard(resultSet.getInt(1)));
+                    break;
+                case 2:AcademicFlowPane.getChildren().add(new JFlipCard(resultSet.getInt(1)));
+                    break;
+                case 3:FantasyFlowPane.getChildren().add(new JFlipCard(resultSet.getInt(1)));
+                    break;
+                case 4:HumanDevolopmentFlowPane.getChildren().add(new JFlipCard(resultSet.getInt(1)));
+                    break;
+                case 5:MangaFlowPane.getChildren().add(new JFlipCard(resultSet.getInt(1)));
+                    break;
+
+            }
+
+
+        }
+    }catch (Exception exception){
+        System.out.println(exception);
+    }
+}
 
     Boolean isSideManuOpened = false;
     AnchorPane anchorPane;
@@ -614,37 +661,12 @@ public class HomeController implements Initializable {
         // i cofuse here so i comment it check it plese:)
         ini();//inisilaiz
 // I will hix my error(convert following line to methods)
-        try{
-            OracleDataSource oracleDataSource = new OracleDataSource();
-            oracleDataSource.setURL("jdbc:oracle:thin:@localhost:1521:xe");
-            oracleDataSource.setUser("C##Asem");
-            oracleDataSource.setPassword("123456");
-            Connection connection=oracleDataSource.getConnection();
-            connection.setAutoCommit(false);
-            // Statement statement=connection.createStatement();
-            String sql = "select * from book ";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet resultSet=statement.executeQuery();
-
-            while (resultSet.next()){
-                paneOfAll.getChildren().add(new JFlipCard(resultSet.getInt(1)));
-                switch (resultSet.getInt("Type")){
-                    case 1:NovelFlowPane.getChildren().add(new JFlipCard(resultSet.getInt(1)));
-                        break;
-                    case 2:AcademicFlowPane.getChildren().add(new JFlipCard(resultSet.getInt(1)));
-                        break;
-                    case 3:FantasyFlowPane.getChildren().add(new JFlipCard(resultSet.getInt(1)));
-                        break;
-                    case 4:HumanDevolopmentFlowPane.getChildren().add(new JFlipCard(resultSet.getInt(1)));
-                        break;
-                    case 5:MangaFlowPane.getChildren().add(new JFlipCard(resultSet.getInt(1)));
-                        break;
-
-                }
+        try {
 
 
-            }
-        }catch (Exception exception){
+            fillBooksCatgory();
+        }
+        catch (Exception exception){
             System.out.println(exception);
         }
         nameL.setText(User.name);
@@ -653,6 +675,7 @@ public class HomeController implements Initializable {
         side.setTranslateX(-250);
         side.setVisible(true);
         OpenSideManu.setOnAction(Event -> {
+            fillBooksCatgory();
             if (isSideManuOpened) {
                 if (inout)
                     closesearch();
@@ -688,6 +711,7 @@ public class HomeController implements Initializable {
         } catch (Exception exception) {
             System.out.println("SooryBro" + exception);
         }
+        generalSearch(new ActionEvent());
 
     }
 

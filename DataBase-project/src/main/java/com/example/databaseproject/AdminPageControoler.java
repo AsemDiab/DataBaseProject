@@ -14,17 +14,17 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.swing.JRViewer;
 import oracle.jdbc.pool.OracleDataSource;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
@@ -641,8 +641,109 @@ public void open_UsersPane(){
             connection.close();
         }catch (Exception exception){}
     }
+    public void b(){
+        Connection con = null;
+        InputStream input = null;
+        JasperDesign jasperDesign = null;
+        JasperReport jasperReport = null;
+        JasperPrint jasperPrint = null;
+        OutputStream output = null;
+
+        try {
+
+            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "c##asem", "123456");
 
 
+            //  input = new FileInputStream(new File(""));
+            input = getClass().getResourceAsStream("personnew.jrxml");
+            //input = getClass().getResourceAsStream("/Cherry.jrxml");
+            System.out.println("osamaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            //input = getClass().getResourceAsStream("BOOK.jrxml");
+            System.out.println("osamaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
+            jasperDesign = JRXmlLoader.load(input);
+            System.out.println("sdninfrunjunofnunundoubfodnocndnondnndnjnjdd");
+            jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+            // Fill the report with data from the database using the connection
+            jasperPrint = JasperFillManager.fillReport(jasperReport, null, con);
+
+
+            output = new FileOutputStream(new File("PERSONReport.pdf"));
+            JasperExportManager.exportReportToPdfStream(jasperPrint, output);
+
+
+            System.out.println("sdninfrunjunofnunundoubfodnocndnondnndnjnjdd");
+            JFrame frame = new JFrame("Report");
+            frame.getContentPane().add(new JRViewer(jasperPrint));
+            frame.setSize(1100,500);
+            frame.setVisible(true);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Close all resources properly
+            try {
+                if (con != null) con.close();
+                if (input != null) input.close();
+                if (output != null) output.close();
+            } catch (SQLException | IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    public void a(){
+
+        Connection con = null;
+        InputStream input = null;
+        JasperDesign jasperDesign = null;
+        JasperReport jasperReport = null;
+        JasperPrint jasperPrint = null;
+        OutputStream output = null;
+
+        try {
+
+            con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "c##asem", "123456");
+
+
+            //  input = new FileInputStream(new File(""));
+            input = getClass().getResourceAsStream("BOOK.jrxml");
+            //input = getClass().getResourceAsStream("/Cherry.jrxml");
+            System.out.println("osamaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            //input = getClass().getResourceAsStream("BOOK.jrxml");
+            System.out.println("osamaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
+            jasperDesign = JRXmlLoader.load(input);
+            System.out.println("sdninfrunjunofnunundoubfodnocndnondnndnjnjdd");
+            jasperReport = JasperCompileManager.compileReport(jasperDesign);
+
+            // Fill the report with data from the database using the connection
+            jasperPrint = JasperFillManager.fillReport(jasperReport, null, con);
+
+
+            output = new FileOutputStream(new File("BookReport.pdf"));
+            JasperExportManager.exportReportToPdfStream(jasperPrint, output);
+
+
+            System.out.println("sdninfrunjunofnunundoubfodnocndnondnndnjnjdd");
+            JFrame frame = new JFrame("Report");
+            frame.getContentPane().add(new JRViewer(jasperPrint));
+            frame.setSize(1100,500);
+            frame.setVisible(true);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // Close all resources properly
+            try {
+                if (con != null) con.close();
+                if (input != null) input.close();
+                if (output != null) output.close();
+            } catch (SQLException | IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
     @FXML
     void addBook(ActionEvent actionEvent){
         try {
@@ -710,6 +811,7 @@ connection.setAutoCommit(false);
             statement.executeUpdate();
             connection.commit();
             connection.close();
+            fillBookTable(new ActionEvent());
             System.out.println("add successfully");
         }catch (Exception exception){
             JOptionPane.showMessageDialog(null,exception);
@@ -860,9 +962,10 @@ connection.setAutoCommit(false);
 
         statement.executeUpdate();
 
-       fillBookTable(new ActionEvent());
+
 //            connection.commit();
         connection.close();
+        fillBookTable(new ActionEvent());
     }
     catch (Exception exception){
         JOptionPane.showMessageDialog(null,exception);
@@ -999,6 +1102,7 @@ connection.setAutoCommit(false);
 
        statement.executeUpdate();
         connection.close();
+        fillBookTable(new ActionEvent());
 }
     catch (Exception exception){
         JOptionPane.showMessageDialog(null,exception);
@@ -1188,7 +1292,7 @@ connection.setAutoCommit(false);
                     state.getText().toLowerCase()
                     +"','"+gender+"'," +
                     "'"+passf.getText()+"')";
-
+            System.out.println("gowrnog="+passf.getText());
             System.out.println(localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear());
             String sql2="insert into member values ("+personIDTextBox.getText()+","+personIDTextBox.getText()+",'novel')";
 if(state.getText().toLowerCase().equals("admin")){
@@ -1198,10 +1302,8 @@ if(state.getText().toLowerCase().equals("admin")){
            +personIDTextBox.getText()+","+
            VisableOrNotText.getText()+
            ",to_date('"+localDate.getDayOfMonth()+"-"+localDate.getMonthValue()+"-"+localDate.getYear()+"','dd-mm-yyyy'))";}
-            System.out.println(sql2.equals("insert into manager values (11006,11006,15001,to_date('15-5-1999','dd-mm-yyyy'))"));
-            System.out.println(sql2);
-            System.out.println("insert into manager values (11006,11006,15001,to_date('15-5-1999','dd-mm-yyyy'));");
-if(state.getText().toLowerCase().equals("librarian")) {
+
+if(state.getText().toLowerCase().trim().equals("librarian".toLowerCase().trim())) {
     sql2 = "insert into librarian values ("
             + personIDTextBox.getText() +
             "," + personIDTextBox.getText() +
@@ -1219,6 +1321,7 @@ PreparedStatement statement = connection.prepareStatement(sql);
             connection.commit();
             connection.close();
             System.out.println("add successfully");
+            fillPersonTable(new ActionEvent());
         }catch (Exception exception){
             JOptionPane.showMessageDialog(null,exception);
         }
@@ -1368,6 +1471,7 @@ PreparedStatement statement = connection.prepareStatement(sql);
                 connection.commit();
 
                 connection.close();
+                fillPersonTable(new ActionEvent());
             }
         }catch (Exception exception){
             JOptionPane.showMessageDialog(null,exception);
@@ -1408,7 +1512,7 @@ PreparedStatement statement = connection.prepareStatement(sql);
                     sql+="where gender="+gender;
                 else if(!userNameTextBox.getText().equals("")&&s.length>1)
                     sql+="FName like ('"+s[0]+"%') and LName like ('"+s[1]+"%')";
-                else if (!state.getText().equals("all")) {
+                else if (!state.getText().toLowerCase().trim().equals("all")) {
                     sql+="where member_status like ('"+state.getText().toLowerCase()+"%')";//
                 }
 

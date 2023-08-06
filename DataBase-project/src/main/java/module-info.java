@@ -5,6 +5,7 @@ module com.example.databaseproject {
     requires ojdbc10;
     requires java.desktop;
     requires java.naming;
+    requires jasperreports;
      //requires persistance.api;
     opens com.example.databaseproject to javafx.fxml;
     exports com.example.databaseproject;

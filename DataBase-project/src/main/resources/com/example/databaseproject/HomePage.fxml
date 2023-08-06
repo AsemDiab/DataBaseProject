@@ -106,7 +106,7 @@
                         </ImageView>
                         <ScrollPane layoutX="5.0" layoutY="150.0" prefHeight="472.0" prefWidth="1093.0" style="-fx-background-color: transparent; -fx-hbar-policy: never; -fx-vbar-policy: never;">
                            <content>
-                              <FlowPane fx:id="HumanDevolopmentFlowPane" hgap="10.0" prefHeight="2000.0" prefWidth="1080.0" style="-fx-background-color: transparent;" vgap="10.0" />
+                              <FlowPane fx:id="HumanDevolopmentFlowPane" hgap="10.0" prefHeight="2000.0" prefWidth="1080.0" style="-fx-background-color: transparent;" vgap="10.0" visible="false" />
                            </content>
                            <padding>
                               <Insets left="10.0" top="10.0" />
@@ -154,7 +154,7 @@
                         </ScrollPane>
                      </children>
                   </Pane>
-                  <Pane fx:id="AnimePane" prefHeight="640.0" prefWidth="1112.0" visible="false">
+                  <Pane fx:id="AnimePane" prefHeight="640.0" prefWidth="1112.0">
                      <children>
                         <ImageView fx:id="AnimeImage" fitHeight="663.0" fitWidth="1132.0" pickOnBounds="true" preserveRatio="true" style="-fx-focus-traversable: false;">
                            <image>
